@@ -88,7 +88,7 @@ book:
 
 format:
   html:
-    theme: # bootswatch themes--other options https://bootswatch.com/
+    theme: quartz # bootswatch themes--other options https://bootswatch.com/
       light: flatly
       dark: darkly
     search: true
