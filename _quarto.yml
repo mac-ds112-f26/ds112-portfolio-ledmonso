@@ -78,6 +78,7 @@ book:
       - ica/ica-sample1.qmd
       - ica/ica-sample2.qmd
       - ica/quarto-demo (1).qmd
+      - ica/03-univariate-viz-exercises.qmd
 
     - part: "Extras"
       chapters:
@@ -88,8 +89,8 @@ book:
 
 format:
   html:
-    theme: quartz # bootswatch themes--other options https://bootswatch.com/
-      light: flatly
+    theme: # bootswatch themes--other options https://bootswatch.com/
+      light: quartz
       dark: darkly
     search: true
     toc: true
