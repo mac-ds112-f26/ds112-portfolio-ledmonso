@@ -6,6 +6,7 @@
 #
 # Options for html
 # https://quarto.org/docs/reference/projects/websites.html#section
+# quarto publish gh-pages --no-browser
 
 project:
   type: book
@@ -79,6 +80,7 @@ book:
       - ica/ica-sample2.qmd
       - ica/quarto-demo (1).qmd
       - ica/03-univariate-viz-exercises.qmd
+      - ica/04-bivariate-viz-exercises.qmd
 
     - part: "Extras"
       chapters:

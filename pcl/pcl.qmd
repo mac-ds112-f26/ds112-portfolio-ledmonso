@@ -12,3 +12,4 @@ title: "Pre-Class Learning Summaries"
 ![](mind_maps/Introduction_MM.png)
 ![](mind_maps/RStudio_MM.png)
 ![](mind_maps/Univariate_Viz_MM.png)
+![](mind_maps/Bivariate_Viz_MM.png)
