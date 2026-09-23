@@ -9,3 +9,7 @@ title: "Pre-Class Learning Summaries"
 ## Quarto
 
 ![from qmd4sci.njtierney.com](0810-quarto.jpeg)
+![](mind_maps/Introduction_MM.png)
+![](mind_maps/RStudio_MM.png)
+![](mind_maps/Univariate_Viz_MM.png)
+![](mind_maps/Bivariate_Viz_MM.png)
