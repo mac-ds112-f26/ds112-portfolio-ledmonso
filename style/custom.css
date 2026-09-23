@@ -76,6 +76,6 @@ a:active {
 
 .code-tools-button:hover {
   z-index: 0;
-  color: #f0f0f0;
+  color: #4d4c4c;
   box-shadow: 40px 0 100px #008cff85, -40px 0 100px #e100ffbb ;
 }
