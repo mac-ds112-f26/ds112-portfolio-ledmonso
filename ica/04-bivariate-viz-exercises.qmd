@@ -6,9 +6,11 @@ title: "Bivariate Viz — Exercises"
 Before starting, review the [ICA Instructions ⭐](https://hash-mac.github.io/ds112site-f26/activities/ica-instructions.html) for details on pair programming and activity procedures.
 :::
 
-[Github user Tony McGovern](https://github.com/tonmcg/US_County_Level_Election_Results_08-20) has compiled and made available 2024/2020/2016/2012/2008 presidential election results for most of 3000+ U.S. counties, except Alaska. (Image:
+[Github user Tony McGovern](https://github.com/tonmcg/US_County_Level_Election_Results_08-20) has compiled and made available 2024/2020/2016/2012/2008 presidential election results for most of 3000+ U.S. counties, except Alaska.
+(Image:
 
-![](https://upload.wikimedia.org/wikipedia/commons/6/68/Map_of_USA_with_county_outlines_%28black_%26_white%29.png) US Counties. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Map_of_USA_with_county_outlines_(black_%26_white).png)
+![](https://upload.wikimedia.org/wikipedia/commons/6/68/Map_of_USA_with_county_outlines_%28black_%26_white%29.png) US Counties.
+Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Map_of_USA_with_county_outlines_(black_%26_white).png)
 
 A wrangled version of this data, is imported below, after being combined with:
 
@@ -26,7 +28,8 @@ elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv"
 head(elections)
 ```
 
-We'll use this data to explore voting outcomes within the U.S.'s 2-party system. Here's a list of candidates by year:
+We'll use this data to explore voting outcomes within the U.S.'s 2-party system.
+Here's a list of candidates by year:
 
 | year | Republican candidate | Democratic candidate |
 |:-----|:---------------------|:---------------------|
@@ -54,7 +57,8 @@ ggplot(elections, aes(x=winner_20))+
 
 #### Part b
 
-The `repub_pct_20` variable provides more detail about the Republican support in each county. Construct a plot of `repub_pct_20`.
+The `repub_pct_20` variable provides more detail about the Republican support in each county.
+Construct a plot of `repub_pct_20`.
 
 Notice that the distribution of Republican support from county to county is slightly **left skewed** or **negatively skewed**.
 
@@ -71,12 +75,14 @@ ggplot(elections, aes(x = repub_pct_20))+
 Don't spend more than 3 minutes on this!
 :::
 
-Below is a **scatterplot** of the Republican support in 2020 vs 2016. Notice that:
+Below is a **scatterplot** of the Republican support in 2020 vs 2016.
+Notice that:
 
 -   both variables are quantitative and get their own axes
 -   the *response* variable is on the y-axis, demonstrating how `repub_pct_20` might be predicted by `repub_pct_16`, not vice versa
 
-Try to replicate this using `ggplot()`. Think:
+Try to replicate this using `ggplot()`.
+Think:
 
 -   What info do you need to set up the canvas?
 -   What geometric layer (`geom_???`) might add these dots / points for each county? We haven't learned this yet, just take some guesses.
@@ -90,7 +96,8 @@ ggplot(elections, aes(x = repub_pct_16, y = repub_pct_20)) +
 
 ## Exercise 2: 2 Quantitative Variables
 
-Run each chunk below to build up a a scatterplot of `repub_pct_20` vs `repub_pct_16` with different *glyphs* representing each county. Address or think about any prompts in the comments (`#`).
+Run each chunk below to build up a a scatterplot of `repub_pct_20` vs `repub_pct_16` with different *glyphs* representing each county.
+Address or think about any prompts in the comments (`#`).
 
 ```{r}
 # Set up the plotting frame
@@ -129,17 +136,20 @@ ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
 
 ## Exercise 3: Reflect
 
-Summarize the relationship between the Republican support in 2020 and 2016. Be sure to comment on:
+Summarize the relationship between the Republican support in 2020 and 2016.
+Be sure to comment on:
 
 -   the strength of the relationship: weak/moderate/strong
 -   the direction of the relationship: positive/negative
 -   outliers, ie, in what state do counties deviate from the national trend? Any ideas why this might be the case?
 
-> The relationship between Republican support is strong, positive and linear. There appear to be a few outliers from counties in Texas and Utah, where the support in 2020 is higher than the support in 2016.
+> The relationship between Republican support is strong, positive and linear.
+> There appear to be a few outliers from counties in Texas and Utah, where the support in 2020 is higher than the support in 2016.
 
 ## Exercise 4: Visualizing Trend
 
-The trend of the relationship between `repub_pct_20` and `repub_pct_16` is clearly positive and (mostly) linear. We can highlight this trend by adding a model "smooth" to the plot:
+The trend of the relationship between `repub_pct_20` and `repub_pct_16` is clearly positive and (mostly) linear.
+We can highlight this trend by adding a model "smooth" to the plot:
 
 ```{r}
 ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
@@ -158,7 +168,9 @@ ggplot(elections, aes(x = repub_pct_16, y = repub_pct_20)) +
 
 #### Part b
 
-By default, `geom_smooth()` adds a smooth, localized model line. To examine the "best" *linear model*, we can specify `method = "lm"`. It's pretty similar in this example.
+By default, `geom_smooth()` adds a smooth, localized model line.
+To examine the "best" *linear model*, we can specify `method = "lm"`.
+It's pretty similar in this example.
 
 ```{r}
 ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
@@ -168,7 +180,8 @@ ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
 
 ## Exercise 5: Your Turn
 
-To examine how the 2020 results are related to some county demographics, construct scatterplots of `repub_pct_20` vs `median_rent`, and `repub_pct_20` vs `median_age`. Summarize the relationship between these two variables and comment on which is the better predictor of `repub_pct_20`, `median_rent` or `median_age`.
+To examine how the 2020 results are related to some county demographics, construct scatterplots of `repub_pct_20` vs `median_rent`, and `repub_pct_20` vs `median_age`.
+Summarize the relationship between these two variables and comment on which is the better predictor of `repub_pct_20`, `median_rent` or `median_age`.
 
 ```{r}
 # Scatterplot of repub_pct_20 vs median_rent
@@ -185,7 +198,10 @@ ggplot(elections, aes(x = median_age, y = repub_pct_20)) +
 
 ## Exercise 6: A Sad Scatterplot
 
-Next, let's explore the relationship between a county's 2020 Republican support `repub_pct_20` and the `historical` political trends in its state. In this case `repub_pct_20` is **quantitative**, but `historical` is **categorical**. Explain why a scatterplot might *not* be an effective visualization for exploring this relationship. (What questions does / doesn't it help answer?)
+Next, let's explore the relationship between a county's 2020 Republican support `repub_pct_20` and the `historical` political trends in its state.
+In this case `repub_pct_20` is **quantitative**, but `historical` is **categorical**.
+Explain why a scatterplot might *not* be an effective visualization for exploring this relationship.
+(What questions does / doesn't it help answer?)
 
 ```{r}
 # The scatterplot shows no trends because the points are confined to a category. It helps to see outliers and skewing but it doesn't help see trends
@@ -195,7 +211,8 @@ ggplot(elections, aes(y = repub_pct_20, x = historical)) +
 
 ## Exercise 7: Quantitative vs Categorical: Violins & Boxes
 
-Though the above scatterplot *did* group the counties by `historical` category, it's nearly impossible to pick out meaningful patterns in 2020 Republican support in each category. Let's try adding 2 different `geom` layers to the frame:
+Though the above scatterplot *did* group the counties by `historical` category, it's nearly impossible to pick out meaningful patterns in 2020 Republican support in each category.
+Let's try adding 2 different `geom` layers to the frame:
 
 ```{r}
 # Side-by-side violin plots
@@ -225,7 +242,10 @@ Summarize what you've learned about the 2020 Republican county-level support wit
 Don't spend more than 3 minutes on this!
 :::
 
-We can also visualize the relationship between `repub_pct_20` and `historical` using our familiar density plots. In the plot below, notice that we simply created a separate density plot for each `historical` category. The plot itself is "bad" but we'll fix it below. Try to adjust the code chunk below, which starts with a density plot of `repub_pct_20` alone, to re-create this image.
+We can also visualize the relationship between `repub_pct_20` and `historical` using our familiar density plots.
+In the plot below, notice that we simply created a separate density plot for each `historical` category.
+The plot itself is "bad" but we'll fix it below.
+Try to adjust the code chunk below, which starts with a density plot of `repub_pct_20` alone, to re-create this image.
 
 ![](https://mac-stat.github.io/images/112/density_demo.png){width="50%"}
 
@@ -290,10 +310,13 @@ We've now learned 3 (of many) ways to visualize the relationship between a quant
 
 ## Exercise 11: Categorical vs Categorical: Intuition Check
 
-Finally, let's simply explore who *won* each county in 2020 (`winner_20`) and how this breaks down by `historical` voting trends in the state. That is, let's explore the relationship between 2 categorical variables. Following the same themes as above, we can utilize grouping features such as fill/color or facets to distinguish between different categories of `winner_20` and `historical`.
+Finally, let's simply explore who *won* each county in 2020 (`winner_20`) and how this breaks down by `historical` voting trends in the state.
+That is, let's explore the relationship between 2 categorical variables.
+Following the same themes as above, we can utilize grouping features such as fill/color or facets to distinguish between different categories of `winner_20` and `historical`.
 
 ::: {.callout-important title="Be Quick"}
-Spend at most 5 minutes on the following intuition check. Adjust the code below to recreate the following two plots.
+Spend at most 5 minutes on the following intuition check.
+Adjust the code below to recreate the following two plots.
 :::
 
 ![](https://mac-stat.github.io/images/112/barplot_demo.png){width="60%"}
@@ -348,7 +371,8 @@ ggplot(elections, aes(x = historical, fill = winner_20)) +
 
 Name one pro and one con of using the "proportional bar plot" instead of one of the other three options.
 
-> You can see the frequencies of the y variable to see how the scale differs based on the x variable. A con is that you don't know the actual counts for each category.
+> You can see the frequencies of the y variable to see how the scale differs based on the x variable.
+> A con is that you don't know the actual counts for each category.
 
 #### Part b
 
@@ -371,9 +395,13 @@ Import some daily weather data from a few locations in Australia:
 weather <- read.csv("https://mac-stat.github.io/data/weather_3_locations.csv")
 ```
 
-Construct plots that address the research questions in each chunk. You might make multiple plots--there are many ways to do things!. However, don't just throw spaghetti at the wall.
+Construct plots that address the research questions in each chunk.
+You might make multiple plots--there are many ways to do things!.
+However, don't just throw spaghetti at the wall.
 
-Reflect before doing anything. What types of variables are these? How might you plot just 1 of the variables, and then tweak the plot to incorporate the other?
+Reflect before doing anything.
+What types of variables are these?
+How might you plot just 1 of the variables, and then tweak the plot to incorporate the other?
 
 ```{r}
 # How do 3pm temperatures (temp3pm) differ by location?
@@ -397,9 +425,12 @@ Reflect before doing anything. What types of variables are these? How might you 
 
 ## Exercise 14: State Support (Optional)
 
-The above visualizations are foundational and important. But they're not the only way to visualize the variables in our dataset.
+The above visualizations are foundational and important.
+But they're not the only way to visualize the variables in our dataset.
 
-Suppose we wanted to better understand how the 2020 Republican support varied from county to county within each **state**. Since `repub_pct_20` is quantitative and `state_abbr` is categorical, we *could* make a density plot of `repub_pct_20` for each state. Reflect on why this is bad.
+Suppose we wanted to better understand how the 2020 Republican support varied from county to county within each **state**.
+Since `repub_pct_20` is quantitative and `state_abbr` is categorical, we *could* make a density plot of `repub_pct_20` for each state.
+Reflect on why this is bad.
 
 ```{r}
 ggplot(elections, aes(x = repub_pct_20, fill = state_abbr)) + 
@@ -417,7 +448,9 @@ ggplot(elections, aes(x = repub_pct_20)) +
   facet_wrap(~ state_abbr)
 ```
 
-When we want to compare the distribution of some quantitative outcome among *many* groups / categories, a **ridgeline plot** can be a good option. These are also called **joy plots**, named after the album cover for "Unknown Pleasures" by Joy Division. (Look it up!) To make a ridgeline plot, we can use the `geom_density_ridges()` function from the `ggridges` package.
+When we want to compare the distribution of some quantitative outcome among *many* groups / categories, a **ridgeline plot** can be a good option.
+These are also called **joy plots**, named after the album cover for "Unknown Pleasures" by Joy Division.
+(Look it up!) To make a ridgeline plot, we can use the `geom_density_ridges()` function from the `ggridges` package.
 
 ```{r}
 #| fig-width: 8
@@ -460,7 +493,8 @@ library(ggridges)
 
 ## Exercise 15: State Total Outcomes (Optional)
 
-Let's import some new data and counts up the total votes (Republican and Democratic) by state, not county. This was **wrangled** from the elections data!
+Let's import some new data and counts up the total votes (Republican and Democratic) by state, not county.
+This was **wrangled** from the elections data!
 
 ```{r}
 elections_by_state <- read.csv("https://mac-stat.github.io/data/election_2020_by_state.csv")
