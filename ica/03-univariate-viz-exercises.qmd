@@ -28,14 +28,18 @@ b.  What about a visualization of the *quantitative* `elevation` variable?
 
 ## Exercise 2: Load tidyverse
 
-We'll address the above questions using `ggplot` tools. Try running the following chunk and simply take note of the error message -- this is one you'll get a lot!
+We'll address the above questions using `ggplot` tools.
+Try running the following chunk and simply take note of the error message -- this is one you'll get a lot!
 
 ```{r}
 # Use the ggplot function
 #ggplot(hikes, aes(x = rating))
 ```
 
-In order to use `ggplot` tools, we have to first *load* the `tidyverse` package in which they live. We've *installed* the package but we need to tell R when we want to *use* it. Run the chunk below to load the library. You'll need to do this within any .qmd file that uses `ggplot()`.
+In order to use `ggplot` tools, we have to first *load* the `tidyverse` package in which they live.
+We've *installed* the package but we need to tell R when we want to *use* it.
+Run the chunk below to load the library.
+You'll need to do this within any .qmd file that uses `ggplot()`.
 
 ```{r}
 # Load the package
@@ -49,7 +53,8 @@ Consider some specific research questions about the difficulty `rating` of the h
 1.  How many hikes fall into each category?
 2.  Are the hikes evenly distributed among these categories, or are some more common than others?
 
-All of these questions can be answered with: (1) a **bar chart**; of (2) the *categorical* data recorded in the `rating` column. First, set up the plotting **frame**:
+All of these questions can be answered with: (1) a **bar chart**; of (2) the *categorical* data recorded in the `rating` column.
+First, set up the plotting **frame**:
 
 ```{r}
 ggplot(hikes, aes(x = rating))
@@ -64,7 +69,9 @@ Think about:
 
 ## Exercise 4: Bar Chart of Ratings - Part 2
 
-Now let's add a **geometric layer** to the frame / canvas, and start customizing the plot's **theme**. To this end, try each chunk below, *one by one*. In each chunk, make a comment about how both the code and the corresponding plot both changed.
+Now let's add a **geometric layer** to the frame / canvas, and start customizing the plot's **theme**.
+To this end, try each chunk below, *one by one*.
+In each chunk, make a comment about how both the code and the corresponding plot both changed.
 
 NOTE:
 
@@ -124,11 +131,13 @@ In general, bar charts allow us to examine the following properties of a *catego
 -   **observed categories**: What categories did we observe?
 -   **variability between categories**: Are observations evenly spread out among the categories, or are some categories more common than others?
 
-We must then *translate* this information into the *context* of our analysis, here hikes in the Adirondacks. Summarize below what you learned from the bar chart, in context.
+We must then *translate* this information into the *context* of our analysis, here hikes in the Adirondacks.
+Summarize below what you learned from the bar chart, in context.
 
 #### Part c
 
-Is there anything you don't like about this barplot? For example: check out the x-axis again.
+Is there anything you don't like about this barplot?
+For example: check out the x-axis again.
 
 ## Exercise 6: Sad Bar Chart
 
@@ -150,9 +159,14 @@ Here:
 
 ## Exercise 7: A Histogram of Elevation
 
-Quantitative variables require different viz than categorical variables. Especially when there are many possible outcomes of the quantitative variable. It's typically insufficient to simply count up the number of times we've observed a particular outcome as the bar graph did above. It gives us a sense of ranges and typical outcomes, but not a good sense of how the observations are distributed across this range. We'll explore two methods for graphing quantitative variables: **histograms** and **density plots**.
+Quantitative variables require different viz than categorical variables.
+Especially when there are many possible outcomes of the quantitative variable.
+It's typically insufficient to simply count up the number of times we've observed a particular outcome as the bar graph did above.
+It gives us a sense of ranges and typical outcomes, but not a good sense of how the observations are distributed across this range.
+We'll explore two methods for graphing quantitative variables: **histograms** and **density plots**.
 
-**Histograms** are constructed by (1) dividing up the observed range of the variable into 'bins' of equal width; and (2) counting up the number of cases that fall into each bin. Check out the example below:
+**Histograms** are constructed by (1) dividing up the observed range of the variable into 'bins' of equal width; and (2) counting up the number of cases that fall into each bin.
+Check out the example below:
 
 ![](https://mac-stat.github.io/images/112/histogram_demo.png){width="50%"}
 
@@ -165,18 +179,22 @@ Let's dig into some details.
 
 #### Part b
 
-Now the bigger picture. In general, histograms allow us to examine the following properties of a *quantitative* variable:
+Now the bigger picture.
+In general, histograms allow us to examine the following properties of a *quantitative* variable:
 
 -   **typical outcome:** Where’s the center of the data points? What's typical?
 -   **variability & range:** How spread out are the outcomes? What are the max and min outcomes?
 -   **shape:** How are values distributed along the observed range? Is the distribution symmetric, right-skewed, left-skewed, bi-modal, or uniform (flat)?
 -   **outliers:** Are there any outliers, ie, outcomes that are unusually large/small?
 
-We must then *translate* this information into the *context* of our analysis, here hikes in the Adirondacks. Addressing each of the features in the above list, summarize below what you learned from the histogram, in context.
+We must then *translate* this information into the *context* of our analysis, here hikes in the Adirondacks.
+Addressing each of the features in the above list, summarize below what you learned from the histogram, in context.
 
 ## Exercise 8: Building Histograms - Part 1
 
-2-MINUTE CHALLENGE: Thinking of the bar chart code, try to *intuit* what line you can tack on to the below frame of `elevation` to add a histogram layer. Don't forget a `+`. If it doesn't come to you within 2 minutes, *no problem* -- all will be revealed in the next exercise.
+2-MINUTE CHALLENGE: Thinking of the bar chart code, try to *intuit* what line you can tack on to the below frame of `elevation` to add a histogram layer.
+Don't forget a `+`.
+If it doesn't come to you within 2 minutes, *no problem* -- all will be revealed in the next exercise.
 
 ```{r}
 ggplot(hikes, aes(x = elevation))
@@ -184,7 +202,9 @@ ggplot(hikes, aes(x = elevation))
 
 ## Exercise 9: Building Histograms - Part 2
 
-Let's build some histograms. Try each chunk below, *one by one*. In each chunk, make a comment about how both the code and the corresponding plot both changed.
+Let's build some histograms.
+Try each chunk below, *one by one*.
+In each chunk, make a comment about how both the code and the corresponding plot both changed.
 
 ```{r}
 # COMMENT on the change in the code and the corresponding change in the plot
@@ -243,9 +263,14 @@ ggplot(hikes, aes(x = elevation)) +
 
 ## Exercise 11: Density Plots
 
-**Density plots** are essentially smooth versions of the histogram. Instead of sorting observations into discrete bins, the "density" of observations is calculated across the entire range of outcomes. The greater the number of observations, the greater the density! The density is then scaled so that the area under the density curve **always equals 1** and the area under any fraction of the curve represents the fraction of cases that lie in that range.
+**Density plots** are essentially smooth versions of the histogram.
+Instead of sorting observations into discrete bins, the "density" of observations is calculated across the entire range of outcomes.
+The greater the number of observations, the greater the density!
+The density is then scaled so that the area under the density curve **always equals 1** and the area under any fraction of the curve represents the fraction of cases that lie in that range.
 
-Check out a density plot of elevation. Notice that the y-axis (density) has no contextual interpretation -- it's a relative measure. The *higher* the density, the more *common* are elevations in that range.
+Check out a density plot of elevation.
+Notice that the y-axis (density) has no contextual interpretation -- it's a relative measure.
+The *higher* the density, the more *common* are elevations in that range.
 
 ```{r}
 ggplot(hikes, aes(x = elevation)) +
@@ -259,7 +284,9 @@ ggplot(hikes, aes(x = elevation)) +
     -   `geom_density(color = "blue")`
     -   `geom_density(fill = "orange")`
 
--   TRY IT! Test out those lines in the chunk below. Was your intuition correct?
+-   TRY IT!
+    Test out those lines in the chunk below.
+    Was your intuition correct?
 
 ```{r}
 # Write your code here
@@ -270,11 +297,14 @@ ggplot(hikes, aes(x = elevation)) +
 
 ## Exercise 12: Density Plots vs Histograms
 
-The histogram and density plot both allow us to visualize the behavior of a quantitative variable: typical outcome, variability / range, shape, and outliers. What are the pros/cons of each? What do you like/not like about each?
+The histogram and density plot both allow us to visualize the behavior of a quantitative variable: typical outcome, variability / range, shape, and outliers.
+What are the pros/cons of each?
+What do you like/not like about each?
 
 ## Exercise 13: Code = communication
 
-We *obviously* won't be done until we talk about communication. All code above has a similar *general* structure (where the details can change):
+We *obviously* won't be done until we talk about communication.
+All code above has a similar *general* structure (where the details can change):
 
 ```{r}
 #| eval: false
@@ -319,5 +349,7 @@ world_cup <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytue
 Check out the [RStudio Data Visualization cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf) to learn more features of `ggplot`.
 
 ::: {.callout-warning title="Check → Commit → Push"}
-When done, don't forgot to click **Render Book** and check the resulting HTML files. If happy, jump to GitHub Desktop and commit the changes with the message **Finish uni viz** and push to GitHub. Wait few seconds, then visit your portfolio website and make sure the changes are there.
+When done, don't forgot to click **Render Book** and check the resulting HTML files.
+If happy, jump to GitHub Desktop and commit the changes with the message **Finish uni viz** and push to GitHub.
+Wait few seconds, then visit your portfolio website and make sure the changes are there.
 :::
