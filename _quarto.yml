@@ -80,6 +80,7 @@ book:
       - ica/03-univariate-viz-exercises.qmd
       - ica/04-bivariate-viz-exercises.qmd
       - ica/05-multivariate-viz.qmd
+      - ica/06-spatial-viz.qmd
 
 
 

@@ -14,3 +14,5 @@ title: "Pre-Class Learning Summaries"
 ![](mind_maps/Univariate_Viz_MM.png)
 ![](mind_maps/Bivariate_Viz_MM.png)
 ![](mind_maps/Multivariate_Viz_MM.png)
+![](mind_maps/Spatial_Viz_MM.png)
+![](mind_maps/Effective_Viz_MM.png)

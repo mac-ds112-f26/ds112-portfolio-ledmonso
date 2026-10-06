@@ -1,5 +1,8 @@
 ---
 title: "Multivariate Viz"
+author: "Lindsay Edmonson"
+date: "2026-10-05"
+output: html_document
 ---
 
 ## SAT & Spending
