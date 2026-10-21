@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Dates – COMP/STAT212 Portfolio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../extra/extra-sample1.html" rel="next">
+<link href="../ica/08-wrangling-verbs.html" rel="prev">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-373997cb3a23930aff2ce02df96e7d19.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b1525fc7443f827935229f0f56e36607.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-373997cb3a23930aff2ce02df96e7d19.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script><style>html{ scroll-behavior: smooth; }</style>
+<link rel="stylesheet" href="../style/custom.css">
+</head>
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/quarto-demo (1).html">In-Class Activities</a></li><li class="breadcrumb-item"><a href="../ica/09-dates.html"><span class="chapter-title">Dates</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../assets/sidebar-logo.png" alt="Random negative space illustration" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../assets/sidebar-logo.png" alt="Random negative space illustration" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lindsay Edmonson</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Personal Viz Journey</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pvj/pvj-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Personal Visualization Journey</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">TidyTuesday</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tt/2025-07-08.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">TidyTuesday Sample 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tt/2025-07-15.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">TidyTuesday Sample 2</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Pre-Class Learnings</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pcl/pcl.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pre-Class Learning Summaries</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">In-Class Activities</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/quarto-demo (1).html" class="sidebar-item-text sidebar-link"><span class="chapter-title">My first Quarto document</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/03-univariate-viz-exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Univariate Viz — Exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/04-bivariate-viz-exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bivariate Viz — Exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/05-multivariate-viz.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Multivariate Viz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/06-spatial-viz.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Spatial Viz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/07-effective-viz.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Effective Viz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/08-wrangling-verbs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Wrangling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/09-dates.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Dates</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Extras</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../extra/extra-sample1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Extra Sample 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../extra/extra-sample2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Extra Sample 2</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li>
+<a href="#same-verbs-new-tricks" id="toc-same-verbs-new-tricks" class="nav-link active" data-scroll-target="#same-verbs-new-tricks">Same Verbs, New Tricks</a>
+  <ul class="collapse">
+<li><a href="#filter-with-in" id="toc-filter-with-in" class="nav-link" data-scroll-target="#filter-with-in">✏️ Filter with <code>%in%</code></a></li>
+  <li><a href="#filter-with" id="toc-filter-with" class="nav-link" data-scroll-target="#filter-with">✏️ Filter with <code>!=</code></a></li>
+  <li><a href="#explore-missing-data" id="toc-explore-missing-data" class="nav-link" data-scroll-target="#explore-missing-data">✏️ Explore Missing Data</a></li>
+  <li><a href="#explain-na.omit-risk" id="toc-explain-na.omit-risk" class="nav-link" data-scroll-target="#explain-na.omit-risk">✏️ Explain <code>na.omit()</code> Risk</a></li>
+  <li><a href="#drop-year-island" id="toc-drop-year-island" class="nav-link" data-scroll-target="#drop-year-island">✏️ Drop Year &amp; Island</a></li>
+  <li><a href="#keep-mm-measurements" id="toc-keep-mm-measurements" class="nav-link" data-scroll-target="#keep-mm-measurements">✏️ Keep mm Measurements</a></li>
+  <li><a href="#keep-bill-measurements" id="toc-keep-bill-measurements" class="nav-link" data-scroll-target="#keep-bill-measurements">✏️ Keep Bill Measurements</a></li>
+  <li><a href="#keep-length-measurements" id="toc-keep-length-measurements" class="nav-link" data-scroll-target="#keep-length-measurements">✏️ Keep Length Measurements</a></li>
+  <li><a href="#arrange-by-2-variables" id="toc-arrange-by-2-variables" class="nav-link" data-scroll-target="#arrange-by-2-variables">✏️ Arrange by 2 Variables</a></li>
+  <li><a href="#count-by-2-variables" id="toc-count-by-2-variables" class="nav-link" data-scroll-target="#count-by-2-variables">✏️ Count by 2 Variables</a></li>
+  <li><a href="#group-by-2-variables" id="toc-group-by-2-variables" class="nav-link" data-scroll-target="#group-by-2-variables">✏️ Group by 2 Variables</a></li>
+  <li><a href="#work-with-dates" id="toc-work-with-dates" class="nav-link" data-scroll-target="#work-with-dates">✏️ Work with Dates</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application">Application</a>
+  <ul class="collapse">
+<li><a href="#count-days-per-state" id="toc-count-days-per-state" class="nav-link" data-scroll-target="#count-days-per-state">✏️ Count Days per State</a></li>
+  <li><a href="#total-births" id="toc-total-births" class="nav-link" data-scroll-target="#total-births">✏️ Total Births</a></li>
+  <li><a href="#total-births-per-state" id="toc-total-births-per-state" class="nav-link" data-scroll-target="#total-births-per-state">✏️ Total Births per State</a></li>
+  <li><a href="#build-daily_births" id="toc-build-daily_births" class="nav-link" data-scroll-target="#build-daily_births">✏️ Build <code>daily_births</code></a></li>
+  <li><a href="#plot-daily-births" id="toc-plot-daily-births" class="nav-link" data-scroll-target="#plot-daily-births">✏️ Plot Daily Births</a></li>
+  <li><a href="#plot-monthly-births" id="toc-plot-monthly-births" class="nav-link" data-scroll-target="#plot-monthly-births">✏️ Plot Monthly Births</a></li>
+  <li><a href="#plot-weekly-births-by-state" id="toc-plot-weekly-births-by-state" class="nav-link" data-scroll-target="#plot-weekly-births-by-state">✏️ Plot Weekly Births by State</a></li>
+  <li><a href="#compare-mn-la" id="toc-compare-mn-la" class="nav-link" data-scroll-target="#compare-mn-la">✏️ Compare MN &amp; LA</a></li>
+  <li><a href="#sort-ma-births" id="toc-sort-ma-births" class="nav-link" data-scroll-target="#sort-ma-births">✏️ Sort MA Births</a></li>
+  <li><a href="#find-top-5-states" id="toc-find-top-5-states" class="nav-link" data-scroll-target="#find-top-5-states">✏️ Find Top 5 States</a></li>
+  </ul>
+</li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/quarto-demo (1).html">In-Class Activities</a></li><li class="breadcrumb-item"><a href="../ica/09-dates.html"><span class="chapter-title">Dates</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">Dates</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="same-verbs-new-tricks" class="level2"><h2 class="anchored" data-anchor-id="same-verbs-new-tricks">Same Verbs, New Tricks</h2>
+<section id="filter-with-in" class="level3"><h3 class="anchored" data-anchor-id="filter-with-in">✏️ Filter with <code>%in%</code>
+</h3>
+<p>Recall the “logical comparison operators” we can use to <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> our data:</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: left;">symbol</th>
+<th style="text-align: left;">meaning</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>==</code></td>
+<td style="text-align: left;">equal to</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>!=</code></td>
+<td style="text-align: left;">not equal to</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>&gt;</code></td>
+<td style="text-align: left;">greater than</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&gt;=</code></td>
+<td style="text-align: left;">greater than or equal to</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>&lt;</code></td>
+<td style="text-align: left;">less than</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&lt;=</code></td>
+<td style="text-align: left;">less than or equal to</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>%in% c(???, ???)</code></td>
+<td style="text-align: left;">a list of multiple values</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled" title="Commenting/Uncommenting Code">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Commenting/Uncommenting Code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To comment/uncomment several lines of code at once, highlight them then click <kbd>ctrl/cmd</kbd>+<kbd>shift</kbd>+<kbd>c</kbd>.</p>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Create a dataset with just Adelie and Chinstrap using %in%</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># Pipe this into `count(species)` to confirm that you only have these 2 species</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">count</span>(species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  species       n
+  &lt;chr&gt;     &lt;int&gt;
+1 Adelie      152
+2 Chinstrap    68</code></pre>
+</div>
+</div>
+</section><section id="filter-with" class="level3"><h3 class="anchored" data-anchor-id="filter-with">✏️ Filter with <code>!=</code>
+</h3>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Create a dataset with just Adelie and Chinstrap using !=</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co"># Pipe this into `count(species)` to confirm that you only have these 2 species</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">filter</span>(species <span class="sc">!=</span> <span class="st">"Gentoo"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">count</span>(species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  species       n
+  &lt;chr&gt;     &lt;int&gt;
+1 Adelie      152
+2 Chinstrap    68</code></pre>
+</div>
+</div>
+</section><section id="explore-missing-data" class="level3"><h3 class="anchored" data-anchor-id="explore-missing-data">✏️ Explore Missing Data</h3>
+<p>Notice that some of our penguins have missing (<code>NA</code>) data on some values:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">head</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+  &lt;chr&gt;   &lt;chr&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt;
+1 Adelie  Torgersen           39.1          18.7               181        3750
+2 Adelie  Torgersen           39.5          17.4               186        3800
+3 Adelie  Torgersen           40.3          18                 195        3250
+4 Adelie  Torgersen           NA            NA                  NA          NA
+5 Adelie  Torgersen           36.7          19.3               193        3450
+6 Adelie  Torgersen           39.3          20.6               190        3650
+# ℹ 2 more variables: sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Handling `NA` Values">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Handling <code>NA</code> Values
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There are many ways to handle missing data. The right approach depends upon your research goals. A general rule is: Only get rid of observations with missing data if they’re missing data on variables you <em>need</em> for the specific task at hand!</p>
+</div>
+</div>
+<p><strong>Example 1</strong></p>
+<p>Suppose our research focus is <em>just</em> on <code>body_mass_g</code>. Two penguins are missing this info:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co"> the use of is.na()</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">summarize</span>(<span class="fu">sum</span>(<span class="fu">is.na</span>(body_mass_g)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  `sum(is.na(body_mass_g))`
+                      &lt;int&gt;
+1                         2</code></pre>
+</div>
+</div>
+<p>Let’s define a new dataset that removes these penguins:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co"> the use of is.na()</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>penguins_w_body_mass <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(body_mass_g))</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="co"># Compare the number of penguins in this vs the original data</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="fu">nrow</span>(penguins_w_body_mass)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 342</code></pre>
+</div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">nrow</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 344</code></pre>
+</div>
+</div>
+<p>Note that some penguins in <code>penguins_w_body_mass</code> are missing info on <code>sex</code>, but we don’t care since that’s not related to our research question:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>penguins_w_body_mass <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">summarize</span>(<span class="fu">sum</span>(<span class="fu">is.na</span>(sex)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  `sum(is.na(sex))`
+              &lt;int&gt;
+1                 9</code></pre>
+</div>
+</div>
+<p><strong>Example 2</strong></p>
+<p>In the <em>very rare case</em> that we need complete information on every variable for the specific task at hand, we can use <code><a href="https://rdrr.io/r/stats/na.fail.html">na.omit()</a></code> to get rid of <em>any</em> penguin that’s missing info on <em>any</em> variable:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>penguins_complete <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">na.omit</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>How many penguins did this eliminate?</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">nrow</span>(penguins_complete)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 333</code></pre>
+</div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">nrow</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 344</code></pre>
+</div>
+</div>
+</section><section id="explain-na.omit-risk" class="level3"><h3 class="anchored" data-anchor-id="explain-na.omit-risk">✏️ Explain <code>na.omit()</code> Risk</h3>
+<p>Explain why we should only use <code><a href="https://rdrr.io/r/stats/na.fail.html">na.omit()</a></code> in extreme circumstances.</p>
+<blockquote class="blockquote">
+<p>It gets rid of some of the important observations just because there is a missing data point on a variable we don’t need.</p>
+</blockquote>
+</section><section id="drop-year-island" class="level3"><h3 class="anchored" data-anchor-id="drop-year-island">✏️ Drop Year &amp; Island</h3>
+<p>Being able to <code>select()</code> only certain columns can help simplify our data. This is especially important when we’re working with <em>lots</em> of columns (which we haven’t done yet). It can also get tedious to type out every column of interest. Here are some shortcuts:</p>
+<ul>
+<li>
+<code>-</code> <em>removes</em> a given variable and keeps all others (e.g.&nbsp;<code>select(-island)</code>)</li>
+<li>
+<code>starts_with("___")</code>, <code>ends_with("___")</code>, or <code>contains("___")</code> selects only the columns that either start with, end with, or simply contain the given string of characters</li>
+</ul>
+<p>Use these <em>shortcuts</em> to create the following datasets.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># First: recall the variable names</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">names</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] "species"           "island"            "bill_length_mm"   
+[4] "bill_depth_mm"     "flipper_length_mm" "body_mass_g"      
+[7] "sex"               "year"             </code></pre>
+</div>
+</div>
+<p>Use a shortcut to keep everything but the year and island variables.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">select</span>(<span class="sc">-</span>island, <span class="sc">-</span>year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 6
+   species bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex   
+   &lt;chr&gt;            &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt; 
+ 1 Adelie            39.1          18.7               181        3750 male  
+ 2 Adelie            39.5          17.4               186        3800 female
+ 3 Adelie            40.3          18                 195        3250 female
+ 4 Adelie            NA            NA                  NA          NA &lt;NA&gt;  
+ 5 Adelie            36.7          19.3               193        3450 female
+ 6 Adelie            39.3          20.6               190        3650 male  
+ 7 Adelie            38.9          17.8               181        3625 female
+ 8 Adelie            39.2          19.6               195        4675 male  
+ 9 Adelie            34.1          18.1               193        3475 &lt;NA&gt;  
+10 Adelie            42            20.2               190        4250 &lt;NA&gt;  
+# ℹ 334 more rows</code></pre>
+</div>
+</div>
+</section><section id="keep-mm-measurements" class="level3"><h3 class="anchored" data-anchor-id="keep-mm-measurements">✏️ Keep mm Measurements</h3>
+<p>Use a shortcut to keep only species and the penguin characteristics measured in mm.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">select</span>(species, <span class="fu">ends_with</span>(<span class="st">"mm"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 4
+   species bill_length_mm bill_depth_mm flipper_length_mm
+   &lt;chr&gt;            &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;
+ 1 Adelie            39.1          18.7               181
+ 2 Adelie            39.5          17.4               186
+ 3 Adelie            40.3          18                 195
+ 4 Adelie            NA            NA                  NA
+ 5 Adelie            36.7          19.3               193
+ 6 Adelie            39.3          20.6               190
+ 7 Adelie            38.9          17.8               181
+ 8 Adelie            39.2          19.6               195
+ 9 Adelie            34.1          18.1               193
+10 Adelie            42            20.2               190
+# ℹ 334 more rows</code></pre>
+</div>
+</div>
+</section><section id="keep-bill-measurements" class="level3"><h3 class="anchored" data-anchor-id="keep-bill-measurements">✏️ Keep Bill Measurements</h3>
+<p>Use a shortcut to keep only species and bill-related measurements.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">select</span>(species, <span class="fu">starts_with</span>(<span class="st">"bill"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 3
+   species bill_length_mm bill_depth_mm
+   &lt;chr&gt;            &lt;dbl&gt;         &lt;dbl&gt;
+ 1 Adelie            39.1          18.7
+ 2 Adelie            39.5          17.4
+ 3 Adelie            40.3          18  
+ 4 Adelie            NA            NA  
+ 5 Adelie            36.7          19.3
+ 6 Adelie            39.3          20.6
+ 7 Adelie            38.9          17.8
+ 8 Adelie            39.2          19.6
+ 9 Adelie            34.1          18.1
+10 Adelie            42            20.2
+# ℹ 334 more rows</code></pre>
+</div>
+</div>
+</section><section id="keep-length-measurements" class="level3"><h3 class="anchored" data-anchor-id="keep-length-measurements">✏️ Keep Length Measurements</h3>
+<p>Use a shortcut to keep only species and the length-related characteristics.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">select</span>(species, <span class="fu">contains</span>(<span class="st">"length"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 3
+   species bill_length_mm flipper_length_mm
+   &lt;chr&gt;            &lt;dbl&gt;             &lt;dbl&gt;
+ 1 Adelie            39.1               181
+ 2 Adelie            39.5               186
+ 3 Adelie            40.3               195
+ 4 Adelie            NA                  NA
+ 5 Adelie            36.7               193
+ 6 Adelie            39.3               190
+ 7 Adelie            38.9               181
+ 8 Adelie            39.2               195
+ 9 Adelie            34.1               193
+10 Adelie            42                 190
+# ℹ 334 more rows</code></pre>
+</div>
+</div>
+<p><br><br><br><br></p>
+</section><section id="arrange-by-2-variables" class="level3"><h3 class="anchored" data-anchor-id="arrange-by-2-variables">✏️ Arrange by 2 Variables</h3>
+<p>We’ve done examples where we need to <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> by more than one variable, or <code>select()</code> more than one variable. Use your intuition for how we can <code>arrange()</code>, <code>count()</code>, and <code>group_by()</code> more than one variable.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Change this code to sort the penguins by species, and then island name</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: The first row should be an Adelie penguin living on Biscoe island</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a>  <span class="fu">arrange</span>(species, island) <span class="sc">|&gt;</span> </span>
+<span id="cb31-5"><a href="#cb31-5"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+  species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+  &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt;
+1 Adelie  Biscoe           37.8          18.3               174        3400
+2 Adelie  Biscoe           37.7          18.7               180        3600
+3 Adelie  Biscoe           35.9          19.2               189        3800
+4 Adelie  Biscoe           38.2          18.1               185        3950
+5 Adelie  Biscoe           38.8          17.2               180        3800
+6 Adelie  Biscoe           35.3          18.9               187        3800
+# ℹ 2 more variables: sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section><section id="count-by-2-variables" class="level3"><h3 class="anchored" data-anchor-id="count-by-2-variables">✏️ Count by 2 Variables</h3>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Change this code to count the number of male/female penguins observed for each species</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">group_by</span>(sex) <span class="sc">|&gt;</span> </span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">count</span>(species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 3
+# Groups:   sex [3]
+  sex    species       n
+  &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;
+1 female Adelie       73
+2 female Chinstrap    34
+3 female Gentoo       58
+4 male   Adelie       73
+5 male   Chinstrap    34
+6 male   Gentoo       61
+7 &lt;NA&gt;   Adelie        6
+8 &lt;NA&gt;   Gentoo        5</code></pre>
+</div>
+</div>
+</section><section id="group-by-2-variables" class="level3"><h3 class="anchored" data-anchor-id="group-by-2-variables">✏️ Group by 2 Variables</h3>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Change this code to calculate the average body mass by species and sex</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a>  <span class="fu">group_by</span>(species, sex) <span class="sc">|&gt;</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 3
+# Groups:   species [3]
+  species   sex     mean
+  &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt;
+1 Adelie    female 3369.
+2 Adelie    male   4043.
+3 Adelie    &lt;NA&gt;   3540 
+4 Chinstrap female 3527.
+5 Chinstrap male   3939.
+6 Gentoo    female 4680.
+7 Gentoo    male   5485.
+8 Gentoo    &lt;NA&gt;   4588.</code></pre>
+</div>
+</div>
+<p><br><br><br><br></p>
+</section><section id="work-with-dates" class="level3"><h3 class="anchored" data-anchor-id="work-with-dates">✏️ Work with Dates</h3>
+<p>Before some wrangling practice, let’s explore another important concept: working with or mutating <em>date</em> variables. Dates are a whole special object type or class in R that automatically respect the order of time.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Get today's date</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">as.Date</span>(<span class="fu">today</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] "2026-10-20"</code></pre>
+</div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># Let's store this as "today" so we can work with it below</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>today <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">today</span>())</span>
+<span id="cb39-3"><a href="#cb39-3"></a></span>
+<span id="cb39-4"><a href="#cb39-4"></a><span class="co"># Check out the class of this object</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a><span class="fu">class</span>(today)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] "Date"</code></pre>
+</div>
+</div>
+<p>The <code>lubridate</code> package inside <code>tidyverse</code> contains functions that can extract various information from dates. Let’s learn about some of the most common functions by applying them to <code>today</code>. For each, make a comment on what the function does.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">year</span>(today)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 2026</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># What do these lines produce / what's their difference?</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="co"># first one gives the number of the month, the second gives the label for it</span></span>
+<span id="cb43-3"><a href="#cb43-3"></a><span class="fu">month</span>(today)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">month</span>(today, <span class="at">label =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] Oct
+12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># What does this number mean?</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a><span class="fu">week</span>(today)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 42</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># What do these lines produce / what's their difference?</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a><span class="fu">mday</span>(today)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 20</code></pre>
+</div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">yday</span>(today)  <span class="co"># This is often called the "Julian day"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 293</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># What do these lines produce / what's their difference?</span></span>
+<span id="cb53-2"><a href="#cb53-2"></a><span class="fu">wday</span>(today)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">wday</span>(today, <span class="at">label =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] Tue
+Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># What do the results of these 2 lines tell us?</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a><span class="co"># tells us whether a date has passed yet or not</span></span>
+<span id="cb57-3"><a href="#cb57-3"></a>today <span class="sc">&gt;=</span> <span class="fu">ymd</span>(<span class="st">"2024-02-14"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>today <span class="sc">&lt;</span> <span class="fu">ymd</span>(<span class="st">"2024-02-14"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p><br><br><br><br></p>
+</section></section><section id="application" class="level2"><h2 class="anchored" data-anchor-id="application">Application</h2>
+<p>The remaining exercises are <em>similar</em> to some of those on the homework. Hence, the solutions are not provided. Let’s apply these ideas to the daily <code>Birthdays</code> dataset in the <code>mosaic</code> package.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb61-2"><a href="#cb61-2"></a><span class="fu">data</span>(<span class="st">"Birthdays"</span>)</span>
+<span id="cb61-3"><a href="#cb61-3"></a><span class="fu">head</span>(Birthdays)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  state year month day       date wday births
+1    AK 1969     1   1 1969-01-01  Wed     14
+2    AL 1969     1   1 1969-01-01  Wed    174
+3    AR 1969     1   1 1969-01-01  Wed     78
+4    AZ 1969     1   1 1969-01-01  Wed     84
+5    CA 1969     1   1 1969-01-01  Wed    824
+6    CO 1969     1   1 1969-01-01  Wed    100</code></pre>
+</div>
+</div>
+<p><code>Birthdays</code> gives the number of births recorded on each day of the year in each state from 1969 to 1988<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. We can use our wrangling skills to understand some drivers of daily births. Putting these all together can be challenging! Remember the following ways to make tasks more manageable:</p>
+<ul>
+<li>Translate the prompt into our 6 verbs (and <code>count()</code>). That is, think before you type.</li>
+<li>Build your code line by line. It’s important to understand what’s being piped into each function!</li>
+</ul>
+<section id="count-days-per-state" class="level3"><h3 class="anchored" data-anchor-id="count-days-per-state">✏️ Count Days per State</h3>
+<p>How many days of data do we have for each state?</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb63-2"><a href="#cb63-2"></a>  <span class="fu">count</span>(state)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>   state    n
+1     AK 7306
+2     AL 7312
+3     AR 7310
+4     AZ 7310
+5     CA 7325
+6     CO 7305
+7     CT 7312
+8     DC 7311
+9     DE 7307
+10    FL 7307
+11    GA 7314
+12    HI 7306
+13    IA 7306
+14    ID 7306
+15    IL 7314
+16    IN 7311
+17    KS 7311
+18    KY 7313
+19    LA 7309
+20    MA 7315
+21    MD 7311
+22    ME 7309
+23    MI 7323
+24    MN 7315
+25    MO 7309
+26    MS 7310
+27    MT 7305
+28    NC 7307
+29    ND 7305
+30    NE 7305
+31    NH 7308
+32    NJ 7321
+33    NM 7308
+34    NV 7307
+35    NY 7333
+36    OH 7319
+37    OK 7306
+38    OR 7307
+39    PA 7330
+40    RI 7305
+41    SC 7314
+42    SD 7305
+43    TN 7308
+44    TX 7330
+45    UT 7307
+46    VA 7310
+47    VT 7305
+48    WA 7306
+49    WI 7311
+50    WV 7310
+51    WY 7305</code></pre>
+</div>
+</div>
+</section><section id="total-births" class="level3"><h3 class="anchored" data-anchor-id="total-births">✏️ Total Births</h3>
+<p>How many total births were there in this time period?</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb65-2"><a href="#cb65-2"></a>  <span class="fu">summarize</span>(<span class="at">total_births =</span> <span class="fu">sum</span>(births))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  total_births
+1     70486538</code></pre>
+</div>
+</div>
+</section><section id="total-births-per-state" class="level3"><h3 class="anchored" data-anchor-id="total-births-per-state">✏️ Total Births per State</h3>
+<p>How many total births were there per state in this time period, sorted from low to high?</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb67-2"><a href="#cb67-2"></a>  <span class="fu">group_by</span>(state) <span class="sc">|&gt;</span> </span>
+<span id="cb67-3"><a href="#cb67-3"></a>  <span class="fu">summarize</span>(<span class="at">total_births =</span> <span class="fu">sum</span>(births))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 51 × 2
+   state total_births
+   &lt;chr&gt;        &lt;int&gt;
+ 1 AK          185385
+ 2 AL         1206772
+ 3 AR          684220
+ 4 AZ          947234
+ 5 CA         7822785
+ 6 CO          946378
+ 7 CT          824338
+ 8 DC          425469
+ 9 DE          188705
+10 FL         2624301
+# ℹ 41 more rows</code></pre>
+</div>
+</div>
+</section><section id="build-daily_births" class="level3"><h3 class="anchored" data-anchor-id="build-daily_births">✏️ Build <code>daily_births</code>
+</h3>
+<p>Create a new dataset named <code>daily_births</code> that includes the total number of births per day (across all states) and the corresponding day of the week, eg, Mon. NOTE: Name the column with total births so that it’s easier to wrangle and plot.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>daily_births <span class="ot">&lt;-</span> Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb69-2"><a href="#cb69-2"></a>  <span class="fu">group_by</span>(date, wday) <span class="sc">|&gt;</span> </span>
+<span id="cb69-3"><a href="#cb69-3"></a>  <span class="fu">summarize</span>(<span class="at">total_births =</span> <span class="fu">sum</span>(births)) <span class="sc">|&gt;</span> </span>
+<span id="cb69-4"><a href="#cb69-4"></a>  <span class="fu">select</span>(date, wday, total_births)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section><section id="plot-daily-births" class="level3"><h3 class="anchored" data-anchor-id="plot-daily-births">✏️ Plot Daily Births</h3>
+<p>Using this data, construct a plot of <code>births</code> over time, indicating the day of week.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="fu">ggplot</span>(daily_births, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> total_births, <span class="at">color =</span> wday)) <span class="sc">+</span></span>
+<span id="cb70-2"><a href="#cb70-2"></a>  <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="09-dates_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="plot-monthly-births" class="level3"><h3 class="anchored" data-anchor-id="plot-monthly-births">✏️ Plot Monthly Births</h3>
+<p>For each prompt below, you can decide whether you want to: (1) wrangle and store data, then plot; or (2) wrangle data and pipe directly into ggplot. For example:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb71-2"><a href="#cb71-2"></a>  <span class="fu">filter</span>(species <span class="sc">!=</span> <span class="st">"Gentoo"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb71-3"><a href="#cb71-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> bill_length_mm, <span class="at">x =</span> bill_depth_mm, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb71-4"><a href="#cb71-4"></a>    <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="09-dates_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Calculate the total number of births in each month and year, eg, Jan 1969, Feb 1969, …. Label month by names not numbers, eg, Jan not 1. Then, plot the births by month and comment on what you learn.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>monthly_births <span class="ot">&lt;-</span> Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb72-2"><a href="#cb72-2"></a>  <span class="fu">group_by</span>(year, month) <span class="sc">|&gt;</span> </span>
+<span id="cb72-3"><a href="#cb72-3"></a>  <span class="fu">summarize</span>(<span class="at">total_births =</span> <span class="fu">sum</span>(births)) <span class="sc">|&gt;</span> </span>
+<span id="cb72-4"><a href="#cb72-4"></a>  <span class="fu">mutate</span>(<span class="at">month_name =</span> <span class="fu">factor</span>(month.abb[month], <span class="at">levels =</span> month.abb), </span>
+<span id="cb72-5"><a href="#cb72-5"></a>         <span class="at">month_year =</span> <span class="fu">paste</span>(month_name, year)) <span class="sc">|&gt;</span></span>
+<span id="cb72-6"><a href="#cb72-6"></a>  <span class="fu">arrange</span>(year, month)</span>
+<span id="cb72-7"><a href="#cb72-7"></a></span>
+<span id="cb72-8"><a href="#cb72-8"></a><span class="fu">ggplot</span>(monthly_births, <span class="fu">aes</span>(<span class="at">x =</span> month_name, <span class="at">y =</span> total_births)) <span class="sc">+</span></span>
+<span id="cb72-9"><a href="#cb72-9"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="09-dates_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="plot-weekly-births-by-state" class="level3"><h3 class="anchored" data-anchor-id="plot-weekly-births-by-state">✏️ Plot Weekly Births by State</h3>
+<p>In 1988, calculate the total number of births per week in each state. Get rid of week “53”, which isn’t a complete week! Then, make a line plot of births by week for each state and comment on what you learn. For example, do you notice any seasonal trends? Are these the same in every state? Any outliers?</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>weekly_births <span class="ot">&lt;-</span> Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb73-2"><a href="#cb73-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1988</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb73-3"><a href="#cb73-3"></a>  <span class="fu">mutate</span>(<span class="at">week =</span> <span class="fu">week</span>(date)) <span class="sc">|&gt;</span> </span>
+<span id="cb73-4"><a href="#cb73-4"></a>  <span class="fu">filter</span>(week <span class="sc">!=</span> <span class="dv">53</span>) <span class="sc">|&gt;</span></span>
+<span id="cb73-5"><a href="#cb73-5"></a>  <span class="fu">group_by</span>(state, week) <span class="sc">|&gt;</span> </span>
+<span id="cb73-6"><a href="#cb73-6"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(births))</span>
+<span id="cb73-7"><a href="#cb73-7"></a></span>
+<span id="cb73-8"><a href="#cb73-8"></a><span class="fu">ggplot</span>(weekly_births, <span class="fu">aes</span>(<span class="at">x =</span> week, <span class="at">y =</span> total, <span class="at">color =</span> state)) <span class="sc">+</span></span>
+<span id="cb73-9"><a href="#cb73-9"></a>  <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="09-dates_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="compare-mn-la" class="level3"><h3 class="anchored" data-anchor-id="compare-mn-la">✏️ Compare MN &amp; LA</h3>
+<p>Repeat the above for just Minnesota (MN) and Louisiana (LA). MN has one of the coldest climates and LA has one of the warmest. How do their seasonal trends compare? Do you think these trends are similar in other colder and warmer states? Try it!</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a>mn_la_births <span class="ot">&lt;-</span> Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb74-2"><a href="#cb74-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1988</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb74-3"><a href="#cb74-3"></a>  <span class="fu">mutate</span>(<span class="at">week =</span> <span class="fu">week</span>(date)) <span class="sc">|&gt;</span> </span>
+<span id="cb74-4"><a href="#cb74-4"></a>  <span class="fu">filter</span>(week <span class="sc">!=</span> <span class="dv">53</span>) <span class="sc">|&gt;</span></span>
+<span id="cb74-5"><a href="#cb74-5"></a>  <span class="fu">group_by</span>(state, week) <span class="sc">|&gt;</span> </span>
+<span id="cb74-6"><a href="#cb74-6"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(births)) <span class="sc">|&gt;</span> </span>
+<span id="cb74-7"><a href="#cb74-7"></a>  <span class="fu">filter</span>(state <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"MN"</span>, <span class="st">"LA"</span>))</span>
+<span id="cb74-8"><a href="#cb74-8"></a></span>
+<span id="cb74-9"><a href="#cb74-9"></a><span class="fu">ggplot</span>(mn_la_births, <span class="fu">aes</span>(<span class="at">x =</span> week, <span class="at">y =</span> total, <span class="at">color =</span> state)) <span class="sc">+</span></span>
+<span id="cb74-10"><a href="#cb74-10"></a>  <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="09-dates_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="sort-ma-births" class="level3"><h3 class="anchored" data-anchor-id="sort-ma-births">✏️ Sort MA Births</h3>
+<p>Create a dataset with only births in Massachusetts (MA) in 1979 and sort the days from those with the most births to those with the fewest.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>ma_births <span class="ot">&lt;-</span> Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb75-2"><a href="#cb75-2"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"MA"</span>, year <span class="sc">==</span> <span class="dv">1979</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb75-3"><a href="#cb75-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(births))</span>
+<span id="cb75-4"><a href="#cb75-4"></a><span class="fu">head</span>(ma_births)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  state year month day       date wday births
+1    MA 1979     9  28 1979-09-28  Fri    262
+2    MA 1979     9  11 1979-09-11 Tues    252
+3    MA 1979    12  28 1979-12-28  Fri    249
+4    MA 1979     9  26 1979-09-26  Wed    246
+5    MA 1979     7  24 1979-07-24 Tues    245
+6    MA 1979     4  27 1979-04-27  Fri    243</code></pre>
+</div>
+</div>
+</section><section id="find-top-5-states" class="level3"><h3 class="anchored" data-anchor-id="find-top-5-states">✏️ Find Top 5 States</h3>
+<p>Make a table showing the five states with the most births between September 9, 1979 and September 12, 1979, including the 9th and 12th. Arrange the table in descending order of births.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb77-2"><a href="#cb77-2"></a>  <span class="fu">filter</span>(date <span class="sc">&gt;</span> <span class="st">"1979-09-08"</span>, date <span class="sc">&lt;=</span> <span class="st">"1979-09-12"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb77-3"><a href="#cb77-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(births))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>    state year month day       date wday births
+1      CA 1979     9  12 1979-09-12  Wed   1176
+2      CA 1979     9  11 1979-09-11 Tues   1170
+3      CA 1979     9  10 1979-09-10  Mon   1108
+4      CA 1979     9   9 1979-09-09  Sun    968
+5      TX 1979     9  11 1979-09-11 Tues    845
+6      TX 1979     9  10 1979-09-10  Mon    818
+7      TX 1979     9  12 1979-09-12  Wed    804
+8      TX 1979     9   9 1979-09-09  Sun    684
+9      NY 1979     9  11 1979-09-11 Tues    682
+10     NY 1979     9  12 1979-09-12  Wed    678
+11     NY 1979     9  10 1979-09-10  Mon    676
+12     IL 1979     9  11 1979-09-11 Tues    619
+13     NY 1979     9   9 1979-09-09  Sun    585
+14     IL 1979     9  10 1979-09-10  Mon    577
+15     IL 1979     9  12 1979-09-12  Wed    562
+16     OH 1979     9  12 1979-09-12  Wed    530
+17     OH 1979     9  11 1979-09-11 Tues    522
+18     PA 1979     9  12 1979-09-12  Wed    505
+19     PA 1979     9  11 1979-09-11 Tues    487
+20     IL 1979     9   9 1979-09-09  Sun    477
+21     OH 1979     9  10 1979-09-10  Mon    475
+22     PA 1979     9  10 1979-09-10  Mon    469
+23     MI 1979     9  11 1979-09-11 Tues    445
+24     MI 1979     9  12 1979-09-12  Wed    415
+25     OH 1979     9   9 1979-09-09  Sun    411
+26     MI 1979     9   9 1979-09-09  Sun    399
+27     MI 1979     9  10 1979-09-10  Mon    392
+28     PA 1979     9   9 1979-09-09  Sun    369
+29     FL 1979     9  12 1979-09-12  Wed    363
+30     FL 1979     9  11 1979-09-11 Tues    359
+31     FL 1979     9  10 1979-09-10  Mon    357
+32     FL 1979     9   9 1979-09-09  Sun    327
+33     GA 1979     9  11 1979-09-11 Tues    320
+34     NC 1979     9  10 1979-09-10  Mon    318
+35     GA 1979     9  12 1979-09-12  Wed    310
+36     NJ 1979     9  11 1979-09-11 Tues    307
+37     NC 1979     9  12 1979-09-12  Wed    280
+38     LA 1979     9  12 1979-09-12  Wed    275
+39     MO 1979     9  10 1979-09-10  Mon    274
+40     NJ 1979     9  10 1979-09-10  Mon    274
+41     VA 1979     9  11 1979-09-11 Tues    272
+42     LA 1979     9  11 1979-09-11 Tues    271
+43     GA 1979     9  10 1979-09-10  Mon    270
+44     IN 1979     9  11 1979-09-11 Tues    270
+45     IN 1979     9  10 1979-09-10  Mon    266
+46     MO 1979     9  11 1979-09-11 Tues    265
+47     LA 1979     9  10 1979-09-10  Mon    259
+48     NJ 1979     9  12 1979-09-12  Wed    259
+49     MA 1979     9  11 1979-09-11 Tues    252
+50     NC 1979     9  11 1979-09-11 Tues    247
+51     TN 1979     9  11 1979-09-11 Tues    246
+52     MO 1979     9  12 1979-09-12  Wed    246
+53     IN 1979     9  12 1979-09-12  Wed    244
+54     GA 1979     9   9 1979-09-09  Sun    238
+55     NJ 1979     9   9 1979-09-09  Sun    233
+56     TN 1979     9  10 1979-09-10  Mon    230
+57     IN 1979     9   9 1979-09-09  Sun    228
+58     WI 1979     9  11 1979-09-11 Tues    228
+59     MA 1979     9  10 1979-09-10  Mon    220
+60     VA 1979     9  10 1979-09-10  Mon    220
+61     VA 1979     9  12 1979-09-12  Wed    220
+62     MN 1979     9  10 1979-09-10  Mon    215
+63     WI 1979     9  10 1979-09-10  Mon    215
+64     WI 1979     9  12 1979-09-12  Wed    214
+65     NC 1979     9   9 1979-09-09  Sun    211
+66     LA 1979     9   9 1979-09-09  Sun    208
+67     MN 1979     9  11 1979-09-11 Tues    205
+68     KY 1979     9  11 1979-09-11 Tues    201
+69     MO 1979     9   9 1979-09-09  Sun    199
+70     AL 1979     9  12 1979-09-12  Wed    199
+71     MN 1979     9  12 1979-09-12  Wed    199
+72     VA 1979     9   9 1979-09-09  Sun    198
+73     AL 1979     9  11 1979-09-11 Tues    195
+74     MA 1979     9  12 1979-09-12  Wed    194
+75     MA 1979     9   9 1979-09-09  Sun    193
+76     TN 1979     9  12 1979-09-12  Wed    192
+77     KY 1979     9  10 1979-09-10  Mon    191
+78     AL 1979     9  10 1979-09-10  Mon    184
+79     WA 1979     9  12 1979-09-12  Wed    182
+80     KY 1979     9  12 1979-09-12  Wed    180
+81     MN 1979     9   9 1979-09-09  Sun    177
+82     TN 1979     9   9 1979-09-09  Sun    177
+83     WA 1979     9  11 1979-09-11 Tues    175
+84     WA 1979     9  10 1979-09-10  Mon    167
+85     IA 1979     9  11 1979-09-11 Tues    167
+86     WI 1979     9   9 1979-09-09  Sun    164
+87     MS 1979     9  10 1979-09-10  Mon    161
+88     OK 1979     9  12 1979-09-12  Wed    161
+89     AL 1979     9   9 1979-09-09  Sun    160
+90     AZ 1979     9  10 1979-09-10  Mon    158
+91     OK 1979     9  10 1979-09-10  Mon    157
+92     OK 1979     9  11 1979-09-11 Tues    157
+93     WA 1979     9   9 1979-09-09  Sun    155
+94     MD 1979     9  11 1979-09-11 Tues    152
+95     SC 1979     9  11 1979-09-11 Tues    151
+96     AZ 1979     9  12 1979-09-12  Wed    150
+97     CO 1979     9  12 1979-09-12  Wed    150
+98     SC 1979     9  12 1979-09-12  Wed    149
+99     MD 1979     9  10 1979-09-10  Mon    148
+100    AZ 1979     9  11 1979-09-11 Tues    148
+101    MS 1979     9  11 1979-09-11 Tues    148
+102    CO 1979     9  10 1979-09-10  Mon    144
+103    MD 1979     9  12 1979-09-12  Wed    144
+104    OR 1979     9  12 1979-09-12  Wed    144
+105    CO 1979     9   9 1979-09-09  Sun    143
+106    KY 1979     9   9 1979-09-09  Sun    143
+107    UT 1979     9  12 1979-09-12  Wed    141
+108    SC 1979     9  10 1979-09-10  Mon    138
+109    CO 1979     9  11 1979-09-11 Tues    137
+110    IA 1979     9  12 1979-09-12  Wed    137
+111    IA 1979     9  10 1979-09-10  Mon    134
+112    MD 1979     9   9 1979-09-09  Sun    131
+113    UT 1979     9   9 1979-09-09  Sun    130
+114    UT 1979     9  10 1979-09-10  Mon    130
+115    AR 1979     9  11 1979-09-11 Tues    128
+116    OR 1979     9  11 1979-09-11 Tues    128
+117    SC 1979     9   9 1979-09-09  Sun    126
+118    OK 1979     9   9 1979-09-09  Sun    125
+119    AZ 1979     9   9 1979-09-09  Sun    124
+120    MS 1979     9  12 1979-09-12  Wed    124
+121    KS 1979     9  11 1979-09-11 Tues    123
+122    MS 1979     9   9 1979-09-09  Sun    122
+123    UT 1979     9  11 1979-09-11 Tues    122
+124    CT 1979     9  11 1979-09-11 Tues    119
+125    AR 1979     9  12 1979-09-12  Wed    118
+126    CT 1979     9  10 1979-09-10  Mon    111
+127    IA 1979     9   9 1979-09-09  Sun    110
+128    OR 1979     9  10 1979-09-10  Mon    110
+129    KS 1979     9  10 1979-09-10  Mon    105
+130    WV 1979     9  12 1979-09-12  Wed    104
+131    WV 1979     9  10 1979-09-10  Mon    103
+132    CT 1979     9  12 1979-09-12  Wed    102
+133    OR 1979     9   9 1979-09-09  Sun     99
+134    KS 1979     9  12 1979-09-12  Wed     98
+135    KS 1979     9   9 1979-09-09  Sun     97
+136    CT 1979     9   9 1979-09-09  Sun     94
+137    AR 1979     9  10 1979-09-10  Mon     94
+138    NE 1979     9  12 1979-09-12  Wed     94
+139    WV 1979     9  11 1979-09-11 Tues     93
+140    NE 1979     9  10 1979-09-10  Mon     80
+141    NE 1979     9  11 1979-09-11 Tues     79
+142    WV 1979     9   9 1979-09-09  Sun     78
+143    NM 1979     9  10 1979-09-10  Mon     78
+144    NM 1979     9  11 1979-09-11 Tues     78
+145    AR 1979     9   9 1979-09-09  Sun     76
+146    NM 1979     9   9 1979-09-09  Sun     70
+147    NM 1979     9  12 1979-09-12  Wed     66
+148    HI 1979     9  11 1979-09-11 Tues     64
+149    NE 1979     9   9 1979-09-09  Sun     61
+150    HI 1979     9  10 1979-09-10  Mon     61
+151    DC 1979     9   9 1979-09-09  Sun     60
+152    DC 1979     9  11 1979-09-11 Tues     60
+153    ID 1979     9  11 1979-09-11 Tues     60
+154    SD 1979     9  11 1979-09-11 Tues     58
+155    RI 1979     9  10 1979-09-10  Mon     54
+156    DC 1979     9  10 1979-09-10  Mon     52
+157    MT 1979     9  10 1979-09-10  Mon     51
+158    ME 1979     9  12 1979-09-12  Wed     51
+159    ND 1979     9  10 1979-09-10  Mon     50
+160    ID 1979     9  12 1979-09-12  Wed     50
+161    ID 1979     9   9 1979-09-09  Sun     49
+162    HI 1979     9  12 1979-09-12  Wed     48
+163    DC 1979     9  12 1979-09-12  Wed     46
+164    ID 1979     9  10 1979-09-10  Mon     45
+165    ME 1979     9  11 1979-09-11 Tues     45
+166    NV 1979     9  11 1979-09-11 Tues     44
+167    RI 1979     9  11 1979-09-11 Tues     42
+168    SD 1979     9   9 1979-09-09  Sun     38
+169    SD 1979     9  10 1979-09-10  Mon     38
+170    ME 1979     9  10 1979-09-10  Mon     37
+171    ND 1979     9   9 1979-09-09  Sun     36
+172    MT 1979     9  12 1979-09-12  Wed     36
+173    NV 1979     9  12 1979-09-12  Wed     36
+174    ME 1979     9   9 1979-09-09  Sun     35
+175    WY 1979     9   9 1979-09-09  Sun     34
+176    MT 1979     9  11 1979-09-11 Tues     34
+177    MT 1979     9   9 1979-09-09  Sun     33
+178    RI 1979     9   9 1979-09-09  Sun     33
+179    NH 1979     9  10 1979-09-10  Mon     33
+180    RI 1979     9  12 1979-09-12  Wed     33
+181    NV 1979     9   9 1979-09-09  Sun     32
+182    NV 1979     9  10 1979-09-10  Mon     32
+183    ND 1979     9  11 1979-09-11 Tues     32
+184    NH 1979     9  11 1979-09-11 Tues     32
+185    DE 1979     9  12 1979-09-12  Wed     32
+186    ND 1979     9  12 1979-09-12  Wed     32
+187    SD 1979     9  12 1979-09-12  Wed     32
+188    HI 1979     9   9 1979-09-09  Sun     31
+189    AK 1979     9  11 1979-09-11 Tues     31
+190    NH 1979     9  12 1979-09-12  Wed     31
+191    NH 1979     9   9 1979-09-09  Sun     28
+192    AK 1979     9  10 1979-09-10  Mon     28
+193    DE 1979     9  10 1979-09-10  Mon     28
+194    WY 1979     9  12 1979-09-12  Wed     28
+195    AK 1979     9   9 1979-09-09  Sun     26
+196    DE 1979     9   9 1979-09-09  Sun     26
+197    DE 1979     9  11 1979-09-11 Tues     26
+198    WY 1979     9  11 1979-09-11 Tues     24
+199    WY 1979     9  10 1979-09-10  Mon     23
+200    VT 1979     9   9 1979-09-09  Sun     19
+201    VT 1979     9  10 1979-09-10  Mon     19
+202    AK 1979     9  12 1979-09-12  Wed     19
+203    VT 1979     9  11 1979-09-11 Tues     16
+204    VT 1979     9  12 1979-09-12  Wed     15</code></pre>
+</div>
+</div>
+
+
+<!-- -->
+
+</section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1"><p>The <code>fivethirtyeight</code> package has more recent data.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation column-body"><div class="nav-page nav-page-previous">
+      <a href="../ica/08-wrangling-verbs.html" class="pagination-link" aria-label="Wrangling">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Wrangling</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../extra/extra-sample1.html" class="pagination-link" aria-label="Extra Sample 1">
+        <span class="nav-page-text"><span class="chapter-title">Extra Sample 1</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb79" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb79-1"><a href="#cb79-1"></a><span class="co">---</span></span>
+<span id="cb79-2"><a href="#cb79-2"></a><span class="an">title:</span><span class="co"> "Dates"</span></span>
+<span id="cb79-3"><a href="#cb79-3"></a><span class="co"># generated by activities/create_ica_files.R</span></span>
+<span id="cb79-4"><a href="#cb79-4"></a><span class="co">---</span></span>
+<span id="cb79-5"><a href="#cb79-5"></a></span>
+<span id="cb79-8"><a href="#cb79-8"></a><span class="in">```{r}</span></span>
+<span id="cb79-9"><a href="#cb79-9"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb79-10"><a href="#cb79-10"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv'</span>)</span>
+<span id="cb79-11"><a href="#cb79-11"></a></span>
+<span id="cb79-12"><a href="#cb79-12"></a><span class="in">```</span></span>
+<span id="cb79-13"><a href="#cb79-13"></a></span>
+<span id="cb79-14"><a href="#cb79-14"></a><span class="fu">## Same Verbs, New Tricks</span></span>
+<span id="cb79-15"><a href="#cb79-15"></a></span>
+<span id="cb79-16"><a href="#cb79-16"></a><span class="fu">### ✏️ Filter with `%in%`</span></span>
+<span id="cb79-17"><a href="#cb79-17"></a></span>
+<span id="cb79-18"><a href="#cb79-18"></a>Recall the "logical comparison operators" we can use to <span class="in">`filter()`</span> our data:</span>
+<span id="cb79-19"><a href="#cb79-19"></a></span>
+<span id="cb79-20"><a href="#cb79-20"></a><span class="pp">|</span> symbol             <span class="pp">|</span> meaning                   <span class="pp">|</span></span>
+<span id="cb79-21"><a href="#cb79-21"></a><span class="pp">|:-------------------|:--------------------------|</span></span>
+<span id="cb79-22"><a href="#cb79-22"></a><span class="pp">|</span> <span class="in">`==`</span>               <span class="pp">|</span> equal to                  <span class="pp">|</span></span>
+<span id="cb79-23"><a href="#cb79-23"></a><span class="pp">|</span> <span class="in">`!=`</span>               <span class="pp">|</span> not equal to              <span class="pp">|</span></span>
+<span id="cb79-24"><a href="#cb79-24"></a><span class="pp">|</span> <span class="in">`&gt;`</span>                <span class="pp">|</span> greater than              <span class="pp">|</span></span>
+<span id="cb79-25"><a href="#cb79-25"></a><span class="pp">|</span> <span class="in">`&gt;=`</span>               <span class="pp">|</span> greater than or equal to  <span class="pp">|</span></span>
+<span id="cb79-26"><a href="#cb79-26"></a><span class="pp">|</span> <span class="in">`&lt;`</span>                <span class="pp">|</span> less than                 <span class="pp">|</span></span>
+<span id="cb79-27"><a href="#cb79-27"></a><span class="pp">|</span> <span class="in">`&lt;=`</span>               <span class="pp">|</span> less than or equal to     <span class="pp">|</span></span>
+<span id="cb79-28"><a href="#cb79-28"></a><span class="pp">|</span> <span class="in">`%in% c(???, ???)`</span> <span class="pp">|</span> a list of multiple values <span class="pp">|</span></span>
+<span id="cb79-29"><a href="#cb79-29"></a></span>
+<span id="cb79-30"><a href="#cb79-30"></a>::: {.callout-tip title="Commenting/Uncommenting Code"}</span>
+<span id="cb79-31"><a href="#cb79-31"></a>To comment/uncomment several lines of code at once, highlight them then click <span class="dt">&lt;</span><span class="kw">kbd</span><span class="dt">&gt;</span>ctrl/cmd<span class="dt">&lt;/</span><span class="kw">kbd</span><span class="dt">&gt;</span>+<span class="dt">&lt;</span><span class="kw">kbd</span><span class="dt">&gt;</span>shift<span class="dt">&lt;/</span><span class="kw">kbd</span><span class="dt">&gt;</span>+<span class="dt">&lt;</span><span class="kw">kbd</span><span class="dt">&gt;</span>c<span class="dt">&lt;/</span><span class="kw">kbd</span><span class="dt">&gt;</span>.</span>
+<span id="cb79-32"><a href="#cb79-32"></a>:::</span>
+<span id="cb79-33"><a href="#cb79-33"></a></span>
+<span id="cb79-36"><a href="#cb79-36"></a><span class="in">```{r}</span></span>
+<span id="cb79-37"><a href="#cb79-37"></a><span class="co"># Create a dataset with just Adelie and Chinstrap using %in%</span></span>
+<span id="cb79-38"><a href="#cb79-38"></a><span class="co"># Pipe this into `count(species)` to confirm that you only have these 2 species</span></span>
+<span id="cb79-39"><a href="#cb79-39"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb79-40"><a href="#cb79-40"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb79-41"><a href="#cb79-41"></a>  <span class="fu">count</span>(species)</span>
+<span id="cb79-42"><a href="#cb79-42"></a><span class="in">```</span></span>
+<span id="cb79-43"><a href="#cb79-43"></a></span>
+<span id="cb79-44"><a href="#cb79-44"></a><span class="fu">### ✏️ Filter with `!=`</span></span>
+<span id="cb79-45"><a href="#cb79-45"></a></span>
+<span id="cb79-48"><a href="#cb79-48"></a><span class="in">```{r}</span></span>
+<span id="cb79-49"><a href="#cb79-49"></a><span class="co"># Create a dataset with just Adelie and Chinstrap using !=</span></span>
+<span id="cb79-50"><a href="#cb79-50"></a><span class="co"># Pipe this into `count(species)` to confirm that you only have these 2 species</span></span>
+<span id="cb79-51"><a href="#cb79-51"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb79-52"><a href="#cb79-52"></a>  <span class="fu">filter</span>(species <span class="sc">!=</span> <span class="st">"Gentoo"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb79-53"><a href="#cb79-53"></a>  <span class="fu">count</span>(species)</span>
+<span id="cb79-54"><a href="#cb79-54"></a><span class="in">```</span></span>
+<span id="cb79-55"><a href="#cb79-55"></a></span>
+<span id="cb79-56"><a href="#cb79-56"></a><span class="fu">### ✏️ Explore Missing Data</span></span>
+<span id="cb79-57"><a href="#cb79-57"></a></span>
+<span id="cb79-58"><a href="#cb79-58"></a>Notice that some of our penguins have missing (<span class="in">`NA`</span>) data on some values:</span>
+<span id="cb79-59"><a href="#cb79-59"></a></span>
+<span id="cb79-62"><a href="#cb79-62"></a><span class="in">```{r}</span></span>
+<span id="cb79-63"><a href="#cb79-63"></a><span class="fu">head</span>(penguins)</span>
+<span id="cb79-64"><a href="#cb79-64"></a><span class="in">```</span></span>
+<span id="cb79-65"><a href="#cb79-65"></a></span>
+<span id="cb79-66"><a href="#cb79-66"></a>::: {.callout-tip title="Handling <span class="in">`NA`</span> Values"}</span>
+<span id="cb79-67"><a href="#cb79-67"></a>There are many ways to handle missing data.</span>
+<span id="cb79-68"><a href="#cb79-68"></a>The right approach depends upon your research goals.</span>
+<span id="cb79-69"><a href="#cb79-69"></a>A general rule is: Only get rid of observations with missing data if they're missing data on variables you *need* for the specific task at hand!</span>
+<span id="cb79-70"><a href="#cb79-70"></a>:::</span>
+<span id="cb79-71"><a href="#cb79-71"></a></span>
+<span id="cb79-72"><a href="#cb79-72"></a>**Example 1**</span>
+<span id="cb79-73"><a href="#cb79-73"></a></span>
+<span id="cb79-74"><a href="#cb79-74"></a>Suppose our research focus is *just* on <span class="in">`body_mass_g`</span>.</span>
+<span id="cb79-75"><a href="#cb79-75"></a>Two penguins are missing this info:</span>
+<span id="cb79-76"><a href="#cb79-76"></a></span>
+<span id="cb79-79"><a href="#cb79-79"></a><span class="in">```{r}</span></span>
+<span id="cb79-80"><a href="#cb79-80"></a><span class="co"># </span><span class="al">NOTE</span><span class="co"> the use of is.na()</span></span>
+<span id="cb79-81"><a href="#cb79-81"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb79-82"><a href="#cb79-82"></a>  <span class="fu">summarize</span>(<span class="fu">sum</span>(<span class="fu">is.na</span>(body_mass_g)))</span>
+<span id="cb79-83"><a href="#cb79-83"></a><span class="in">```</span></span>
+<span id="cb79-84"><a href="#cb79-84"></a></span>
+<span id="cb79-85"><a href="#cb79-85"></a>Let's define a new dataset that removes these penguins:</span>
+<span id="cb79-86"><a href="#cb79-86"></a></span>
+<span id="cb79-89"><a href="#cb79-89"></a><span class="in">```{r}</span></span>
+<span id="cb79-90"><a href="#cb79-90"></a><span class="co"># </span><span class="al">NOTE</span><span class="co"> the use of is.na()</span></span>
+<span id="cb79-91"><a href="#cb79-91"></a>penguins_w_body_mass <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb79-92"><a href="#cb79-92"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(body_mass_g))</span>
+<span id="cb79-93"><a href="#cb79-93"></a></span>
+<span id="cb79-94"><a href="#cb79-94"></a><span class="co"># Compare the number of penguins in this vs the original data</span></span>
+<span id="cb79-95"><a href="#cb79-95"></a><span class="fu">nrow</span>(penguins_w_body_mass)</span>
+<span id="cb79-96"><a href="#cb79-96"></a><span class="fu">nrow</span>(penguins)</span>
+<span id="cb79-97"><a href="#cb79-97"></a><span class="in">```</span></span>
+<span id="cb79-98"><a href="#cb79-98"></a></span>
+<span id="cb79-99"><a href="#cb79-99"></a>Note that some penguins in <span class="in">`penguins_w_body_mass`</span> are missing info on <span class="in">`sex`</span>, but we don't care since that's not related to our research question:</span>
+<span id="cb79-100"><a href="#cb79-100"></a></span>
+<span id="cb79-103"><a href="#cb79-103"></a><span class="in">```{r}</span></span>
+<span id="cb79-104"><a href="#cb79-104"></a>penguins_w_body_mass <span class="sc">|&gt;</span></span>
+<span id="cb79-105"><a href="#cb79-105"></a>  <span class="fu">summarize</span>(<span class="fu">sum</span>(<span class="fu">is.na</span>(sex)))</span>
+<span id="cb79-106"><a href="#cb79-106"></a><span class="in">```</span></span>
+<span id="cb79-107"><a href="#cb79-107"></a></span>
+<span id="cb79-108"><a href="#cb79-108"></a>**Example 2**</span>
+<span id="cb79-109"><a href="#cb79-109"></a></span>
+<span id="cb79-110"><a href="#cb79-110"></a>In the *very rare case* that we need complete information on every variable for the specific task at hand, we can use `na.omit()` to get rid of *any* penguin that's missing info on *any* variable:</span>
+<span id="cb79-111"><a href="#cb79-111"></a></span>
+<span id="cb79-114"><a href="#cb79-114"></a><span class="in">```{r}</span></span>
+<span id="cb79-115"><a href="#cb79-115"></a>penguins_complete <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb79-116"><a href="#cb79-116"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb79-117"><a href="#cb79-117"></a><span class="in">```</span></span>
+<span id="cb79-118"><a href="#cb79-118"></a></span>
+<span id="cb79-119"><a href="#cb79-119"></a>How many penguins did this eliminate?</span>
+<span id="cb79-120"><a href="#cb79-120"></a></span>
+<span id="cb79-123"><a href="#cb79-123"></a><span class="in">```{r}</span></span>
+<span id="cb79-124"><a href="#cb79-124"></a><span class="fu">nrow</span>(penguins_complete)</span>
+<span id="cb79-125"><a href="#cb79-125"></a><span class="fu">nrow</span>(penguins)</span>
+<span id="cb79-126"><a href="#cb79-126"></a><span class="in">```</span></span>
+<span id="cb79-127"><a href="#cb79-127"></a></span>
+<span id="cb79-128"><a href="#cb79-128"></a><span class="fu">### ✏️ Explain `na.omit()` Risk</span></span>
+<span id="cb79-129"><a href="#cb79-129"></a></span>
+<span id="cb79-130"><a href="#cb79-130"></a>Explain why we should only use <span class="in">`na.omit()`</span> in extreme circumstances.</span>
+<span id="cb79-131"><a href="#cb79-131"></a></span>
+<span id="cb79-132"><a href="#cb79-132"></a><span class="at">&gt; It gets rid of some of the important observations just because there is a missing data point on a variable we don't need.</span></span>
+<span id="cb79-133"><a href="#cb79-133"></a></span>
+<span id="cb79-134"><a href="#cb79-134"></a><span class="fu">### ✏️ Drop Year &amp; Island</span></span>
+<span id="cb79-135"><a href="#cb79-135"></a></span>
+<span id="cb79-136"><a href="#cb79-136"></a>Being able to <span class="in">`select()`</span> only certain columns can help simplify our data.</span>
+<span id="cb79-137"><a href="#cb79-137"></a>This is especially important when we're working with *lots* of columns (which we haven't done yet).</span>
+<span id="cb79-138"><a href="#cb79-138"></a>It can also get tedious to type out every column of interest.</span>
+<span id="cb79-139"><a href="#cb79-139"></a>Here are some shortcuts:</span>
+<span id="cb79-140"><a href="#cb79-140"></a></span>
+<span id="cb79-141"><a href="#cb79-141"></a><span class="ss">-   </span><span class="in">`-`</span> *removes* a given variable and keeps all others (e.g. <span class="in">`select(-island)`</span>)</span>
+<span id="cb79-142"><a href="#cb79-142"></a><span class="ss">-   </span><span class="in">`starts_with("___")`</span>, <span class="in">`ends_with("___")`</span>, or <span class="in">`contains("___")`</span> selects only the columns that either start with, end with, or simply contain the given string of characters</span>
+<span id="cb79-143"><a href="#cb79-143"></a></span>
+<span id="cb79-144"><a href="#cb79-144"></a>Use these *shortcuts* to create the following datasets.</span>
+<span id="cb79-145"><a href="#cb79-145"></a></span>
+<span id="cb79-148"><a href="#cb79-148"></a><span class="in">```{r}</span></span>
+<span id="cb79-149"><a href="#cb79-149"></a><span class="co"># First: recall the variable names</span></span>
+<span id="cb79-150"><a href="#cb79-150"></a><span class="fu">names</span>(penguins)</span>
+<span id="cb79-151"><a href="#cb79-151"></a><span class="in">```</span></span>
+<span id="cb79-152"><a href="#cb79-152"></a></span>
+<span id="cb79-153"><a href="#cb79-153"></a>Use a shortcut to keep everything but the year and island variables.</span>
+<span id="cb79-154"><a href="#cb79-154"></a></span>
+<span id="cb79-157"><a href="#cb79-157"></a><span class="in">```{r}</span></span>
+<span id="cb79-158"><a href="#cb79-158"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb79-159"><a href="#cb79-159"></a>  <span class="fu">select</span>(<span class="sc">-</span>island, <span class="sc">-</span>year)</span>
+<span id="cb79-160"><a href="#cb79-160"></a><span class="in">```</span></span>
+<span id="cb79-161"><a href="#cb79-161"></a></span>
+<span id="cb79-162"><a href="#cb79-162"></a><span class="fu">### ✏️ Keep mm Measurements</span></span>
+<span id="cb79-163"><a href="#cb79-163"></a></span>
+<span id="cb79-164"><a href="#cb79-164"></a>Use a shortcut to keep only species and the penguin characteristics measured in mm.</span>
+<span id="cb79-165"><a href="#cb79-165"></a></span>
+<span id="cb79-168"><a href="#cb79-168"></a><span class="in">```{r}</span></span>
+<span id="cb79-169"><a href="#cb79-169"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb79-170"><a href="#cb79-170"></a>  <span class="fu">select</span>(species, <span class="fu">ends_with</span>(<span class="st">"mm"</span>))</span>
+<span id="cb79-171"><a href="#cb79-171"></a><span class="in">```</span></span>
+<span id="cb79-172"><a href="#cb79-172"></a></span>
+<span id="cb79-173"><a href="#cb79-173"></a><span class="fu">### ✏️ Keep Bill Measurements</span></span>
+<span id="cb79-174"><a href="#cb79-174"></a></span>
+<span id="cb79-175"><a href="#cb79-175"></a>Use a shortcut to keep only species and bill-related measurements.</span>
+<span id="cb79-176"><a href="#cb79-176"></a></span>
+<span id="cb79-179"><a href="#cb79-179"></a><span class="in">```{r}</span></span>
+<span id="cb79-180"><a href="#cb79-180"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb79-181"><a href="#cb79-181"></a>  <span class="fu">select</span>(species, <span class="fu">starts_with</span>(<span class="st">"bill"</span>))</span>
+<span id="cb79-182"><a href="#cb79-182"></a><span class="in">```</span></span>
+<span id="cb79-183"><a href="#cb79-183"></a></span>
+<span id="cb79-184"><a href="#cb79-184"></a><span class="fu">### ✏️ Keep Length Measurements</span></span>
+<span id="cb79-185"><a href="#cb79-185"></a></span>
+<span id="cb79-186"><a href="#cb79-186"></a>Use a shortcut to keep only species and the length-related characteristics.</span>
+<span id="cb79-187"><a href="#cb79-187"></a></span>
+<span id="cb79-190"><a href="#cb79-190"></a><span class="in">```{r}</span></span>
+<span id="cb79-191"><a href="#cb79-191"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb79-192"><a href="#cb79-192"></a>  <span class="fu">select</span>(species, <span class="fu">contains</span>(<span class="st">"length"</span>))</span>
+<span id="cb79-193"><a href="#cb79-193"></a><span class="in">```</span></span>
+<span id="cb79-194"><a href="#cb79-194"></a></span>
+<span id="cb79-195"><a href="#cb79-195"></a>\</span>
+<span id="cb79-196"><a href="#cb79-196"></a>\</span>
+<span id="cb79-197"><a href="#cb79-197"></a>\</span>
+<span id="cb79-198"><a href="#cb79-198"></a>\</span>
+<span id="cb79-199"><a href="#cb79-199"></a></span>
+<span id="cb79-200"><a href="#cb79-200"></a><span class="fu">### ✏️ Arrange by 2 Variables</span></span>
+<span id="cb79-201"><a href="#cb79-201"></a></span>
+<span id="cb79-202"><a href="#cb79-202"></a>We've done examples where we need to <span class="in">`filter()`</span> by more than one variable, or <span class="in">`select()`</span> more than one variable.</span>
+<span id="cb79-203"><a href="#cb79-203"></a>Use your intuition for how we can <span class="in">`arrange()`</span>, <span class="in">`count()`</span>, and <span class="in">`group_by()`</span> more than one variable.</span>
+<span id="cb79-204"><a href="#cb79-204"></a></span>
+<span id="cb79-207"><a href="#cb79-207"></a><span class="in">```{r}</span></span>
+<span id="cb79-208"><a href="#cb79-208"></a><span class="co"># Change this code to sort the penguins by species, and then island name</span></span>
+<span id="cb79-209"><a href="#cb79-209"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: The first row should be an Adelie penguin living on Biscoe island</span></span>
+<span id="cb79-210"><a href="#cb79-210"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb79-211"><a href="#cb79-211"></a>  <span class="fu">arrange</span>(species, island) <span class="sc">|&gt;</span> </span>
+<span id="cb79-212"><a href="#cb79-212"></a>  <span class="fu">head</span>()</span>
+<span id="cb79-213"><a href="#cb79-213"></a><span class="in">```</span></span>
+<span id="cb79-214"><a href="#cb79-214"></a></span>
+<span id="cb79-215"><a href="#cb79-215"></a><span class="fu">### ✏️ Count by 2 Variables</span></span>
+<span id="cb79-216"><a href="#cb79-216"></a></span>
+<span id="cb79-219"><a href="#cb79-219"></a><span class="in">```{r}</span></span>
+<span id="cb79-220"><a href="#cb79-220"></a><span class="co"># Change this code to count the number of male/female penguins observed for each species</span></span>
+<span id="cb79-221"><a href="#cb79-221"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb79-222"><a href="#cb79-222"></a>  <span class="fu">group_by</span>(sex) <span class="sc">|&gt;</span> </span>
+<span id="cb79-223"><a href="#cb79-223"></a>  <span class="fu">count</span>(species)</span>
+<span id="cb79-224"><a href="#cb79-224"></a><span class="in">```</span></span>
+<span id="cb79-225"><a href="#cb79-225"></a></span>
+<span id="cb79-226"><a href="#cb79-226"></a><span class="fu">### ✏️ Group by 2 Variables</span></span>
+<span id="cb79-227"><a href="#cb79-227"></a></span>
+<span id="cb79-230"><a href="#cb79-230"></a><span class="in">```{r}</span></span>
+<span id="cb79-231"><a href="#cb79-231"></a><span class="co"># Change this code to calculate the average body mass by species and sex</span></span>
+<span id="cb79-232"><a href="#cb79-232"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb79-233"><a href="#cb79-233"></a>  <span class="fu">group_by</span>(species, sex) <span class="sc">|&gt;</span></span>
+<span id="cb79-234"><a href="#cb79-234"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb79-235"><a href="#cb79-235"></a></span>
+<span id="cb79-236"><a href="#cb79-236"></a><span class="in">```</span></span>
+<span id="cb79-237"><a href="#cb79-237"></a></span>
+<span id="cb79-238"><a href="#cb79-238"></a>\</span>
+<span id="cb79-239"><a href="#cb79-239"></a>\</span>
+<span id="cb79-240"><a href="#cb79-240"></a>\</span>
+<span id="cb79-241"><a href="#cb79-241"></a>\</span>
+<span id="cb79-242"><a href="#cb79-242"></a></span>
+<span id="cb79-243"><a href="#cb79-243"></a><span class="fu">### ✏️ Work with Dates</span></span>
+<span id="cb79-244"><a href="#cb79-244"></a></span>
+<span id="cb79-245"><a href="#cb79-245"></a>Before some wrangling practice, let's explore another important concept: working with or mutating *date* variables.</span>
+<span id="cb79-246"><a href="#cb79-246"></a>Dates are a whole special object type or class in R that automatically respect the order of time.</span>
+<span id="cb79-247"><a href="#cb79-247"></a></span>
+<span id="cb79-250"><a href="#cb79-250"></a><span class="in">```{r}</span></span>
+<span id="cb79-251"><a href="#cb79-251"></a><span class="co"># Get today's date</span></span>
+<span id="cb79-252"><a href="#cb79-252"></a><span class="fu">as.Date</span>(<span class="fu">today</span>())</span>
+<span id="cb79-253"><a href="#cb79-253"></a></span>
+<span id="cb79-254"><a href="#cb79-254"></a><span class="co"># Let's store this as "today" so we can work with it below</span></span>
+<span id="cb79-255"><a href="#cb79-255"></a>today <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">today</span>())</span>
+<span id="cb79-256"><a href="#cb79-256"></a></span>
+<span id="cb79-257"><a href="#cb79-257"></a><span class="co"># Check out the class of this object</span></span>
+<span id="cb79-258"><a href="#cb79-258"></a><span class="fu">class</span>(today)</span>
+<span id="cb79-259"><a href="#cb79-259"></a><span class="in">```</span></span>
+<span id="cb79-260"><a href="#cb79-260"></a></span>
+<span id="cb79-261"><a href="#cb79-261"></a>The <span class="in">`lubridate`</span> package inside <span class="in">`tidyverse`</span> contains functions that can extract various information from dates.</span>
+<span id="cb79-262"><a href="#cb79-262"></a>Let's learn about some of the most common functions by applying them to <span class="in">`today`</span>.</span>
+<span id="cb79-263"><a href="#cb79-263"></a>For each, make a comment on what the function does.</span>
+<span id="cb79-264"><a href="#cb79-264"></a></span>
+<span id="cb79-267"><a href="#cb79-267"></a><span class="in">```{r}</span></span>
+<span id="cb79-268"><a href="#cb79-268"></a><span class="fu">year</span>(today)</span>
+<span id="cb79-269"><a href="#cb79-269"></a><span class="in">```</span></span>
+<span id="cb79-270"><a href="#cb79-270"></a></span>
+<span id="cb79-273"><a href="#cb79-273"></a><span class="in">```{r}</span></span>
+<span id="cb79-274"><a href="#cb79-274"></a><span class="co"># What do these lines produce / what's their difference?</span></span>
+<span id="cb79-275"><a href="#cb79-275"></a><span class="co"># first one gives the number of the month, the second gives the label for it</span></span>
+<span id="cb79-276"><a href="#cb79-276"></a><span class="fu">month</span>(today)</span>
+<span id="cb79-277"><a href="#cb79-277"></a><span class="fu">month</span>(today, <span class="at">label =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb79-278"><a href="#cb79-278"></a><span class="in">```</span></span>
+<span id="cb79-279"><a href="#cb79-279"></a></span>
+<span id="cb79-282"><a href="#cb79-282"></a><span class="in">```{r}</span></span>
+<span id="cb79-283"><a href="#cb79-283"></a><span class="co"># What does this number mean?</span></span>
+<span id="cb79-284"><a href="#cb79-284"></a><span class="fu">week</span>(today)</span>
+<span id="cb79-285"><a href="#cb79-285"></a><span class="in">```</span></span>
+<span id="cb79-286"><a href="#cb79-286"></a></span>
+<span id="cb79-289"><a href="#cb79-289"></a><span class="in">```{r}</span></span>
+<span id="cb79-290"><a href="#cb79-290"></a><span class="co"># What do these lines produce / what's their difference?</span></span>
+<span id="cb79-291"><a href="#cb79-291"></a><span class="fu">mday</span>(today)</span>
+<span id="cb79-292"><a href="#cb79-292"></a><span class="fu">yday</span>(today)  <span class="co"># This is often called the "Julian day"</span></span>
+<span id="cb79-293"><a href="#cb79-293"></a><span class="in">```</span></span>
+<span id="cb79-294"><a href="#cb79-294"></a></span>
+<span id="cb79-297"><a href="#cb79-297"></a><span class="in">```{r}</span></span>
+<span id="cb79-298"><a href="#cb79-298"></a><span class="co"># What do these lines produce / what's their difference?</span></span>
+<span id="cb79-299"><a href="#cb79-299"></a><span class="fu">wday</span>(today)</span>
+<span id="cb79-300"><a href="#cb79-300"></a><span class="fu">wday</span>(today, <span class="at">label =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb79-301"><a href="#cb79-301"></a><span class="in">```</span></span>
+<span id="cb79-302"><a href="#cb79-302"></a></span>
+<span id="cb79-305"><a href="#cb79-305"></a><span class="in">```{r}</span></span>
+<span id="cb79-306"><a href="#cb79-306"></a><span class="co"># What do the results of these 2 lines tell us?</span></span>
+<span id="cb79-307"><a href="#cb79-307"></a><span class="co"># tells us whether a date has passed yet or not</span></span>
+<span id="cb79-308"><a href="#cb79-308"></a>today <span class="sc">&gt;=</span> <span class="fu">ymd</span>(<span class="st">"2024-02-14"</span>)</span>
+<span id="cb79-309"><a href="#cb79-309"></a>today <span class="sc">&lt;</span> <span class="fu">ymd</span>(<span class="st">"2024-02-14"</span>)</span>
+<span id="cb79-310"><a href="#cb79-310"></a><span class="in">```</span></span>
+<span id="cb79-311"><a href="#cb79-311"></a></span>
+<span id="cb79-312"><a href="#cb79-312"></a>\</span>
+<span id="cb79-313"><a href="#cb79-313"></a>\</span>
+<span id="cb79-314"><a href="#cb79-314"></a>\</span>
+<span id="cb79-315"><a href="#cb79-315"></a>\</span>
+<span id="cb79-316"><a href="#cb79-316"></a></span>
+<span id="cb79-317"><a href="#cb79-317"></a><span class="fu">## Application</span></span>
+<span id="cb79-318"><a href="#cb79-318"></a></span>
+<span id="cb79-319"><a href="#cb79-319"></a>The remaining exercises are *similar* to some of those on the homework.</span>
+<span id="cb79-320"><a href="#cb79-320"></a>Hence, the solutions are not provided.</span>
+<span id="cb79-321"><a href="#cb79-321"></a>Let's apply these ideas to the daily <span class="in">`Birthdays`</span> dataset in the <span class="in">`mosaic`</span> package.</span>
+<span id="cb79-322"><a href="#cb79-322"></a></span>
+<span id="cb79-325"><a href="#cb79-325"></a><span class="in">```{r}</span></span>
+<span id="cb79-326"><a href="#cb79-326"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb79-327"><a href="#cb79-327"></a><span class="fu">data</span>(<span class="st">"Birthdays"</span>)</span>
+<span id="cb79-328"><a href="#cb79-328"></a><span class="fu">head</span>(Birthdays)</span>
+<span id="cb79-329"><a href="#cb79-329"></a><span class="in">```</span></span>
+<span id="cb79-330"><a href="#cb79-330"></a></span>
+<span id="cb79-331"><a href="#cb79-331"></a><span class="in">`Birthdays`</span> gives the number of births recorded on each day of the year in each state from 1969 to 1988<span class="ot">[^09-dates-1]</span>.</span>
+<span id="cb79-332"><a href="#cb79-332"></a>We can use our wrangling skills to understand some drivers of daily births.</span>
+<span id="cb79-333"><a href="#cb79-333"></a>Putting these all together can be challenging!</span>
+<span id="cb79-334"><a href="#cb79-334"></a>Remember the following ways to make tasks more manageable:</span>
+<span id="cb79-335"><a href="#cb79-335"></a></span>
+<span id="cb79-336"><a href="#cb79-336"></a><span class="ot">[^09-dates-1]: </span>The <span class="in">`fivethirtyeight`</span> package has more recent data.</span>
+<span id="cb79-337"><a href="#cb79-337"></a></span>
+<span id="cb79-338"><a href="#cb79-338"></a><span class="ss">-   </span>Translate the prompt into our 6 verbs (and <span class="in">`count()`</span>). That is, think before you type.</span>
+<span id="cb79-339"><a href="#cb79-339"></a><span class="ss">-   </span>Build your code line by line. It's important to understand what's being piped into each function!</span>
+<span id="cb79-340"><a href="#cb79-340"></a></span>
+<span id="cb79-341"><a href="#cb79-341"></a><span class="fu">### ✏️ Count Days per State</span></span>
+<span id="cb79-342"><a href="#cb79-342"></a></span>
+<span id="cb79-343"><a href="#cb79-343"></a>How many days of data do we have for each state?</span>
+<span id="cb79-344"><a href="#cb79-344"></a></span>
+<span id="cb79-347"><a href="#cb79-347"></a><span class="in">```{r}</span></span>
+<span id="cb79-348"><a href="#cb79-348"></a>Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb79-349"><a href="#cb79-349"></a>  <span class="fu">count</span>(state)</span>
+<span id="cb79-350"><a href="#cb79-350"></a><span class="in">```</span></span>
+<span id="cb79-351"><a href="#cb79-351"></a></span>
+<span id="cb79-352"><a href="#cb79-352"></a><span class="fu">### ✏️ Total Births</span></span>
+<span id="cb79-353"><a href="#cb79-353"></a></span>
+<span id="cb79-354"><a href="#cb79-354"></a>How many total births were there in this time period?</span>
+<span id="cb79-355"><a href="#cb79-355"></a></span>
+<span id="cb79-358"><a href="#cb79-358"></a><span class="in">```{r}</span></span>
+<span id="cb79-359"><a href="#cb79-359"></a>Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb79-360"><a href="#cb79-360"></a>  <span class="fu">summarize</span>(<span class="at">total_births =</span> <span class="fu">sum</span>(births))</span>
+<span id="cb79-361"><a href="#cb79-361"></a><span class="in">```</span></span>
+<span id="cb79-362"><a href="#cb79-362"></a></span>
+<span id="cb79-363"><a href="#cb79-363"></a><span class="fu">### ✏️ Total Births per State</span></span>
+<span id="cb79-364"><a href="#cb79-364"></a></span>
+<span id="cb79-365"><a href="#cb79-365"></a>How many total births were there per state in this time period, sorted from low to high?</span>
+<span id="cb79-366"><a href="#cb79-366"></a></span>
+<span id="cb79-369"><a href="#cb79-369"></a><span class="in">```{r}</span></span>
+<span id="cb79-370"><a href="#cb79-370"></a>Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb79-371"><a href="#cb79-371"></a>  <span class="fu">group_by</span>(state) <span class="sc">|&gt;</span> </span>
+<span id="cb79-372"><a href="#cb79-372"></a>  <span class="fu">summarize</span>(<span class="at">total_births =</span> <span class="fu">sum</span>(births))</span>
+<span id="cb79-373"><a href="#cb79-373"></a><span class="in">```</span></span>
+<span id="cb79-374"><a href="#cb79-374"></a></span>
+<span id="cb79-375"><a href="#cb79-375"></a><span class="fu">### ✏️ Build `daily_births`</span></span>
+<span id="cb79-376"><a href="#cb79-376"></a></span>
+<span id="cb79-377"><a href="#cb79-377"></a>Create a new dataset named <span class="in">`daily_births`</span> that includes the total number of births per day (across all states) and the corresponding day of the week, eg, Mon.</span>
+<span id="cb79-378"><a href="#cb79-378"></a>NOTE: Name the column with total births so that it's easier to wrangle and plot.</span>
+<span id="cb79-379"><a href="#cb79-379"></a></span>
+<span id="cb79-382"><a href="#cb79-382"></a><span class="in">```{r}</span></span>
+<span id="cb79-383"><a href="#cb79-383"></a>daily_births <span class="ot">&lt;-</span> Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb79-384"><a href="#cb79-384"></a>  <span class="fu">group_by</span>(date, wday) <span class="sc">|&gt;</span> </span>
+<span id="cb79-385"><a href="#cb79-385"></a>  <span class="fu">summarize</span>(<span class="at">total_births =</span> <span class="fu">sum</span>(births)) <span class="sc">|&gt;</span> </span>
+<span id="cb79-386"><a href="#cb79-386"></a>  <span class="fu">select</span>(date, wday, total_births)</span>
+<span id="cb79-387"><a href="#cb79-387"></a><span class="in">```</span></span>
+<span id="cb79-388"><a href="#cb79-388"></a></span>
+<span id="cb79-389"><a href="#cb79-389"></a><span class="fu">### ✏️ Plot Daily Births</span></span>
+<span id="cb79-390"><a href="#cb79-390"></a></span>
+<span id="cb79-391"><a href="#cb79-391"></a>Using this data, construct a plot of <span class="in">`births`</span> over time, indicating the day of week.</span>
+<span id="cb79-392"><a href="#cb79-392"></a></span>
+<span id="cb79-395"><a href="#cb79-395"></a><span class="in">```{r}</span></span>
+<span id="cb79-396"><a href="#cb79-396"></a><span class="fu">ggplot</span>(daily_births, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> total_births, <span class="at">color =</span> wday)) <span class="sc">+</span></span>
+<span id="cb79-397"><a href="#cb79-397"></a>  <span class="fu">geom_line</span>()</span>
+<span id="cb79-398"><a href="#cb79-398"></a><span class="in">```</span></span>
+<span id="cb79-399"><a href="#cb79-399"></a></span>
+<span id="cb79-400"><a href="#cb79-400"></a><span class="fu">### ✏️ Plot Monthly Births</span></span>
+<span id="cb79-401"><a href="#cb79-401"></a></span>
+<span id="cb79-402"><a href="#cb79-402"></a>For each prompt below, you can decide whether you want to: (1) wrangle and store data, then plot; or (2) wrangle data and pipe directly into ggplot.</span>
+<span id="cb79-403"><a href="#cb79-403"></a>For example:</span>
+<span id="cb79-404"><a href="#cb79-404"></a></span>
+<span id="cb79-407"><a href="#cb79-407"></a><span class="in">```{r}</span></span>
+<span id="cb79-408"><a href="#cb79-408"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb79-409"><a href="#cb79-409"></a>  <span class="fu">filter</span>(species <span class="sc">!=</span> <span class="st">"Gentoo"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb79-410"><a href="#cb79-410"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> bill_length_mm, <span class="at">x =</span> bill_depth_mm, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb79-411"><a href="#cb79-411"></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb79-412"><a href="#cb79-412"></a><span class="in">```</span></span>
+<span id="cb79-413"><a href="#cb79-413"></a></span>
+<span id="cb79-414"><a href="#cb79-414"></a>Calculate the total number of births in each month and year, eg, Jan 1969, Feb 1969, ....</span>
+<span id="cb79-415"><a href="#cb79-415"></a>Label month by names not numbers, eg, Jan not 1.</span>
+<span id="cb79-416"><a href="#cb79-416"></a>Then, plot the births by month and comment on what you learn.</span>
+<span id="cb79-417"><a href="#cb79-417"></a></span>
+<span id="cb79-420"><a href="#cb79-420"></a><span class="in">```{r}</span></span>
+<span id="cb79-421"><a href="#cb79-421"></a>monthly_births <span class="ot">&lt;-</span> Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb79-422"><a href="#cb79-422"></a>  <span class="fu">group_by</span>(year, month) <span class="sc">|&gt;</span> </span>
+<span id="cb79-423"><a href="#cb79-423"></a>  <span class="fu">summarize</span>(<span class="at">total_births =</span> <span class="fu">sum</span>(births)) <span class="sc">|&gt;</span> </span>
+<span id="cb79-424"><a href="#cb79-424"></a>  <span class="fu">mutate</span>(<span class="at">month_name =</span> <span class="fu">factor</span>(month.abb[month], <span class="at">levels =</span> month.abb), </span>
+<span id="cb79-425"><a href="#cb79-425"></a>         <span class="at">month_year =</span> <span class="fu">paste</span>(month_name, year)) <span class="sc">|&gt;</span></span>
+<span id="cb79-426"><a href="#cb79-426"></a>  <span class="fu">arrange</span>(year, month)</span>
+<span id="cb79-427"><a href="#cb79-427"></a></span>
+<span id="cb79-428"><a href="#cb79-428"></a><span class="fu">ggplot</span>(monthly_births, <span class="fu">aes</span>(<span class="at">x =</span> month_name, <span class="at">y =</span> total_births)) <span class="sc">+</span></span>
+<span id="cb79-429"><a href="#cb79-429"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb79-430"><a href="#cb79-430"></a><span class="in">```</span></span>
+<span id="cb79-431"><a href="#cb79-431"></a></span>
+<span id="cb79-432"><a href="#cb79-432"></a><span class="fu">### ✏️ Plot Weekly Births by State</span></span>
+<span id="cb79-433"><a href="#cb79-433"></a></span>
+<span id="cb79-434"><a href="#cb79-434"></a>In 1988, calculate the total number of births per week in each state.</span>
+<span id="cb79-435"><a href="#cb79-435"></a>Get rid of week "53", which isn't a complete week!</span>
+<span id="cb79-436"><a href="#cb79-436"></a>Then, make a line plot of births by week for each state and comment on what you learn.</span>
+<span id="cb79-437"><a href="#cb79-437"></a>For example, do you notice any seasonal trends?</span>
+<span id="cb79-438"><a href="#cb79-438"></a>Are these the same in every state?</span>
+<span id="cb79-439"><a href="#cb79-439"></a>Any outliers?</span>
+<span id="cb79-440"><a href="#cb79-440"></a></span>
+<span id="cb79-443"><a href="#cb79-443"></a><span class="in">```{r}</span></span>
+<span id="cb79-444"><a href="#cb79-444"></a>weekly_births <span class="ot">&lt;-</span> Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb79-445"><a href="#cb79-445"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1988</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb79-446"><a href="#cb79-446"></a>  <span class="fu">mutate</span>(<span class="at">week =</span> <span class="fu">week</span>(date)) <span class="sc">|&gt;</span> </span>
+<span id="cb79-447"><a href="#cb79-447"></a>  <span class="fu">filter</span>(week <span class="sc">!=</span> <span class="dv">53</span>) <span class="sc">|&gt;</span></span>
+<span id="cb79-448"><a href="#cb79-448"></a>  <span class="fu">group_by</span>(state, week) <span class="sc">|&gt;</span> </span>
+<span id="cb79-449"><a href="#cb79-449"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(births))</span>
+<span id="cb79-450"><a href="#cb79-450"></a></span>
+<span id="cb79-451"><a href="#cb79-451"></a><span class="fu">ggplot</span>(weekly_births, <span class="fu">aes</span>(<span class="at">x =</span> week, <span class="at">y =</span> total, <span class="at">color =</span> state)) <span class="sc">+</span></span>
+<span id="cb79-452"><a href="#cb79-452"></a>  <span class="fu">geom_line</span>()</span>
+<span id="cb79-453"><a href="#cb79-453"></a><span class="in">```</span></span>
+<span id="cb79-454"><a href="#cb79-454"></a></span>
+<span id="cb79-455"><a href="#cb79-455"></a><span class="fu">### ✏️ Compare MN &amp; LA</span></span>
+<span id="cb79-456"><a href="#cb79-456"></a></span>
+<span id="cb79-457"><a href="#cb79-457"></a>Repeat the above for just Minnesota (MN) and Louisiana (LA).</span>
+<span id="cb79-458"><a href="#cb79-458"></a>MN has one of the coldest climates and LA has one of the warmest.</span>
+<span id="cb79-459"><a href="#cb79-459"></a>How do their seasonal trends compare?</span>
+<span id="cb79-460"><a href="#cb79-460"></a>Do you think these trends are similar in other colder and warmer states?</span>
+<span id="cb79-461"><a href="#cb79-461"></a>Try it!</span>
+<span id="cb79-462"><a href="#cb79-462"></a></span>
+<span id="cb79-465"><a href="#cb79-465"></a><span class="in">```{r}</span></span>
+<span id="cb79-466"><a href="#cb79-466"></a>mn_la_births <span class="ot">&lt;-</span> Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb79-467"><a href="#cb79-467"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1988</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb79-468"><a href="#cb79-468"></a>  <span class="fu">mutate</span>(<span class="at">week =</span> <span class="fu">week</span>(date)) <span class="sc">|&gt;</span> </span>
+<span id="cb79-469"><a href="#cb79-469"></a>  <span class="fu">filter</span>(week <span class="sc">!=</span> <span class="dv">53</span>) <span class="sc">|&gt;</span></span>
+<span id="cb79-470"><a href="#cb79-470"></a>  <span class="fu">group_by</span>(state, week) <span class="sc">|&gt;</span> </span>
+<span id="cb79-471"><a href="#cb79-471"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(births)) <span class="sc">|&gt;</span> </span>
+<span id="cb79-472"><a href="#cb79-472"></a>  <span class="fu">filter</span>(state <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"MN"</span>, <span class="st">"LA"</span>))</span>
+<span id="cb79-473"><a href="#cb79-473"></a></span>
+<span id="cb79-474"><a href="#cb79-474"></a><span class="fu">ggplot</span>(mn_la_births, <span class="fu">aes</span>(<span class="at">x =</span> week, <span class="at">y =</span> total, <span class="at">color =</span> state)) <span class="sc">+</span></span>
+<span id="cb79-475"><a href="#cb79-475"></a>  <span class="fu">geom_line</span>()</span>
+<span id="cb79-476"><a href="#cb79-476"></a><span class="in">```</span></span>
+<span id="cb79-477"><a href="#cb79-477"></a></span>
+<span id="cb79-478"><a href="#cb79-478"></a><span class="fu">### ✏️ Sort MA Births</span></span>
+<span id="cb79-479"><a href="#cb79-479"></a></span>
+<span id="cb79-480"><a href="#cb79-480"></a>Create a dataset with only births in Massachusetts (MA) in 1979 and sort the days from those with the most births to those with the fewest.</span>
+<span id="cb79-481"><a href="#cb79-481"></a></span>
+<span id="cb79-484"><a href="#cb79-484"></a><span class="in">```{r}</span></span>
+<span id="cb79-485"><a href="#cb79-485"></a>ma_births <span class="ot">&lt;-</span> Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb79-486"><a href="#cb79-486"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"MA"</span>, year <span class="sc">==</span> <span class="dv">1979</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb79-487"><a href="#cb79-487"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(births))</span>
+<span id="cb79-488"><a href="#cb79-488"></a><span class="fu">head</span>(ma_births)</span>
+<span id="cb79-489"><a href="#cb79-489"></a><span class="in">```</span></span>
+<span id="cb79-490"><a href="#cb79-490"></a></span>
+<span id="cb79-491"><a href="#cb79-491"></a><span class="fu">### ✏️ Find Top 5 States</span></span>
+<span id="cb79-492"><a href="#cb79-492"></a></span>
+<span id="cb79-493"><a href="#cb79-493"></a>Make a table showing the five states with the most births between September 9, 1979 and September 12, 1979, including the 9th and 12th.</span>
+<span id="cb79-494"><a href="#cb79-494"></a>Arrange the table in descending order of births.</span>
+<span id="cb79-495"><a href="#cb79-495"></a></span>
+<span id="cb79-498"><a href="#cb79-498"></a><span class="in">```{r}</span></span>
+<span id="cb79-499"><a href="#cb79-499"></a>Birthdays <span class="sc">|&gt;</span> </span>
+<span id="cb79-500"><a href="#cb79-500"></a>  <span class="fu">filter</span>(date <span class="sc">&gt;</span> <span class="st">"1979-09-08"</span>, date <span class="sc">&lt;=</span> <span class="st">"1979-09-12"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb79-501"><a href="#cb79-501"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(births))</span>
+<span id="cb79-502"><a href="#cb79-502"></a><span class="in">```</span></span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
