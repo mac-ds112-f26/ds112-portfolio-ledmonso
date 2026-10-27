@@ -1,4 +1,4 @@
-| date     | day of week | steps |
+| date     | day_of_week | steps |
 |----------|-------------|-------|
 | 8/17/26  | Monday      | 11549 |
 | 8/18/26  | Tuesday     | 13223 |
