@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Join – COMP/STAT212 Portfolio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../extra/extra-sample1.html" rel="next">
+<link href="../ica/10-reshaping-data.html" rel="prev">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-373997cb3a23930aff2ce02df96e7d19.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b1525fc7443f827935229f0f56e36607.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-373997cb3a23930aff2ce02df96e7d19.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script><style>html{ scroll-behavior: smooth; }</style>
+<link rel="stylesheet" href="../style/custom.css">
+</head>
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/quarto-demo (1).html">In-Class Activities</a></li><li class="breadcrumb-item"><a href="../ica/11-joining-data.html"><span class="chapter-title">Join</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../assets/sidebar-logo.png" alt="Random negative space illustration" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../assets/sidebar-logo.png" alt="Random negative space illustration" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lindsay Edmonson</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Personal Viz Journey</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pvj/pvj-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Personal Visualization Journey</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">TidyTuesday</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tt/2025-07-08.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">TidyTuesday Sample 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tt/2025-07-15.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">TidyTuesday Sample 2</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Pre-Class Learnings</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pcl/pcl.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pre-Class Learning Summaries</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">In-Class Activities</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/quarto-demo (1).html" class="sidebar-item-text sidebar-link"><span class="chapter-title">My first Quarto document</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/03-univariate-viz-exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Univariate Viz — Exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/04-bivariate-viz-exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bivariate Viz — Exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/05-multivariate-viz.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Multivariate Viz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/06-spatial-viz.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Spatial Viz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/07-effective-viz.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Effective Viz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/08-wrangling-verbs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Wrangling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/09-dates.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Dates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/10-reshaping-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Reshape</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/11-joining-data.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Join</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Extras</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../extra/extra-sample1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Extra Sample 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../extra/extra-sample2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Extra Sample 2</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li>
+<a href="#join-keys" id="toc-join-keys" class="nav-link active" data-scroll-target="#join-keys">Join Keys</a>
+  <ul class="collapse">
+<li><a href="#spot-key-mismatch" id="toc-spot-key-mismatch" class="nav-link" data-scroll-target="#spot-key-mismatch">✏️ Spot Key Mismatch</a></li>
+  <li><a href="#specify-join-keys" id="toc-specify-join-keys" class="nav-link" data-scroll-target="#specify-join-keys">✏️ Specify Join Keys</a></li>
+  <li><a href="#spot-shared-columns" id="toc-spot-shared-columns" class="nav-link" data-scroll-target="#spot-shared-columns">✏️ Spot Shared Columns</a></li>
+  <li><a href="#interpret-grade.x-grade.y" id="toc-interpret-grade.x-grade.y" class="nav-link" data-scroll-target="#interpret-grade.x-grade.y">✏️ Interpret <code>grade.x</code> &amp; <code>grade.y</code></a></li>
+  </ul>
+</li>
+  <li>
+<a href="#choosing-joins" id="toc-choosing-joins" class="nav-link" data-scroll-target="#choosing-joins">Choosing Joins</a>
+  <ul class="collapse">
+<li><a href="#find-non-voters" id="toc-find-non-voters" class="nav-link" data-scroll-target="#find-non-voters">✏️ Find Non-Voters</a></li>
+  <li><a href="#find-voter-contacts" id="toc-find-voter-contacts" class="nav-link" data-scroll-target="#find-voter-contacts">✏️ Find Voter Contacts</a></li>
+  <li><a href="#combine-all-data" id="toc-combine-all-data" class="nav-link" data-scroll-target="#combine-all-data">✏️ Combine All Data</a></li>
+  <li><a href="#add-contacts-to-roster" id="toc-add-contacts-to-roster" class="nav-link" data-scroll-target="#add-contacts-to-roster">✏️ Add Contacts to Roster</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#grades-courses" id="toc-grades-courses" class="nav-link" data-scroll-target="#grades-courses">Grades &amp; Courses</a>
+  <ul class="collapse">
+<li><a href="#check-data-dimensions" id="toc-check-data-dimensions" class="nav-link" data-scroll-target="#check-data-dimensions">✏️ Check Data Dimensions</a></li>
+  <li><a href="#combine-cross-listed-sections" id="toc-combine-cross-listed-sections" class="nav-link" data-scroll-target="#combine-cross-listed-sections">✏️ Combine Cross-Listed Sections</a></li>
+  <li><a href="#compute-median-class-size" id="toc-compute-median-class-size" class="nav-link" data-scroll-target="#compute-median-class-size">✏️ Compute Median Class Size</a></li>
+  <li><a href="#compute-student-class-size" id="toc-compute-student-class-size" class="nav-link" data-scroll-target="#compute-student-class-size">✏️ Compute Student Class Size</a></li>
+  <li><a href="#plot-student-class-sizes" id="toc-plot-student-class-sizes" class="nav-link" data-scroll-target="#plot-student-class-sizes">✏️ Plot Student Class Sizes</a></li>
+  <li><a href="#show-session1986-students" id="toc-show-session1986-students" class="nav-link" data-scroll-target="#show-session1986-students">✏️ Show <code>session1986</code> Students</a></li>
+  <li><a href="#find-dept-e-students" id="toc-find-dept-e-students" class="nav-link" data-scroll-target="#find-dept-e-students">✏️ Find Dept E Students</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#wrangling-practice" id="toc-wrangling-practice" class="nav-link" data-scroll-target="#wrangling-practice">Wrangling Practice</a>
+  <ul class="collapse">
+<li><a href="#total-enrollments-by-dept" id="toc-total-enrollments-by-dept" class="nav-link" data-scroll-target="#total-enrollments-by-dept">✏️ Total Enrollments by Dept</a></li>
+  <li><a href="#compute-student-gpa" id="toc-compute-student-gpa" class="nav-link" data-scroll-target="#compute-student-gpa">✏️ Compute Student GPA</a></li>
+  <li><a href="#compute-median-gpa" id="toc-compute-median-gpa" class="nav-link" data-scroll-target="#compute-median-gpa">✏️ Compute Median GPA</a></li>
+  <li><a href="#find-grades-below-b" id="toc-find-grades-below-b" class="nav-link" data-scroll-target="#find-grades-below-b">✏️ Find Grades Below B+</a></li>
+  <li><a href="#compute-instructor-gpa" id="toc-compute-instructor-gpa" class="nav-link" data-scroll-target="#compute-instructor-gpa">✏️ Compute Instructor GPA</a></li>
+  <li><a href="#estimate-dept-gpa" id="toc-estimate-dept-gpa" class="nav-link" data-scroll-target="#estimate-dept-gpa">✏️ Estimate Dept GPA</a></li>
+  </ul>
+</li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/quarto-demo (1).html">In-Class Activities</a></li><li class="breadcrumb-item"><a href="../ica/11-joining-data.html"><span class="chapter-title">Join</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">Join</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="join-keys" class="level2"><h2 class="anchored" data-anchor-id="join-keys">Join Keys</h2>
+<section id="spot-key-mismatch" class="level3"><h3 class="anchored" data-anchor-id="spot-key-mismatch">✏️ Spot Key Mismatch</h3>
+<p>Define two new datasets, with different students and courses:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>students_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">student =</span> <span class="fu">c</span>(<span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"F"</span>),</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">class =</span> <span class="fu">c</span>(<span class="st">"COMP 101"</span>, <span class="st">"BIOL 101"</span>, <span class="st">"POLI 101"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># Check it out</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>students_2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  student    class
+1       D COMP 101
+2       E BIOL 101
+3       F POLI 101</code></pre>
+</div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>enrollments_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="at">course =</span> <span class="fu">c</span>(<span class="st">"ART 101"</span>, <span class="st">"BIOL 101"</span>, <span class="st">"COMP 101"</span>),</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="at">enrollment =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">19</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># Check it out</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>enrollments_2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>    course enrollment
+1  ART 101         18
+2 BIOL 101         20
+3 COMP 101         19</code></pre>
+</div>
+</div>
+<p>To connect the course enrollments to the students’ courses, try to do a <code>left_join()</code>. You get an error! Identify the problem by reviewing the error message and the datasets we’re trying to join.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># students_2 |&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co">#   left_join(enrollments_2)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section><section id="specify-join-keys" class="level3"><h3 class="anchored" data-anchor-id="specify-join-keys">✏️ Specify Join Keys</h3>
+<p>The problem is that course name, the <strong>key</strong> or variable that links these two datasets, is labeled differently: <code>class</code> in the <code>students_2</code> data and <code>course</code> in the <code>enrollments_2</code> data. Thus we have to specify these keys in our code:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># students_2 |&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#   left_join(enrollments_2, join_by(class == course))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># The order of the keys is important:</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co"># join_by("left data key" == "right data key")</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># The order is mixed up here, thus we get an error:</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># students_2 |&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#   left_join(enrollments_2, join_by(course == class))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section><section id="spot-shared-columns" class="level3"><h3 class="anchored" data-anchor-id="spot-shared-columns">✏️ Spot Shared Columns</h3>
+<p>Define another set of fake data which adds grade information:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Add student grades in each course</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>students_3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="at">student =</span> <span class="fu">c</span>(<span class="st">"Y"</span>, <span class="st">"Y"</span>, <span class="st">"Z"</span>, <span class="st">"Z"</span>),</span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="at">class =</span> <span class="fu">c</span>(<span class="st">"COMP 101"</span>, <span class="st">"BIOL 101"</span>, <span class="st">"POLI 101"</span>, <span class="st">"COMP 101"</span>),</span>
+<span id="cb8-5"><a href="#cb8-5"></a>  <span class="at">grade =</span> <span class="fu">c</span>(<span class="st">"B"</span>, <span class="st">"S"</span>, <span class="st">"C"</span>, <span class="st">"A"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6"></a>)</span>
+<span id="cb8-7"><a href="#cb8-7"></a></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="co"># Check it out</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a>students_3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  student    class grade
+1       Y COMP 101     B
+2       Y BIOL 101     S
+3       Z POLI 101     C
+4       Z COMP 101     A</code></pre>
+</div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Add average grades in each course</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>enrollments_3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="at">class =</span> <span class="fu">c</span>(<span class="st">"ART 101"</span>, <span class="st">"BIOL 101"</span>,<span class="st">"COMP 101"</span>),</span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="at">grade =</span> <span class="fu">c</span>(<span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"A-"</span>),</span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="at">enrollment =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">18</span>, <span class="dv">19</span>)</span>
+<span id="cb10-6"><a href="#cb10-6"></a>)</span>
+<span id="cb10-7"><a href="#cb10-7"></a></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="co"># Check it out</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>enrollments_3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>     class grade enrollment
+1  ART 101     B         20
+2 BIOL 101     A         18
+3 COMP 101    A-         19</code></pre>
+</div>
+</div>
+<p>Try doing a <code>left_join()</code> to link the students’ classes to their enrollment info. Did this work? Try and figure out the culprit by examining the output.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>students_3 <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">left_join</span>(enrollments_3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  student    class grade enrollment
+1       Y COMP 101     B         NA
+2       Y BIOL 101     S         NA
+3       Z POLI 101     C         NA
+4       Z COMP 101     A         NA</code></pre>
+</div>
+</div>
+</section><section id="interpret-grade.x-grade.y" class="level3"><h3 class="anchored" data-anchor-id="interpret-grade.x-grade.y">✏️ Interpret <code>grade.x</code> &amp; <code>grade.y</code>
+</h3>
+<p>The issue here is that our datasets have <em>2</em> column names in common: <code>class</code> and <code>grade</code>. BUT <code>grade</code> is measuring 2 different things here: individual student grades in <code>students_3</code> and average student grades in <code>enrollments_3</code>. Thus it doesn’t make sense to try to join the datasets with respect to this variable. We can again solve this by specifying that we want to join the datasets using the <code>class</code> variable as a <em>key</em>. What are <code>grade.x</code> and <code>grade.y</code>?</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>students_3 <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">left_join</span>(enrollments_3, <span class="fu">join_by</span>(class <span class="sc">==</span> class))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  student    class grade.x grade.y enrollment
+1       Y COMP 101       B      A-         19
+2       Y BIOL 101       S       A         18
+3       Z POLI 101       C    &lt;NA&gt;         NA
+4       Z COMP 101       A      A-         19</code></pre>
+</div>
+</div>
+</section></section><section id="choosing-joins" class="level2"><h2 class="anchored" data-anchor-id="choosing-joins">Choosing Joins</h2>
+<p>Before applying these ideas to bigger datasets, let’s practice identifying which join is appropriate in different scenarios. Define the following fake data on <code>voters</code> (people who <em>have</em> voted) and <code>contact</code> info for voting age adults (people who <em>could</em> vote):</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># People who have voted</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>voters <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"F"</span>, <span class="st">"G"</span>),</span>
+<span id="cb16-4"><a href="#cb16-4"></a>  <span class="at">times_voted =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">17</span>, <span class="dv">6</span>, <span class="dv">20</span>)</span>
+<span id="cb16-5"><a href="#cb16-5"></a>)</span>
+<span id="cb16-6"><a href="#cb16-6"></a></span>
+<span id="cb16-7"><a href="#cb16-7"></a>voters</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  id times_voted
+1  A           2
+2  D           4
+3  E          17
+4  F           6
+5  G          20</code></pre>
+</div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Contact info for voting age adults</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>contact <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>),</span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="at">address =</span> <span class="fu">c</span>(<span class="st">"summit"</span>, <span class="st">"grand"</span>, <span class="st">"snelling"</span>, <span class="st">"fairview"</span>),</span>
+<span id="cb18-5"><a href="#cb18-5"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">89</span>, <span class="dv">43</span>, <span class="dv">38</span>)</span>
+<span id="cb18-6"><a href="#cb18-6"></a>)</span>
+<span id="cb18-7"><a href="#cb18-7"></a></span>
+<span id="cb18-8"><a href="#cb18-8"></a>contact</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  name  address age
+1    A   summit  24
+2    B    grand  89
+3    C snelling  43
+4    D fairview  38</code></pre>
+</div>
+</div>
+<p>Use the appropriate join for each prompt below. In each case, think before you type:</p>
+<ul>
+<li>What dataset goes on the left?</li>
+<li>What do you want the resulting dataset to look like? How many rows and columns will it have?</li>
+</ul>
+<section id="find-non-voters" class="level3"><h3 class="anchored" data-anchor-id="find-non-voters">✏️ Find Non-Voters</h3>
+<p>We want contact info for people who HAVEN’T voted.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>contact <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">anti_join</span>(voters, <span class="fu">join_by</span>(name <span class="sc">==</span> id))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  name  address age
+1    B    grand  89
+2    C snelling  43</code></pre>
+</div>
+</div>
+</section><section id="find-voter-contacts" class="level3"><h3 class="anchored" data-anchor-id="find-voter-contacts">✏️ Find Voter Contacts</h3>
+<p>We want contact info for people who HAVE voted.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>contact <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">semi_join</span>(voters, <span class="fu">join_by</span>(name <span class="sc">==</span> id))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  name  address age
+1    A   summit  24
+2    D fairview  38</code></pre>
+</div>
+</div>
+</section><section id="combine-all-data" class="level3"><h3 class="anchored" data-anchor-id="combine-all-data">✏️ Combine All Data</h3>
+<p>We want any data available on each person.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>contact <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">full_join</span>(voters, <span class="fu">join_by</span>(name <span class="sc">==</span> id))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  name  address age times_voted
+1    A   summit  24           2
+2    B    grand  89          NA
+3    C snelling  43          NA
+4    D fairview  38           4
+5    E     &lt;NA&gt;  NA          17
+6    F     &lt;NA&gt;  NA           6
+7    G     &lt;NA&gt;  NA          20</code></pre>
+</div>
+</div>
+</section><section id="add-contacts-to-roster" class="level3"><h3 class="anchored" data-anchor-id="add-contacts-to-roster">✏️ Add Contacts to Roster</h3>
+<p>When possible, we want to add contact info to the voting roster.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>contact <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">left_join</span>(voters, <span class="fu">join_by</span>(name <span class="sc">==</span> id))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  name  address age times_voted
+1    A   summit  24           2
+2    B    grand  89          NA
+3    C snelling  43          NA
+4    D fairview  38           4</code></pre>
+</div>
+</div>
+</section></section><section id="grades-courses" class="level2"><h2 class="anchored" data-anchor-id="grades-courses">Grades &amp; Courses</h2>
+<section id="check-data-dimensions" class="level3"><h3 class="anchored" data-anchor-id="check-data-dimensions">✏️ Check Data Dimensions</h3>
+<p>Let’s apply these ideas to some bigger datasets. In <code>grades</code>, each row is a student-class pair with information on:</p>
+<ul>
+<li>
+<code>sid</code> = student ID</li>
+<li>
+<code>grade</code> = student’s grade</li>
+<li>
+<code>sessionID</code> = an identifier of the class section</li>
+</ul>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Get rid of some duplicate rows!</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>grades <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/grades.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">distinct</span>(sid, sessionID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="fu">head</span>(grades)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>     sid grade   sessionID
+1 S31185    D+ session1784
+2 S31185    B+ session1785
+3 S31185    A- session1791
+4 S31185    B+ session1792
+5 S31185    B- session1794
+6 S31185    C+ session1795</code></pre>
+</div>
+</div>
+<p>In <code>courses</code>, each row corresponds to a class section with information on:</p>
+<ul>
+<li>
+<code>sessionID</code> = an identifier of the class section</li>
+<li>
+<code>dept</code> = department</li>
+<li>
+<code>level</code> = course level (eg: 100)</li>
+<li>
+<code>sem</code> = semester</li>
+<li>
+<code>enroll</code> = enrollment (number of students)</li>
+<li>
+<code>iid</code> = instructor ID</li>
+</ul>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>courses <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/courses.csv"</span>)</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="fu">head</span>(courses)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>    sessionID dept level    sem enroll     iid
+1 session1784    M   100 FA1991     22 inst265
+2 session1785    k   100 FA1991     52 inst458
+3 session1791    J   100 FA1993     22 inst223
+4 session1792    J   300 FA1993     20 inst235
+5 session1794    J   200 FA1993     22 inst234
+6 session1795    J   200 SP1994     26 inst230</code></pre>
+</div>
+</div>
+<p>Use R code to take a quick glance at the data.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># How many observations (rows) and variables (columns) are there in the grades data?</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">dim</span>(grades)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 5844    3</code></pre>
+</div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># How many observations (rows) and variables (columns) are there in the courses data?</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">dim</span>(courses)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 1718    6</code></pre>
+</div>
+</div>
+</section><section id="combine-cross-listed-sections" class="level3"><h3 class="anchored" data-anchor-id="combine-cross-listed-sections">✏️ Combine Cross-Listed Sections</h3>
+<p>How big are the classes?</p>
+<p>Before digging in, note that some courses are listed twice in the <code>courses</code> data:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>courses <span class="sc">|&gt;</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>  <span class="fu">count</span>(sessionID) <span class="sc">|&gt;</span></span>
+<span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>     sessionID n
+1  session2047 2
+2  session2067 2
+3  session2448 2
+4  session2509 2
+5  session2541 2
+6  session2824 2
+7  session2826 2
+8  session2862 2
+9  session2897 2
+10 session3046 2
+11 session3057 2
+12 session3123 2
+13 session3243 2
+14 session3257 2
+15 session3387 2
+16 session3400 2
+17 session3414 2
+18 session3430 2
+19 session3489 2
+20 session3524 2
+21 session3629 2
+22 session3643 2
+23 session3821 2</code></pre>
+</div>
+</div>
+<p>If we pick out just 1 of these, we learn that some courses are cross-listed in multiple departments:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>courses <span class="sc">|&gt;</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">filter</span>(sessionID <span class="sc">==</span> <span class="st">"session2047"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>    sessionID dept level    sem enroll     iid
+1 session2047    g   100 FA2001     12 inst436
+2 session2047    m   100 FA2001     28 inst436</code></pre>
+</div>
+</div>
+<p>For our class size exploration, obtain the <em>total</em> enrollments in each <code>sessionID</code>, combining any cross-listed sections. Save this as <code>courses_combined</code>. NOTE: There’s no joining to do here!</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>courses_combined <span class="ot">&lt;-</span> courses <span class="sc">|&gt;</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a>  <span class="fu">group_by</span>(sessionID) <span class="sc">|&gt;</span></span>
+<span id="cb40-3"><a href="#cb40-3"></a>  <span class="fu">summarize</span>(<span class="at">enroll =</span> <span class="fu">sum</span>(enroll))</span>
+<span id="cb40-4"><a href="#cb40-4"></a></span>
+<span id="cb40-5"><a href="#cb40-5"></a><span class="co"># Check that this has 1695 rows and 2 columns</span></span>
+<span id="cb40-6"><a href="#cb40-6"></a><span class="fu">dim</span>(courses_combined)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 1695    2</code></pre>
+</div>
+</div>
+</section><section id="compute-median-class-size" class="level3"><h3 class="anchored" data-anchor-id="compute-median-class-size">✏️ Compute Median Class Size</h3>
+<p>Let’s first examine the question of class size from the <em>administration</em>’s viewpoint. To this end, calculate the median class size across all class sections. (The median is the <em>middle</em> or 50th percentile. Unlike the <em>mean</em>, it’s not skewed by outliers.) THINK FIRST:</p>
+<ul>
+<li>Which of the 2 datasets do you need to answer this question? One? Both?</li>
+<li>If you need course information, use <code>courses_combined</code> not <code>courses</code>.</li>
+<li>Do you have to do any joining? If so, which dataset will go on the left, i.e.&nbsp;which dataset includes your primary observations of interest? Which join function will you need?</li>
+</ul>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>courses_combined <span class="sc">|&gt;</span> </span>
+<span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">summarize</span>(<span class="fu">median</span>(enroll))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  `median(enroll)`
+             &lt;int&gt;
+1               18</code></pre>
+</div>
+</div>
+</section><section id="compute-student-class-size" class="level3"><h3 class="anchored" data-anchor-id="compute-student-class-size">✏️ Compute Student Class Size</h3>
+<p>But how big are classes from the student perspective? To this end, calculate the median class size for each individual student. Once you have the correct output, store it as <code>student_class_size</code>. THINK FIRST:</p>
+<ul>
+<li>Which of the 2 datasets do you need to answer this question? One? Both?</li>
+<li>If you need course information, use <code>courses_combined</code> not <code>courses</code>.</li>
+<li>Do you have to do any joining? If so, which dataset will go on the left, i.e.&nbsp;which dataset includes your primary observations of interest? Which join function will you need?</li>
+</ul>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>student_class_size <span class="ot">&lt;-</span> grades <span class="sc">|&gt;</span> </span>
+<span id="cb44-2"><a href="#cb44-2"></a>  <span class="fu">left_join</span>(courses_combined) <span class="sc">|&gt;</span> </span>
+<span id="cb44-3"><a href="#cb44-3"></a>  <span class="fu">group_by</span>(sid) <span class="sc">|&gt;</span> </span>
+<span id="cb44-4"><a href="#cb44-4"></a>  <span class="fu">summarize</span>(<span class="at">median =</span> <span class="fu">median</span>(enroll))</span>
+<span id="cb44-5"><a href="#cb44-5"></a>student_class_size</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 443 × 2
+   sid    median
+   &lt;chr&gt;   &lt;dbl&gt;
+ 1 S31185   23.5
+ 2 S31188   21  
+ 3 S31191   25  
+ 4 S31194   15  
+ 5 S31197   24  
+ 6 S31200   21  
+ 7 S31203   20  
+ 8 S31206   17  
+ 9 S31209   20  
+10 S31212   21  
+# ℹ 433 more rows</code></pre>
+</div>
+</div>
+</section><section id="plot-student-class-sizes" class="level3"><h3 class="anchored" data-anchor-id="plot-student-class-sizes">✏️ Plot Student Class Sizes</h3>
+<p>The median class size varies from student to student. To get a sense for the typical student experience and range in student experiences, construct and discuss a histogram of the median class sizes experienced by the students.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">ggplot</span>(student_class_size, <span class="fu">aes</span>(<span class="at">x =</span> median)) <span class="sc">+</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="11-joining-data_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="show-session1986-students" class="level3"><h3 class="anchored" data-anchor-id="show-session1986-students">✏️ Show <code>session1986</code> Students</h3>
+<p>Show data on the students that enrolled in <code>session1986</code>. THINK FIRST: Which of the 2 datasets do you need to answer this question? One? Both?</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>grades <span class="sc">|&gt;</span> </span>
+<span id="cb47-2"><a href="#cb47-2"></a>  <span class="fu">filter</span>(sessionID <span class="sc">==</span> <span class="st">"session1986"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>     sid grade   sessionID
+1 S31401    B+ session1986
+2 S32247     B session1986</code></pre>
+</div>
+</div>
+</section><section id="find-dept-e-students" class="level3"><h3 class="anchored" data-anchor-id="find-dept-e-students">✏️ Find Dept E Students</h3>
+<p>Below is a dataset with all courses in department E:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>dept_E <span class="ot">&lt;-</span> courses <span class="sc">|&gt;</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a>  <span class="fu">filter</span>(dept <span class="sc">==</span> <span class="st">"E"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>What students enrolled in classes in department E? (We just want info on the students, not the classes.)</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>grades <span class="sc">|&gt;</span> </span>
+<span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">semi_join</span>(dept_E)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>      sid grade   sessionID
+1  S31245     A session2326
+2  S31470     B session3658
+3  S31470     B session3798
+4  S31470     A session3799
+5  S31938     A session2326
+6  S31968     A session3104
+7  S32022     A session3798
+8  S32046    A- session2326
+9  S32226     A session2326
+10 S32415     B session2835
+11 S32415    B+ session3799
+12 S32484    A- session3658</code></pre>
+</div>
+</div>
+</section></section><section id="wrangling-practice" class="level2"><h2 class="anchored" data-anchor-id="wrangling-practice">Wrangling Practice</h2>
+<section id="total-enrollments-by-dept" class="level3"><h3 class="anchored" data-anchor-id="total-enrollments-by-dept">✏️ Total Enrollments by Dept</h3>
+<p>Use all of your wrangling skills to answer the following prompts! THINK FIRST:</p>
+<ul>
+<li>Think about what tables you might need to join (if any). Identify the corresponding variables to match.</li>
+<li>You’ll need an extra table to convert grades to grade point averages:</li>
+</ul>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>gpa_conversion <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb52-2"><a href="#cb52-2"></a>  <span class="at">grade =</span> <span class="fu">c</span>(<span class="st">"A+"</span>, <span class="st">"A"</span>, <span class="st">"A-"</span>, <span class="st">"B+"</span>, <span class="st">"B"</span>, <span class="st">"B-"</span>, <span class="st">"C+"</span>, <span class="st">"C"</span>, <span class="st">"C-"</span>, <span class="st">"D+"</span>, <span class="st">"D"</span>, <span class="st">"D-"</span>, <span class="st">"NC"</span>, <span class="st">"AU"</span>, <span class="st">"S"</span>),</span>
+<span id="cb52-3"><a href="#cb52-3"></a>  <span class="at">gp =</span> <span class="fu">c</span>(<span class="fl">4.3</span>, <span class="dv">4</span>, <span class="fl">3.7</span>, <span class="fl">3.3</span>, <span class="dv">3</span>, <span class="fl">2.7</span>, <span class="fl">2.3</span>, <span class="dv">2</span>, <span class="fl">1.7</span>, <span class="fl">1.3</span>, <span class="dv">1</span>, <span class="fl">0.7</span>, <span class="dv">0</span>, <span class="cn">NA</span>, <span class="cn">NA</span>)</span>
+<span id="cb52-4"><a href="#cb52-4"></a>)</span>
+<span id="cb52-5"><a href="#cb52-5"></a></span>
+<span id="cb52-6"><a href="#cb52-6"></a>gpa_conversion</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 2
+   grade    gp
+   &lt;chr&gt; &lt;dbl&gt;
+ 1 A+      4.3
+ 2 A       4  
+ 3 A-      3.7
+ 4 B+      3.3
+ 5 B       3  
+ 6 B-      2.7
+ 7 C+      2.3
+ 8 C       2  
+ 9 C-      1.7
+10 D+      1.3
+11 D       1  
+12 D-      0.7
+13 NC      0  
+14 AU     NA  
+15 S      NA  </code></pre>
+</div>
+</div>
+<p>How many total student enrollments are there in each department? Order from high to low.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>courses <span class="sc">|&gt;</span> </span>
+<span id="cb54-2"><a href="#cb54-2"></a>  <span class="fu">group_by</span>(dept) <span class="sc">|&gt;</span></span>
+<span id="cb54-3"><a href="#cb54-3"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(enroll)) <span class="sc">|&gt;</span></span>
+<span id="cb54-4"><a href="#cb54-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 40 × 2
+   dept  total
+   &lt;chr&gt; &lt;int&gt;
+ 1 d      3046
+ 2 j      2312
+ 3 O      2178
+ 4 M      2129
+ 5 m      2105
+ 6 D      2003
+ 7 W      1960
+ 8 q      1859
+ 9 k      1824
+10 F      1587
+# ℹ 30 more rows</code></pre>
+</div>
+</div>
+</section><section id="compute-student-gpa" class="level3"><h3 class="anchored" data-anchor-id="compute-student-gpa">✏️ Compute Student GPA</h3>
+<p>What’s the grade-point average (GPA) for each student?</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>grades <span class="sc">|&gt;</span></span>
+<span id="cb56-2"><a href="#cb56-2"></a>  <span class="fu">left_join</span>(gpa_conversion) <span class="sc">|&gt;</span></span>
+<span id="cb56-3"><a href="#cb56-3"></a>  <span class="fu">group_by</span>(sid) <span class="sc">|&gt;</span></span>
+<span id="cb56-4"><a href="#cb56-4"></a>  <span class="fu">summarize</span>(<span class="at">gpa =</span> <span class="fu">mean</span>(gp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 443 × 2
+   sid      gpa
+   &lt;chr&gt;  &lt;dbl&gt;
+ 1 S31185  2.41
+ 2 S31188  3.02
+ 3 S31191  3.21
+ 4 S31194  3.36
+ 5 S31197  3.35
+ 6 S31200  2.2 
+ 7 S31203  3.82
+ 8 S31206  2.46
+ 9 S31209  3.13
+10 S31212  3.67
+# ℹ 433 more rows</code></pre>
+</div>
+</div>
+</section><section id="compute-median-gpa" class="level3"><h3 class="anchored" data-anchor-id="compute-median-gpa">✏️ Compute Median GPA</h3>
+<p>What’s the median GPA across all students?</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>grades <span class="sc">|&gt;</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a>  <span class="fu">left_join</span>(gpa_conversion) <span class="sc">|&gt;</span></span>
+<span id="cb58-3"><a href="#cb58-3"></a>  <span class="fu">group_by</span>(sid) <span class="sc">|&gt;</span></span>
+<span id="cb58-4"><a href="#cb58-4"></a>  <span class="fu">summarize</span>(<span class="at">gpa =</span> <span class="fu">mean</span>(gp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb58-5"><a href="#cb58-5"></a>  <span class="fu">summarize</span>(<span class="fu">median</span>(gpa))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  `median(gpa)`
+          &lt;dbl&gt;
+1          3.47</code></pre>
+</div>
+</div>
+</section><section id="find-grades-below-b" class="level3"><h3 class="anchored" data-anchor-id="find-grades-below-b">✏️ Find Grades Below B+</h3>
+<p>What fraction of grades are below B+?</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>grades <span class="sc">|&gt;</span></span>
+<span id="cb60-2"><a href="#cb60-2"></a>  <span class="fu">left_join</span>(gpa_conversion) <span class="sc">|&gt;</span></span>
+<span id="cb60-3"><a href="#cb60-3"></a>  <span class="fu">mutate</span>(<span class="at">below_b_plus =</span> (gp <span class="sc">&lt;</span> <span class="fl">3.3</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb60-4"><a href="#cb60-4"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(below_b_plus, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  mean(below_b_plus, na.rm = TRUE)
+1                        0.2834776</code></pre>
+</div>
+</div>
+</section><section id="compute-instructor-gpa" class="level3"><h3 class="anchored" data-anchor-id="compute-instructor-gpa">✏️ Compute Instructor GPA</h3>
+<p>What’s the grade-point average for each instructor? Order from low to high.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>grades <span class="sc">|&gt;</span></span>
+<span id="cb62-2"><a href="#cb62-2"></a>  <span class="fu">left_join</span>(gpa_conversion) <span class="sc">|&gt;</span></span>
+<span id="cb62-3"><a href="#cb62-3"></a>  <span class="fu">left_join</span>(courses) <span class="sc">|&gt;</span></span>
+<span id="cb62-4"><a href="#cb62-4"></a>  <span class="fu">group_by</span>(iid) <span class="sc">|&gt;</span></span>
+<span id="cb62-5"><a href="#cb62-5"></a>  <span class="fu">summarize</span>(<span class="at">gpa =</span> <span class="fu">mean</span>(gp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb62-6"><a href="#cb62-6"></a>  <span class="fu">arrange</span>(gpa)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 364 × 2
+   iid       gpa
+   &lt;chr&gt;   &lt;dbl&gt;
+ 1 inst265  1.3 
+ 2 inst444  1.7 
+ 3 inst513  1.85
+ 4 inst200  2   
+ 5 inst507  2.2 
+ 6 inst445  2.3 
+ 7 inst420  2.6 
+ 8 inst262  2.65
+ 9 inst176  2.66
+10 inst234  2.7 
+# ℹ 354 more rows</code></pre>
+</div>
+</div>
+</section><section id="estimate-dept-gpa" class="level3"><h3 class="anchored" data-anchor-id="estimate-dept-gpa">✏️ Estimate Dept GPA</h3>
+<p>CHALLENGE: Estimate the grade-point average for each department, and sort from low to high. NOTE: Don’t include cross-listed courses. Students in cross-listed courses could be enrolled under either department, and we do not know which department to assign the grade to. HINT: You’ll need to do multiple joins.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>cross_listed <span class="ot">&lt;-</span> courses <span class="sc">|&gt;</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a>  <span class="fu">count</span>(sessionID) <span class="sc">|&gt;</span></span>
+<span id="cb64-3"><a href="#cb64-3"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb64-4"><a href="#cb64-4"></a></span>
+<span id="cb64-5"><a href="#cb64-5"></a>grades <span class="sc">|&gt;</span></span>
+<span id="cb64-6"><a href="#cb64-6"></a>  <span class="fu">anti_join</span>(cross_listed) <span class="sc">|&gt;</span></span>
+<span id="cb64-7"><a href="#cb64-7"></a>  <span class="fu">inner_join</span>(courses) <span class="sc">|&gt;</span></span>
+<span id="cb64-8"><a href="#cb64-8"></a>  <span class="fu">left_join</span>(gpa_conversion) <span class="sc">|&gt;</span></span>
+<span id="cb64-9"><a href="#cb64-9"></a>  <span class="fu">group_by</span>(dept) <span class="sc">|&gt;</span></span>
+<span id="cb64-10"><a href="#cb64-10"></a>  <span class="fu">summarize</span>(<span class="at">gpa =</span> <span class="fu">mean</span>(gp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb64-11"><a href="#cb64-11"></a>  <span class="fu">arrange</span>(gpa)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 39 × 2
+   dept    gpa
+   &lt;chr&gt; &lt;dbl&gt;
+ 1 o      3.08
+ 2 M      3.10
+ 3 K      3.17
+ 4 G      3.18
+ 5 B      3.2 
+ 6 J      3.22
+ 7 T      3.23
+ 8 b      3.25
+ 9 F      3.30
+10 d      3.31
+# ℹ 29 more rows</code></pre>
+</div>
+</div>
+
+
+<!-- -->
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation column-body"><div class="nav-page nav-page-previous">
+      <a href="../ica/10-reshaping-data.html" class="pagination-link" aria-label="Reshape">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Reshape</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../extra/extra-sample1.html" class="pagination-link" aria-label="Extra Sample 1">
+        <span class="nav-page-text"><span class="chapter-title">Extra Sample 1</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb66" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb66-1"><a href="#cb66-1"></a><span class="co">---</span></span>
+<span id="cb66-2"><a href="#cb66-2"></a><span class="an">title:</span><span class="co"> "Join"</span></span>
+<span id="cb66-3"><a href="#cb66-3"></a><span class="co"># generated by activities/create_ica_files.R</span></span>
+<span id="cb66-4"><a href="#cb66-4"></a><span class="co">---</span></span>
+<span id="cb66-5"><a href="#cb66-5"></a></span>
+<span id="cb66-6"><a href="#cb66-6"></a><span class="fu">## Join Keys</span></span>
+<span id="cb66-7"><a href="#cb66-7"></a></span>
+<span id="cb66-8"><a href="#cb66-8"></a><span class="fu">### ✏️ Spot Key Mismatch</span></span>
+<span id="cb66-9"><a href="#cb66-9"></a></span>
+<span id="cb66-10"><a href="#cb66-10"></a>Define two new datasets, with different students and courses:</span>
+<span id="cb66-11"><a href="#cb66-11"></a></span>
+<span id="cb66-14"><a href="#cb66-14"></a><span class="in">```{r}</span></span>
+<span id="cb66-15"><a href="#cb66-15"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb66-16"><a href="#cb66-16"></a>students_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb66-17"><a href="#cb66-17"></a>  <span class="at">student =</span> <span class="fu">c</span>(<span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"F"</span>),</span>
+<span id="cb66-18"><a href="#cb66-18"></a>  <span class="at">class =</span> <span class="fu">c</span>(<span class="st">"COMP 101"</span>, <span class="st">"BIOL 101"</span>, <span class="st">"POLI 101"</span>)</span>
+<span id="cb66-19"><a href="#cb66-19"></a>)</span>
+<span id="cb66-20"><a href="#cb66-20"></a></span>
+<span id="cb66-21"><a href="#cb66-21"></a><span class="co"># Check it out</span></span>
+<span id="cb66-22"><a href="#cb66-22"></a>students_2</span>
+<span id="cb66-23"><a href="#cb66-23"></a></span>
+<span id="cb66-24"><a href="#cb66-24"></a>enrollments_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb66-25"><a href="#cb66-25"></a>  <span class="at">course =</span> <span class="fu">c</span>(<span class="st">"ART 101"</span>, <span class="st">"BIOL 101"</span>, <span class="st">"COMP 101"</span>),</span>
+<span id="cb66-26"><a href="#cb66-26"></a>  <span class="at">enrollment =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">19</span>)</span>
+<span id="cb66-27"><a href="#cb66-27"></a>)</span>
+<span id="cb66-28"><a href="#cb66-28"></a></span>
+<span id="cb66-29"><a href="#cb66-29"></a><span class="co"># Check it out</span></span>
+<span id="cb66-30"><a href="#cb66-30"></a>enrollments_2</span>
+<span id="cb66-31"><a href="#cb66-31"></a><span class="in">```</span></span>
+<span id="cb66-32"><a href="#cb66-32"></a></span>
+<span id="cb66-33"><a href="#cb66-33"></a>To connect the course enrollments to the students' courses, try to do a <span class="in">`left_join()`</span>.</span>
+<span id="cb66-34"><a href="#cb66-34"></a>You get an error!</span>
+<span id="cb66-35"><a href="#cb66-35"></a>Identify the problem by reviewing the error message and the datasets we're trying to join.</span>
+<span id="cb66-36"><a href="#cb66-36"></a></span>
+<span id="cb66-39"><a href="#cb66-39"></a><span class="in">```{r}</span></span>
+<span id="cb66-40"><a href="#cb66-40"></a><span class="co">#| eval: false  # keep this false since it will produce an error</span></span>
+<span id="cb66-41"><a href="#cb66-41"></a></span>
+<span id="cb66-42"><a href="#cb66-42"></a><span class="co"># students_2 |&gt;</span></span>
+<span id="cb66-43"><a href="#cb66-43"></a><span class="co">#   left_join(enrollments_2)</span></span>
+<span id="cb66-44"><a href="#cb66-44"></a><span class="in">```</span></span>
+<span id="cb66-45"><a href="#cb66-45"></a></span>
+<span id="cb66-46"><a href="#cb66-46"></a><span class="fu">### ✏️ Specify Join Keys</span></span>
+<span id="cb66-47"><a href="#cb66-47"></a></span>
+<span id="cb66-48"><a href="#cb66-48"></a>The problem is that course name, the **key** or variable that links these two datasets, is labeled differently: <span class="in">`class`</span> in the <span class="in">`students_2`</span> data and <span class="in">`course`</span> in the <span class="in">`enrollments_2`</span> data.</span>
+<span id="cb66-49"><a href="#cb66-49"></a>Thus we have to specify these keys in our code:</span>
+<span id="cb66-50"><a href="#cb66-50"></a></span>
+<span id="cb66-53"><a href="#cb66-53"></a><span class="in">```{r}</span></span>
+<span id="cb66-54"><a href="#cb66-54"></a><span class="co"># students_2 |&gt;</span></span>
+<span id="cb66-55"><a href="#cb66-55"></a><span class="co">#   left_join(enrollments_2, join_by(class == course))</span></span>
+<span id="cb66-56"><a href="#cb66-56"></a><span class="in">```</span></span>
+<span id="cb66-57"><a href="#cb66-57"></a></span>
+<span id="cb66-60"><a href="#cb66-60"></a><span class="in">```{r}</span></span>
+<span id="cb66-61"><a href="#cb66-61"></a><span class="co">#| eval: false  # keep this false since it will produce an error</span></span>
+<span id="cb66-62"><a href="#cb66-62"></a></span>
+<span id="cb66-63"><a href="#cb66-63"></a><span class="co"># The order of the keys is important:</span></span>
+<span id="cb66-64"><a href="#cb66-64"></a><span class="co"># join_by("left data key" == "right data key")</span></span>
+<span id="cb66-65"><a href="#cb66-65"></a><span class="co"># The order is mixed up here, thus we get an error:</span></span>
+<span id="cb66-66"><a href="#cb66-66"></a><span class="co"># students_2 |&gt;</span></span>
+<span id="cb66-67"><a href="#cb66-67"></a><span class="co">#   left_join(enrollments_2, join_by(course == class))</span></span>
+<span id="cb66-68"><a href="#cb66-68"></a><span class="in">```</span></span>
+<span id="cb66-69"><a href="#cb66-69"></a></span>
+<span id="cb66-70"><a href="#cb66-70"></a><span class="fu">### ✏️ Spot Shared Columns</span></span>
+<span id="cb66-71"><a href="#cb66-71"></a></span>
+<span id="cb66-72"><a href="#cb66-72"></a>Define another set of fake data which adds grade information:</span>
+<span id="cb66-73"><a href="#cb66-73"></a></span>
+<span id="cb66-76"><a href="#cb66-76"></a><span class="in">```{r}</span></span>
+<span id="cb66-77"><a href="#cb66-77"></a><span class="co"># Add student grades in each course</span></span>
+<span id="cb66-78"><a href="#cb66-78"></a>students_3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb66-79"><a href="#cb66-79"></a>  <span class="at">student =</span> <span class="fu">c</span>(<span class="st">"Y"</span>, <span class="st">"Y"</span>, <span class="st">"Z"</span>, <span class="st">"Z"</span>),</span>
+<span id="cb66-80"><a href="#cb66-80"></a>  <span class="at">class =</span> <span class="fu">c</span>(<span class="st">"COMP 101"</span>, <span class="st">"BIOL 101"</span>, <span class="st">"POLI 101"</span>, <span class="st">"COMP 101"</span>),</span>
+<span id="cb66-81"><a href="#cb66-81"></a>  <span class="at">grade =</span> <span class="fu">c</span>(<span class="st">"B"</span>, <span class="st">"S"</span>, <span class="st">"C"</span>, <span class="st">"A"</span>)</span>
+<span id="cb66-82"><a href="#cb66-82"></a>)</span>
+<span id="cb66-83"><a href="#cb66-83"></a></span>
+<span id="cb66-84"><a href="#cb66-84"></a><span class="co"># Check it out</span></span>
+<span id="cb66-85"><a href="#cb66-85"></a>students_3</span>
+<span id="cb66-86"><a href="#cb66-86"></a></span>
+<span id="cb66-87"><a href="#cb66-87"></a><span class="co"># Add average grades in each course</span></span>
+<span id="cb66-88"><a href="#cb66-88"></a>enrollments_3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb66-89"><a href="#cb66-89"></a>  <span class="at">class =</span> <span class="fu">c</span>(<span class="st">"ART 101"</span>, <span class="st">"BIOL 101"</span>,<span class="st">"COMP 101"</span>),</span>
+<span id="cb66-90"><a href="#cb66-90"></a>  <span class="at">grade =</span> <span class="fu">c</span>(<span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"A-"</span>),</span>
+<span id="cb66-91"><a href="#cb66-91"></a>  <span class="at">enrollment =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">18</span>, <span class="dv">19</span>)</span>
+<span id="cb66-92"><a href="#cb66-92"></a>)</span>
+<span id="cb66-93"><a href="#cb66-93"></a></span>
+<span id="cb66-94"><a href="#cb66-94"></a><span class="co"># Check it out</span></span>
+<span id="cb66-95"><a href="#cb66-95"></a>enrollments_3</span>
+<span id="cb66-96"><a href="#cb66-96"></a><span class="in">```</span></span>
+<span id="cb66-97"><a href="#cb66-97"></a></span>
+<span id="cb66-98"><a href="#cb66-98"></a>Try doing a <span class="in">`left_join()`</span> to link the students' classes to their enrollment info.</span>
+<span id="cb66-99"><a href="#cb66-99"></a>Did this work?</span>
+<span id="cb66-100"><a href="#cb66-100"></a>Try and figure out the culprit by examining the output.</span>
+<span id="cb66-101"><a href="#cb66-101"></a></span>
+<span id="cb66-104"><a href="#cb66-104"></a><span class="in">```{r}</span></span>
+<span id="cb66-105"><a href="#cb66-105"></a>students_3 <span class="sc">|&gt;</span></span>
+<span id="cb66-106"><a href="#cb66-106"></a>  <span class="fu">left_join</span>(enrollments_3)</span>
+<span id="cb66-107"><a href="#cb66-107"></a><span class="in">```</span></span>
+<span id="cb66-108"><a href="#cb66-108"></a></span>
+<span id="cb66-109"><a href="#cb66-109"></a><span class="fu">### ✏️ Interpret `grade.x` &amp; `grade.y`</span></span>
+<span id="cb66-110"><a href="#cb66-110"></a></span>
+<span id="cb66-111"><a href="#cb66-111"></a>The issue here is that our datasets have *2* column names in common: <span class="in">`class`</span> and <span class="in">`grade`</span>.</span>
+<span id="cb66-112"><a href="#cb66-112"></a>BUT <span class="in">`grade`</span> is measuring 2 different things here: individual student grades in <span class="in">`students_3`</span> and average student grades in <span class="in">`enrollments_3`</span>.</span>
+<span id="cb66-113"><a href="#cb66-113"></a>Thus it doesn't make sense to try to join the datasets with respect to this variable.</span>
+<span id="cb66-114"><a href="#cb66-114"></a>We can again solve this by specifying that we want to join the datasets using the <span class="in">`class`</span> variable as a *key*.</span>
+<span id="cb66-115"><a href="#cb66-115"></a>What are <span class="in">`grade.x`</span> and <span class="in">`grade.y`</span>?</span>
+<span id="cb66-116"><a href="#cb66-116"></a></span>
+<span id="cb66-119"><a href="#cb66-119"></a><span class="in">```{r}</span></span>
+<span id="cb66-120"><a href="#cb66-120"></a>students_3 <span class="sc">|&gt;</span></span>
+<span id="cb66-121"><a href="#cb66-121"></a>  <span class="fu">left_join</span>(enrollments_3, <span class="fu">join_by</span>(class <span class="sc">==</span> class))</span>
+<span id="cb66-122"><a href="#cb66-122"></a><span class="in">```</span></span>
+<span id="cb66-123"><a href="#cb66-123"></a></span>
+<span id="cb66-124"><a href="#cb66-124"></a><span class="fu">## Choosing Joins</span></span>
+<span id="cb66-125"><a href="#cb66-125"></a></span>
+<span id="cb66-126"><a href="#cb66-126"></a>Before applying these ideas to bigger datasets, let's practice identifying which join is appropriate in different scenarios.</span>
+<span id="cb66-127"><a href="#cb66-127"></a>Define the following fake data on <span class="in">`voters`</span> (people who *have* voted) and `contact` info for voting age adults (people who *could* vote):</span>
+<span id="cb66-128"><a href="#cb66-128"></a></span>
+<span id="cb66-131"><a href="#cb66-131"></a><span class="in">```{r}</span></span>
+<span id="cb66-132"><a href="#cb66-132"></a><span class="co"># People who have voted</span></span>
+<span id="cb66-133"><a href="#cb66-133"></a>voters <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb66-134"><a href="#cb66-134"></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"F"</span>, <span class="st">"G"</span>),</span>
+<span id="cb66-135"><a href="#cb66-135"></a>  <span class="at">times_voted =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">17</span>, <span class="dv">6</span>, <span class="dv">20</span>)</span>
+<span id="cb66-136"><a href="#cb66-136"></a>)</span>
+<span id="cb66-137"><a href="#cb66-137"></a></span>
+<span id="cb66-138"><a href="#cb66-138"></a>voters</span>
+<span id="cb66-139"><a href="#cb66-139"></a></span>
+<span id="cb66-140"><a href="#cb66-140"></a><span class="co"># Contact info for voting age adults</span></span>
+<span id="cb66-141"><a href="#cb66-141"></a>contact <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb66-142"><a href="#cb66-142"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>),</span>
+<span id="cb66-143"><a href="#cb66-143"></a>  <span class="at">address =</span> <span class="fu">c</span>(<span class="st">"summit"</span>, <span class="st">"grand"</span>, <span class="st">"snelling"</span>, <span class="st">"fairview"</span>),</span>
+<span id="cb66-144"><a href="#cb66-144"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">89</span>, <span class="dv">43</span>, <span class="dv">38</span>)</span>
+<span id="cb66-145"><a href="#cb66-145"></a>)</span>
+<span id="cb66-146"><a href="#cb66-146"></a></span>
+<span id="cb66-147"><a href="#cb66-147"></a>contact</span>
+<span id="cb66-148"><a href="#cb66-148"></a><span class="in">```</span></span>
+<span id="cb66-149"><a href="#cb66-149"></a></span>
+<span id="cb66-150"><a href="#cb66-150"></a>Use the appropriate join for each prompt below.</span>
+<span id="cb66-151"><a href="#cb66-151"></a>In each case, think before you type:</span>
+<span id="cb66-152"><a href="#cb66-152"></a></span>
+<span id="cb66-153"><a href="#cb66-153"></a><span class="ss">-   </span>What dataset goes on the left?</span>
+<span id="cb66-154"><a href="#cb66-154"></a><span class="ss">-   </span>What do you want the resulting dataset to look like? How many rows and columns will it have?</span>
+<span id="cb66-155"><a href="#cb66-155"></a></span>
+<span id="cb66-156"><a href="#cb66-156"></a><span class="fu">### ✏️ Find Non-Voters</span></span>
+<span id="cb66-157"><a href="#cb66-157"></a></span>
+<span id="cb66-158"><a href="#cb66-158"></a>We want contact info for people who HAVEN'T voted.</span>
+<span id="cb66-159"><a href="#cb66-159"></a></span>
+<span id="cb66-162"><a href="#cb66-162"></a><span class="in">```{r}</span></span>
+<span id="cb66-163"><a href="#cb66-163"></a>contact <span class="sc">|&gt;</span> </span>
+<span id="cb66-164"><a href="#cb66-164"></a>  <span class="fu">anti_join</span>(voters, <span class="fu">join_by</span>(name <span class="sc">==</span> id))</span>
+<span id="cb66-165"><a href="#cb66-165"></a><span class="in">```</span></span>
+<span id="cb66-166"><a href="#cb66-166"></a></span>
+<span id="cb66-167"><a href="#cb66-167"></a><span class="fu">### ✏️ Find Voter Contacts</span></span>
+<span id="cb66-168"><a href="#cb66-168"></a></span>
+<span id="cb66-169"><a href="#cb66-169"></a>We want contact info for people who HAVE voted.</span>
+<span id="cb66-170"><a href="#cb66-170"></a></span>
+<span id="cb66-173"><a href="#cb66-173"></a><span class="in">```{r}</span></span>
+<span id="cb66-174"><a href="#cb66-174"></a>contact <span class="sc">|&gt;</span> </span>
+<span id="cb66-175"><a href="#cb66-175"></a>  <span class="fu">semi_join</span>(voters, <span class="fu">join_by</span>(name <span class="sc">==</span> id))</span>
+<span id="cb66-176"><a href="#cb66-176"></a><span class="in">```</span></span>
+<span id="cb66-177"><a href="#cb66-177"></a></span>
+<span id="cb66-178"><a href="#cb66-178"></a><span class="fu">### ✏️ Combine All Data</span></span>
+<span id="cb66-179"><a href="#cb66-179"></a></span>
+<span id="cb66-180"><a href="#cb66-180"></a>We want any data available on each person.</span>
+<span id="cb66-181"><a href="#cb66-181"></a></span>
+<span id="cb66-184"><a href="#cb66-184"></a><span class="in">```{r}</span></span>
+<span id="cb66-185"><a href="#cb66-185"></a>contact <span class="sc">|&gt;</span> </span>
+<span id="cb66-186"><a href="#cb66-186"></a>  <span class="fu">full_join</span>(voters, <span class="fu">join_by</span>(name <span class="sc">==</span> id))</span>
+<span id="cb66-187"><a href="#cb66-187"></a><span class="in">```</span></span>
+<span id="cb66-188"><a href="#cb66-188"></a></span>
+<span id="cb66-189"><a href="#cb66-189"></a><span class="fu">### ✏️ Add Contacts to Roster</span></span>
+<span id="cb66-190"><a href="#cb66-190"></a></span>
+<span id="cb66-191"><a href="#cb66-191"></a>When possible, we want to add contact info to the voting roster.</span>
+<span id="cb66-192"><a href="#cb66-192"></a></span>
+<span id="cb66-195"><a href="#cb66-195"></a><span class="in">```{r}</span></span>
+<span id="cb66-196"><a href="#cb66-196"></a>contact <span class="sc">|&gt;</span> </span>
+<span id="cb66-197"><a href="#cb66-197"></a>  <span class="fu">left_join</span>(voters, <span class="fu">join_by</span>(name <span class="sc">==</span> id))</span>
+<span id="cb66-198"><a href="#cb66-198"></a><span class="in">```</span></span>
+<span id="cb66-199"><a href="#cb66-199"></a></span>
+<span id="cb66-200"><a href="#cb66-200"></a><span class="fu">## Grades &amp; Courses</span></span>
+<span id="cb66-201"><a href="#cb66-201"></a></span>
+<span id="cb66-202"><a href="#cb66-202"></a><span class="fu">### ✏️ Check Data Dimensions</span></span>
+<span id="cb66-203"><a href="#cb66-203"></a></span>
+<span id="cb66-204"><a href="#cb66-204"></a>Let's apply these ideas to some bigger datasets.</span>
+<span id="cb66-205"><a href="#cb66-205"></a>In <span class="in">`grades`</span>, each row is a student-class pair with information on:</span>
+<span id="cb66-206"><a href="#cb66-206"></a></span>
+<span id="cb66-207"><a href="#cb66-207"></a><span class="ss">-   </span><span class="in">`sid`</span> = student ID</span>
+<span id="cb66-208"><a href="#cb66-208"></a><span class="ss">-   </span><span class="in">`grade`</span> = student's grade</span>
+<span id="cb66-209"><a href="#cb66-209"></a><span class="ss">-   </span><span class="in">`sessionID`</span> = an identifier of the class section</span>
+<span id="cb66-210"><a href="#cb66-210"></a></span>
+<span id="cb66-213"><a href="#cb66-213"></a><span class="in">```{r}</span></span>
+<span id="cb66-214"><a href="#cb66-214"></a><span class="co"># Get rid of some duplicate rows!</span></span>
+<span id="cb66-215"><a href="#cb66-215"></a>grades <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/grades.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb66-216"><a href="#cb66-216"></a>  <span class="fu">distinct</span>(sid, sessionID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb66-217"><a href="#cb66-217"></a><span class="fu">head</span>(grades)</span>
+<span id="cb66-218"><a href="#cb66-218"></a><span class="in">```</span></span>
+<span id="cb66-219"><a href="#cb66-219"></a></span>
+<span id="cb66-220"><a href="#cb66-220"></a>In <span class="in">`courses`</span>, each row corresponds to a class section with information on:</span>
+<span id="cb66-221"><a href="#cb66-221"></a></span>
+<span id="cb66-222"><a href="#cb66-222"></a><span class="ss">-   </span><span class="in">`sessionID`</span> = an identifier of the class section</span>
+<span id="cb66-223"><a href="#cb66-223"></a><span class="ss">-   </span><span class="in">`dept`</span> = department</span>
+<span id="cb66-224"><a href="#cb66-224"></a><span class="ss">-   </span><span class="in">`level`</span> = course level (eg: 100)</span>
+<span id="cb66-225"><a href="#cb66-225"></a><span class="ss">-   </span><span class="in">`sem`</span> = semester</span>
+<span id="cb66-226"><a href="#cb66-226"></a><span class="ss">-   </span><span class="in">`enroll`</span> = enrollment (number of students)</span>
+<span id="cb66-227"><a href="#cb66-227"></a><span class="ss">-   </span><span class="in">`iid`</span> = instructor ID</span>
+<span id="cb66-228"><a href="#cb66-228"></a></span>
+<span id="cb66-231"><a href="#cb66-231"></a><span class="in">```{r}</span></span>
+<span id="cb66-232"><a href="#cb66-232"></a>courses <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/courses.csv"</span>)</span>
+<span id="cb66-233"><a href="#cb66-233"></a><span class="fu">head</span>(courses)</span>
+<span id="cb66-234"><a href="#cb66-234"></a><span class="in">```</span></span>
+<span id="cb66-235"><a href="#cb66-235"></a></span>
+<span id="cb66-236"><a href="#cb66-236"></a>Use R code to take a quick glance at the data.</span>
+<span id="cb66-237"><a href="#cb66-237"></a></span>
+<span id="cb66-240"><a href="#cb66-240"></a><span class="in">```{r}</span></span>
+<span id="cb66-241"><a href="#cb66-241"></a><span class="co"># How many observations (rows) and variables (columns) are there in the grades data?</span></span>
+<span id="cb66-242"><a href="#cb66-242"></a><span class="fu">dim</span>(grades)</span>
+<span id="cb66-243"><a href="#cb66-243"></a></span>
+<span id="cb66-244"><a href="#cb66-244"></a><span class="co"># How many observations (rows) and variables (columns) are there in the courses data?</span></span>
+<span id="cb66-245"><a href="#cb66-245"></a><span class="fu">dim</span>(courses)</span>
+<span id="cb66-246"><a href="#cb66-246"></a></span>
+<span id="cb66-247"><a href="#cb66-247"></a><span class="in">```</span></span>
+<span id="cb66-248"><a href="#cb66-248"></a></span>
+<span id="cb66-249"><a href="#cb66-249"></a><span class="fu">### ✏️ Combine Cross-Listed Sections</span></span>
+<span id="cb66-250"><a href="#cb66-250"></a></span>
+<span id="cb66-251"><a href="#cb66-251"></a>How big are the classes?</span>
+<span id="cb66-252"><a href="#cb66-252"></a></span>
+<span id="cb66-253"><a href="#cb66-253"></a>Before digging in, note that some courses are listed twice in the <span class="in">`courses`</span> data:</span>
+<span id="cb66-254"><a href="#cb66-254"></a></span>
+<span id="cb66-257"><a href="#cb66-257"></a><span class="in">```{r}</span></span>
+<span id="cb66-258"><a href="#cb66-258"></a>courses <span class="sc">|&gt;</span></span>
+<span id="cb66-259"><a href="#cb66-259"></a>  <span class="fu">count</span>(sessionID) <span class="sc">|&gt;</span></span>
+<span id="cb66-260"><a href="#cb66-260"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb66-261"><a href="#cb66-261"></a><span class="in">```</span></span>
+<span id="cb66-262"><a href="#cb66-262"></a></span>
+<span id="cb66-263"><a href="#cb66-263"></a>If we pick out just 1 of these, we learn that some courses are cross-listed in multiple departments:</span>
+<span id="cb66-264"><a href="#cb66-264"></a></span>
+<span id="cb66-267"><a href="#cb66-267"></a><span class="in">```{r}</span></span>
+<span id="cb66-268"><a href="#cb66-268"></a>courses <span class="sc">|&gt;</span></span>
+<span id="cb66-269"><a href="#cb66-269"></a>  <span class="fu">filter</span>(sessionID <span class="sc">==</span> <span class="st">"session2047"</span>)</span>
+<span id="cb66-270"><a href="#cb66-270"></a><span class="in">```</span></span>
+<span id="cb66-271"><a href="#cb66-271"></a></span>
+<span id="cb66-272"><a href="#cb66-272"></a>For our class size exploration, obtain the *total* enrollments in each <span class="in">`sessionID`</span>, combining any cross-listed sections.</span>
+<span id="cb66-273"><a href="#cb66-273"></a>Save this as <span class="in">`courses_combined`</span>.</span>
+<span id="cb66-274"><a href="#cb66-274"></a>NOTE: There's no joining to do here!</span>
+<span id="cb66-275"><a href="#cb66-275"></a></span>
+<span id="cb66-278"><a href="#cb66-278"></a><span class="in">```{r}</span></span>
+<span id="cb66-279"><a href="#cb66-279"></a>courses_combined <span class="ot">&lt;-</span> courses <span class="sc">|&gt;</span></span>
+<span id="cb66-280"><a href="#cb66-280"></a>  <span class="fu">group_by</span>(sessionID) <span class="sc">|&gt;</span></span>
+<span id="cb66-281"><a href="#cb66-281"></a>  <span class="fu">summarize</span>(<span class="at">enroll =</span> <span class="fu">sum</span>(enroll))</span>
+<span id="cb66-282"><a href="#cb66-282"></a></span>
+<span id="cb66-283"><a href="#cb66-283"></a><span class="co"># Check that this has 1695 rows and 2 columns</span></span>
+<span id="cb66-284"><a href="#cb66-284"></a><span class="fu">dim</span>(courses_combined)</span>
+<span id="cb66-285"><a href="#cb66-285"></a><span class="in">```</span></span>
+<span id="cb66-286"><a href="#cb66-286"></a></span>
+<span id="cb66-287"><a href="#cb66-287"></a><span class="fu">### ✏️ Compute Median Class Size</span></span>
+<span id="cb66-288"><a href="#cb66-288"></a></span>
+<span id="cb66-289"><a href="#cb66-289"></a>Let's first examine the question of class size from the *administration*'s viewpoint.</span>
+<span id="cb66-290"><a href="#cb66-290"></a>To this end, calculate the median class size across all class sections.</span>
+<span id="cb66-291"><a href="#cb66-291"></a>(The median is the *middle* or 50th percentile. Unlike the *mean*, it's not skewed by outliers.) THINK FIRST:</span>
+<span id="cb66-292"><a href="#cb66-292"></a></span>
+<span id="cb66-293"><a href="#cb66-293"></a><span class="ss">-   </span>Which of the 2 datasets do you need to answer this question? One? Both?</span>
+<span id="cb66-294"><a href="#cb66-294"></a><span class="ss">-   </span>If you need course information, use <span class="in">`courses_combined`</span> not <span class="in">`courses`</span>.</span>
+<span id="cb66-295"><a href="#cb66-295"></a><span class="ss">-   </span>Do you have to do any joining? If so, which dataset will go on the left, i.e. which dataset includes your primary observations of interest? Which join function will you need?</span>
+<span id="cb66-296"><a href="#cb66-296"></a></span>
+<span id="cb66-299"><a href="#cb66-299"></a><span class="in">```{r}</span></span>
+<span id="cb66-300"><a href="#cb66-300"></a>courses_combined <span class="sc">|&gt;</span> </span>
+<span id="cb66-301"><a href="#cb66-301"></a>  <span class="fu">summarize</span>(<span class="fu">median</span>(enroll))</span>
+<span id="cb66-302"><a href="#cb66-302"></a><span class="in">```</span></span>
+<span id="cb66-303"><a href="#cb66-303"></a></span>
+<span id="cb66-304"><a href="#cb66-304"></a><span class="fu">### ✏️ Compute Student Class Size</span></span>
+<span id="cb66-305"><a href="#cb66-305"></a></span>
+<span id="cb66-306"><a href="#cb66-306"></a>But how big are classes from the student perspective?</span>
+<span id="cb66-307"><a href="#cb66-307"></a>To this end, calculate the median class size for each individual student.</span>
+<span id="cb66-308"><a href="#cb66-308"></a>Once you have the correct output, store it as <span class="in">`student_class_size`</span>.</span>
+<span id="cb66-309"><a href="#cb66-309"></a>THINK FIRST:</span>
+<span id="cb66-310"><a href="#cb66-310"></a></span>
+<span id="cb66-311"><a href="#cb66-311"></a><span class="ss">-   </span>Which of the 2 datasets do you need to answer this question? One? Both?</span>
+<span id="cb66-312"><a href="#cb66-312"></a><span class="ss">-   </span>If you need course information, use <span class="in">`courses_combined`</span> not <span class="in">`courses`</span>.</span>
+<span id="cb66-313"><a href="#cb66-313"></a><span class="ss">-   </span>Do you have to do any joining? If so, which dataset will go on the left, i.e. which dataset includes your primary observations of interest? Which join function will you need?</span>
+<span id="cb66-314"><a href="#cb66-314"></a></span>
+<span id="cb66-317"><a href="#cb66-317"></a><span class="in">```{r}</span></span>
+<span id="cb66-318"><a href="#cb66-318"></a>student_class_size <span class="ot">&lt;-</span> grades <span class="sc">|&gt;</span> </span>
+<span id="cb66-319"><a href="#cb66-319"></a>  <span class="fu">left_join</span>(courses_combined) <span class="sc">|&gt;</span> </span>
+<span id="cb66-320"><a href="#cb66-320"></a>  <span class="fu">group_by</span>(sid) <span class="sc">|&gt;</span> </span>
+<span id="cb66-321"><a href="#cb66-321"></a>  <span class="fu">summarize</span>(<span class="at">median =</span> <span class="fu">median</span>(enroll))</span>
+<span id="cb66-322"><a href="#cb66-322"></a>student_class_size</span>
+<span id="cb66-323"><a href="#cb66-323"></a><span class="in">```</span></span>
+<span id="cb66-324"><a href="#cb66-324"></a></span>
+<span id="cb66-325"><a href="#cb66-325"></a><span class="fu">### ✏️ Plot Student Class Sizes</span></span>
+<span id="cb66-326"><a href="#cb66-326"></a></span>
+<span id="cb66-327"><a href="#cb66-327"></a>The median class size varies from student to student.</span>
+<span id="cb66-328"><a href="#cb66-328"></a>To get a sense for the typical student experience and range in student experiences, construct and discuss a histogram of the median class sizes experienced by the students.</span>
+<span id="cb66-329"><a href="#cb66-329"></a></span>
+<span id="cb66-332"><a href="#cb66-332"></a><span class="in">```{r}</span></span>
+<span id="cb66-333"><a href="#cb66-333"></a><span class="fu">ggplot</span>(student_class_size, <span class="fu">aes</span>(<span class="at">x =</span> median)) <span class="sc">+</span></span>
+<span id="cb66-334"><a href="#cb66-334"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb66-335"><a href="#cb66-335"></a><span class="in">```</span></span>
+<span id="cb66-336"><a href="#cb66-336"></a></span>
+<span id="cb66-337"><a href="#cb66-337"></a><span class="fu">### ✏️ Show `session1986` Students</span></span>
+<span id="cb66-338"><a href="#cb66-338"></a></span>
+<span id="cb66-339"><a href="#cb66-339"></a>Show data on the students that enrolled in <span class="in">`session1986`</span>.</span>
+<span id="cb66-340"><a href="#cb66-340"></a>THINK FIRST: Which of the 2 datasets do you need to answer this question?</span>
+<span id="cb66-341"><a href="#cb66-341"></a>One?</span>
+<span id="cb66-342"><a href="#cb66-342"></a>Both?</span>
+<span id="cb66-343"><a href="#cb66-343"></a></span>
+<span id="cb66-346"><a href="#cb66-346"></a><span class="in">```{r}</span></span>
+<span id="cb66-347"><a href="#cb66-347"></a>grades <span class="sc">|&gt;</span> </span>
+<span id="cb66-348"><a href="#cb66-348"></a>  <span class="fu">filter</span>(sessionID <span class="sc">==</span> <span class="st">"session1986"</span>)</span>
+<span id="cb66-349"><a href="#cb66-349"></a><span class="in">```</span></span>
+<span id="cb66-350"><a href="#cb66-350"></a></span>
+<span id="cb66-351"><a href="#cb66-351"></a><span class="fu">### ✏️ Find Dept E Students</span></span>
+<span id="cb66-352"><a href="#cb66-352"></a></span>
+<span id="cb66-353"><a href="#cb66-353"></a>Below is a dataset with all courses in department E:</span>
+<span id="cb66-354"><a href="#cb66-354"></a></span>
+<span id="cb66-357"><a href="#cb66-357"></a><span class="in">```{r}</span></span>
+<span id="cb66-358"><a href="#cb66-358"></a>dept_E <span class="ot">&lt;-</span> courses <span class="sc">|&gt;</span></span>
+<span id="cb66-359"><a href="#cb66-359"></a>  <span class="fu">filter</span>(dept <span class="sc">==</span> <span class="st">"E"</span>)</span>
+<span id="cb66-360"><a href="#cb66-360"></a><span class="in">```</span></span>
+<span id="cb66-361"><a href="#cb66-361"></a></span>
+<span id="cb66-362"><a href="#cb66-362"></a>What students enrolled in classes in department E?</span>
+<span id="cb66-363"><a href="#cb66-363"></a>(We just want info on the students, not the classes.)</span>
+<span id="cb66-364"><a href="#cb66-364"></a></span>
+<span id="cb66-367"><a href="#cb66-367"></a><span class="in">```{r}</span></span>
+<span id="cb66-368"><a href="#cb66-368"></a>grades <span class="sc">|&gt;</span> </span>
+<span id="cb66-369"><a href="#cb66-369"></a>  <span class="fu">semi_join</span>(dept_E)</span>
+<span id="cb66-370"><a href="#cb66-370"></a><span class="in">```</span></span>
+<span id="cb66-371"><a href="#cb66-371"></a></span>
+<span id="cb66-372"><a href="#cb66-372"></a><span class="fu">## Wrangling Practice</span></span>
+<span id="cb66-373"><a href="#cb66-373"></a></span>
+<span id="cb66-374"><a href="#cb66-374"></a><span class="fu">### ✏️ Total Enrollments by Dept</span></span>
+<span id="cb66-375"><a href="#cb66-375"></a></span>
+<span id="cb66-376"><a href="#cb66-376"></a>Use all of your wrangling skills to answer the following prompts!</span>
+<span id="cb66-377"><a href="#cb66-377"></a>THINK FIRST:</span>
+<span id="cb66-378"><a href="#cb66-378"></a></span>
+<span id="cb66-379"><a href="#cb66-379"></a><span class="ss">-   </span>Think about what tables you might need to join (if any). Identify the corresponding variables to match.</span>
+<span id="cb66-380"><a href="#cb66-380"></a><span class="ss">-   </span>You'll need an extra table to convert grades to grade point averages:</span>
+<span id="cb66-381"><a href="#cb66-381"></a></span>
+<span id="cb66-384"><a href="#cb66-384"></a><span class="in">```{r}</span></span>
+<span id="cb66-385"><a href="#cb66-385"></a>gpa_conversion <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb66-386"><a href="#cb66-386"></a>  <span class="at">grade =</span> <span class="fu">c</span>(<span class="st">"A+"</span>, <span class="st">"A"</span>, <span class="st">"A-"</span>, <span class="st">"B+"</span>, <span class="st">"B"</span>, <span class="st">"B-"</span>, <span class="st">"C+"</span>, <span class="st">"C"</span>, <span class="st">"C-"</span>, <span class="st">"D+"</span>, <span class="st">"D"</span>, <span class="st">"D-"</span>, <span class="st">"NC"</span>, <span class="st">"AU"</span>, <span class="st">"S"</span>),</span>
+<span id="cb66-387"><a href="#cb66-387"></a>  <span class="at">gp =</span> <span class="fu">c</span>(<span class="fl">4.3</span>, <span class="dv">4</span>, <span class="fl">3.7</span>, <span class="fl">3.3</span>, <span class="dv">3</span>, <span class="fl">2.7</span>, <span class="fl">2.3</span>, <span class="dv">2</span>, <span class="fl">1.7</span>, <span class="fl">1.3</span>, <span class="dv">1</span>, <span class="fl">0.7</span>, <span class="dv">0</span>, <span class="cn">NA</span>, <span class="cn">NA</span>)</span>
+<span id="cb66-388"><a href="#cb66-388"></a>)</span>
+<span id="cb66-389"><a href="#cb66-389"></a></span>
+<span id="cb66-390"><a href="#cb66-390"></a>gpa_conversion</span>
+<span id="cb66-391"><a href="#cb66-391"></a><span class="in">```</span></span>
+<span id="cb66-392"><a href="#cb66-392"></a></span>
+<span id="cb66-393"><a href="#cb66-393"></a>How many total student enrollments are there in each department?</span>
+<span id="cb66-394"><a href="#cb66-394"></a>Order from high to low.</span>
+<span id="cb66-395"><a href="#cb66-395"></a></span>
+<span id="cb66-398"><a href="#cb66-398"></a><span class="in">```{r}</span></span>
+<span id="cb66-399"><a href="#cb66-399"></a>courses <span class="sc">|&gt;</span> </span>
+<span id="cb66-400"><a href="#cb66-400"></a>  <span class="fu">group_by</span>(dept) <span class="sc">|&gt;</span></span>
+<span id="cb66-401"><a href="#cb66-401"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(enroll)) <span class="sc">|&gt;</span></span>
+<span id="cb66-402"><a href="#cb66-402"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total))</span>
+<span id="cb66-403"><a href="#cb66-403"></a><span class="in">```</span></span>
+<span id="cb66-404"><a href="#cb66-404"></a></span>
+<span id="cb66-405"><a href="#cb66-405"></a><span class="fu">### ✏️ Compute Student GPA</span></span>
+<span id="cb66-406"><a href="#cb66-406"></a></span>
+<span id="cb66-407"><a href="#cb66-407"></a>What's the grade-point average (GPA) for each student?</span>
+<span id="cb66-408"><a href="#cb66-408"></a></span>
+<span id="cb66-411"><a href="#cb66-411"></a><span class="in">```{r}</span></span>
+<span id="cb66-412"><a href="#cb66-412"></a>grades <span class="sc">|&gt;</span></span>
+<span id="cb66-413"><a href="#cb66-413"></a>  <span class="fu">left_join</span>(gpa_conversion) <span class="sc">|&gt;</span></span>
+<span id="cb66-414"><a href="#cb66-414"></a>  <span class="fu">group_by</span>(sid) <span class="sc">|&gt;</span></span>
+<span id="cb66-415"><a href="#cb66-415"></a>  <span class="fu">summarize</span>(<span class="at">gpa =</span> <span class="fu">mean</span>(gp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb66-416"><a href="#cb66-416"></a><span class="in">```</span></span>
+<span id="cb66-417"><a href="#cb66-417"></a></span>
+<span id="cb66-418"><a href="#cb66-418"></a><span class="fu">### ✏️ Compute Median GPA</span></span>
+<span id="cb66-419"><a href="#cb66-419"></a></span>
+<span id="cb66-420"><a href="#cb66-420"></a>What's the median GPA across all students?</span>
+<span id="cb66-421"><a href="#cb66-421"></a></span>
+<span id="cb66-424"><a href="#cb66-424"></a><span class="in">```{r}</span></span>
+<span id="cb66-425"><a href="#cb66-425"></a>grades <span class="sc">|&gt;</span></span>
+<span id="cb66-426"><a href="#cb66-426"></a>  <span class="fu">left_join</span>(gpa_conversion) <span class="sc">|&gt;</span></span>
+<span id="cb66-427"><a href="#cb66-427"></a>  <span class="fu">group_by</span>(sid) <span class="sc">|&gt;</span></span>
+<span id="cb66-428"><a href="#cb66-428"></a>  <span class="fu">summarize</span>(<span class="at">gpa =</span> <span class="fu">mean</span>(gp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb66-429"><a href="#cb66-429"></a>  <span class="fu">summarize</span>(<span class="fu">median</span>(gpa))</span>
+<span id="cb66-430"><a href="#cb66-430"></a><span class="in">```</span></span>
+<span id="cb66-431"><a href="#cb66-431"></a></span>
+<span id="cb66-432"><a href="#cb66-432"></a><span class="fu">### ✏️ Find Grades Below B+</span></span>
+<span id="cb66-433"><a href="#cb66-433"></a></span>
+<span id="cb66-434"><a href="#cb66-434"></a>What fraction of grades are below B+?</span>
+<span id="cb66-435"><a href="#cb66-435"></a></span>
+<span id="cb66-438"><a href="#cb66-438"></a><span class="in">```{r}</span></span>
+<span id="cb66-439"><a href="#cb66-439"></a>grades <span class="sc">|&gt;</span></span>
+<span id="cb66-440"><a href="#cb66-440"></a>  <span class="fu">left_join</span>(gpa_conversion) <span class="sc">|&gt;</span></span>
+<span id="cb66-441"><a href="#cb66-441"></a>  <span class="fu">mutate</span>(<span class="at">below_b_plus =</span> (gp <span class="sc">&lt;</span> <span class="fl">3.3</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb66-442"><a href="#cb66-442"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(below_b_plus, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb66-443"><a href="#cb66-443"></a><span class="in">```</span></span>
+<span id="cb66-444"><a href="#cb66-444"></a></span>
+<span id="cb66-445"><a href="#cb66-445"></a><span class="fu">### ✏️ Compute Instructor GPA</span></span>
+<span id="cb66-446"><a href="#cb66-446"></a></span>
+<span id="cb66-447"><a href="#cb66-447"></a>What's the grade-point average for each instructor?</span>
+<span id="cb66-448"><a href="#cb66-448"></a>Order from low to high.</span>
+<span id="cb66-449"><a href="#cb66-449"></a></span>
+<span id="cb66-452"><a href="#cb66-452"></a><span class="in">```{r}</span></span>
+<span id="cb66-453"><a href="#cb66-453"></a>grades <span class="sc">|&gt;</span></span>
+<span id="cb66-454"><a href="#cb66-454"></a>  <span class="fu">left_join</span>(gpa_conversion) <span class="sc">|&gt;</span></span>
+<span id="cb66-455"><a href="#cb66-455"></a>  <span class="fu">left_join</span>(courses) <span class="sc">|&gt;</span></span>
+<span id="cb66-456"><a href="#cb66-456"></a>  <span class="fu">group_by</span>(iid) <span class="sc">|&gt;</span></span>
+<span id="cb66-457"><a href="#cb66-457"></a>  <span class="fu">summarize</span>(<span class="at">gpa =</span> <span class="fu">mean</span>(gp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb66-458"><a href="#cb66-458"></a>  <span class="fu">arrange</span>(gpa)</span>
+<span id="cb66-459"><a href="#cb66-459"></a><span class="in">```</span></span>
+<span id="cb66-460"><a href="#cb66-460"></a></span>
+<span id="cb66-461"><a href="#cb66-461"></a><span class="fu">### ✏️ Estimate Dept GPA</span></span>
+<span id="cb66-462"><a href="#cb66-462"></a></span>
+<span id="cb66-463"><a href="#cb66-463"></a>CHALLENGE: Estimate the grade-point average for each department, and sort from low to high.</span>
+<span id="cb66-464"><a href="#cb66-464"></a>NOTE: Don't include cross-listed courses.</span>
+<span id="cb66-465"><a href="#cb66-465"></a>Students in cross-listed courses could be enrolled under either department, and we do not know which department to assign the grade to.</span>
+<span id="cb66-466"><a href="#cb66-466"></a>HINT: You'll need to do multiple joins.</span>
+<span id="cb66-467"><a href="#cb66-467"></a></span>
+<span id="cb66-470"><a href="#cb66-470"></a><span class="in">```{r}</span></span>
+<span id="cb66-471"><a href="#cb66-471"></a>cross_listed <span class="ot">&lt;-</span> courses <span class="sc">|&gt;</span></span>
+<span id="cb66-472"><a href="#cb66-472"></a>  <span class="fu">count</span>(sessionID) <span class="sc">|&gt;</span></span>
+<span id="cb66-473"><a href="#cb66-473"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb66-474"><a href="#cb66-474"></a></span>
+<span id="cb66-475"><a href="#cb66-475"></a>grades <span class="sc">|&gt;</span></span>
+<span id="cb66-476"><a href="#cb66-476"></a>  <span class="fu">anti_join</span>(cross_listed) <span class="sc">|&gt;</span></span>
+<span id="cb66-477"><a href="#cb66-477"></a>  <span class="fu">inner_join</span>(courses) <span class="sc">|&gt;</span></span>
+<span id="cb66-478"><a href="#cb66-478"></a>  <span class="fu">left_join</span>(gpa_conversion) <span class="sc">|&gt;</span></span>
+<span id="cb66-479"><a href="#cb66-479"></a>  <span class="fu">group_by</span>(dept) <span class="sc">|&gt;</span></span>
+<span id="cb66-480"><a href="#cb66-480"></a>  <span class="fu">summarize</span>(<span class="at">gpa =</span> <span class="fu">mean</span>(gp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb66-481"><a href="#cb66-481"></a>  <span class="fu">arrange</span>(gpa)</span>
+<span id="cb66-482"><a href="#cb66-482"></a><span class="in">```</span></span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
