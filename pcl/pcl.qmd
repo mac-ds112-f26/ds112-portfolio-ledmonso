@@ -19,3 +19,5 @@ title: "Pre-Class Learning Summaries"
 ![](mind_maps/Wrangling_MM.png)
 ![](mind_maps/Dates_MM.png)
 ![](mind_maps/Reshaping_MM.png)
+![](mind_maps/Join_MM.png)
+![](mind_maps/Factors_MM.png)

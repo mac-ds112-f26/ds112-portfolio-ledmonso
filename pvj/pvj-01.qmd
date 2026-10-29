@@ -3,3 +3,26 @@ title: "Personal Visualization Journey"
 ---
 
 Add content here
+
+```{r}
+library(tidyverse)
+library(readr)
+step_count <- read_csv("pvj_data.csv")
+
+
+step_count <- step_count |>
+  mutate(date = as.Date(date, format = "%m/%d/%y"),
+       steps = as.numeric(steps)) |> 
+  mutate(day_of_week = wday(date, label = TRUE, abbr = FALSE)) |> 
+  select(date, day_of_week, steps)
+```
+
+```{r}
+ggplot(step_count, aes(x = steps)) +
+  geom_histogram()
+```
+
+```{r}
+ggplot(step_count, aes(x = day_of_week, y = steps)) +
+  geom_boxplot()
+```

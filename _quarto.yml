@@ -83,6 +83,9 @@ book:
       - ica/06-spatial-viz.qmd
       - ica/07-effective-viz.qmd
       - ica/08-wrangling-verbs.qmd
+      - ica/09-dates.qmd
+      - ica/10-reshaping-data.qmd
+      - ica/11-joining-data.qmd
 
 
 
