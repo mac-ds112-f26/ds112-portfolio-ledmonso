@@ -86,6 +86,7 @@ book:
       - ica/09-dates.qmd
       - ica/10-reshaping-data.qmd
       - ica/11-joining-data.qmd
+      - ica/12-factors.qmd
 
 
 
