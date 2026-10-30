@@ -439,6 +439,11 @@ cookieconsent.run({
   <a href="../ica/11-joining-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Join</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/12-factors.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Factors</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -492,30 +497,29 @@ cookieconsent.run({
 <span id="cb1-3"><a href="#cb1-3"></a>step_count <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"pvj_data.csv"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4"></a></span>
 <span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a>step_count <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>step_count <span class="ot">&lt;-</span> step_count <span class="sc">|&gt;</span></span>
 <span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.Date</span>(date, <span class="at">format =</span> <span class="st">"%m/%d/%y"</span>),</span>
 <span id="cb1-8"><a href="#cb1-8"></a>       <span class="at">steps =</span> <span class="fu">as.numeric</span>(steps)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-9"><a href="#cb1-9"></a>  <span class="fu">mutate</span>(<span class="at">day_of_week =</span> <span class="st">"day of week"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-10"><a href="#cb1-10"></a>  <span class="fu">select</span>(date, day_of_week, steps) <span class="sc">|&gt;</span> </span>
-<span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  date       day_of_week steps
-  &lt;date&gt;     &lt;chr&gt;       &lt;dbl&gt;
-1 2026-08-17 day of week 11549
-2 2026-08-18 day of week 13223
-3 2026-08-19 day of week 14965
-4 2026-08-20 day of week 14989
-5 2026-08-21 day of week 10787
-6 2026-08-22 day of week 14230</code></pre>
-</div>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="fu">mutate</span>(<span class="at">day_of_week =</span> <span class="fu">wday</span>(date, <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">abbr =</span> <span class="cn">FALSE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-10"><a href="#cb1-10"></a>  <span class="fu">select</span>(date, day_of_week, steps)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> steps)) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> steps)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="pvj-01_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> day_of_week, <span class="at">y =</span> steps)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="pvj-01_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1016,18 +1020,22 @@ cookieconsent.run({
 <span id="cb4-12"><a href="#cb4-12"></a>step_count <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"pvj_data.csv"</span>)</span>
 <span id="cb4-13"><a href="#cb4-13"></a></span>
 <span id="cb4-14"><a href="#cb4-14"></a></span>
-<span id="cb4-15"><a href="#cb4-15"></a>step_count <span class="sc">|&gt;</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a>step_count <span class="ot">&lt;-</span> step_count <span class="sc">|&gt;</span></span>
 <span id="cb4-16"><a href="#cb4-16"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.Date</span>(date, <span class="at">format =</span> <span class="st">"%m/%d/%y"</span>),</span>
 <span id="cb4-17"><a href="#cb4-17"></a>       <span class="at">steps =</span> <span class="fu">as.numeric</span>(steps)) <span class="sc">|&gt;</span> </span>
-<span id="cb4-18"><a href="#cb4-18"></a>  <span class="fu">mutate</span>(<span class="at">day_of_week =</span> <span class="st">"day of week"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb4-19"><a href="#cb4-19"></a>  <span class="fu">select</span>(date, day_of_week, steps) <span class="sc">|&gt;</span> </span>
-<span id="cb4-20"><a href="#cb4-20"></a>  <span class="fu">head</span>()</span>
-<span id="cb4-21"><a href="#cb4-21"></a><span class="in">```</span></span>
-<span id="cb4-22"><a href="#cb4-22"></a></span>
-<span id="cb4-25"><a href="#cb4-25"></a><span class="in">```{r}</span></span>
-<span id="cb4-26"><a href="#cb4-26"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> steps)) <span class="sc">+</span></span>
-<span id="cb4-27"><a href="#cb4-27"></a>  <span class="fu">geom_histogram</span>()</span>
-<span id="cb4-28"><a href="#cb4-28"></a><span class="in">```</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>  <span class="fu">mutate</span>(<span class="at">day_of_week =</span> <span class="fu">wday</span>(date, <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">abbr =</span> <span class="cn">FALSE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-19"><a href="#cb4-19"></a>  <span class="fu">select</span>(date, day_of_week, steps)</span>
+<span id="cb4-20"><a href="#cb4-20"></a><span class="in">```</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a></span>
+<span id="cb4-24"><a href="#cb4-24"></a><span class="in">```{r}</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> steps)) <span class="sc">+</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb4-27"><a href="#cb4-27"></a><span class="in">```</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a></span>
+<span id="cb4-31"><a href="#cb4-31"></a><span class="in">```{r}</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> day_of_week, <span class="at">y =</span> steps)) <span class="sc">+</span></span>
+<span id="cb4-33"><a href="#cb4-33"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb4-34"><a href="#cb4-34"></a><span class="in">```</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
