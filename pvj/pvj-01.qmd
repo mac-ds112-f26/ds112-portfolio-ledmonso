@@ -26,3 +26,8 @@ ggplot(step_count, aes(x = steps)) +
 ggplot(step_count, aes(x = day_of_week, y = steps)) +
   geom_boxplot()
 ```
+
+```{r}
+ggplot(step_count, aes(x = date, y = steps, color = day_of_week)) +
+  geom_point()
+```
