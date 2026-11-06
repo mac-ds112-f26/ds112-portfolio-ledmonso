@@ -531,7 +531,14 @@ cookieconsent.run({
 </div>
 <div class="cell">
 <details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> steps, <span class="at">color =</span> day_of_week)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Sunday"</span> <span class="ot">=</span> <span class="st">"red"</span>, </span>
+<span id="cb4-4"><a href="#cb4-4"></a>                              <span class="st">"Monday"</span> <span class="ot">=</span> <span class="st">"orange"</span>, </span>
+<span id="cb4-5"><a href="#cb4-5"></a>                              <span class="st">"Tuesday"</span> <span class="ot">=</span> <span class="st">"yellow"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6"></a>                              <span class="st">"Wednesday"</span> <span class="ot">=</span> <span class="st">"green"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7"></a>                              <span class="st">"Thursday"</span> <span class="ot">=</span> <span class="st">"blue"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8"></a>                              <span class="st">"Friday"</span> <span class="ot">=</span> <span class="st">"purple"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9"></a>                              <span class="st">"Saturday"</span> <span class="ot">=</span> <span class="st">"magenta"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="pvj-01_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
@@ -1054,8 +1061,15 @@ cookieconsent.run({
 <span id="cb5-35"><a href="#cb5-35"></a></span>
 <span id="cb5-38"><a href="#cb5-38"></a><span class="in">```{r}</span></span>
 <span id="cb5-39"><a href="#cb5-39"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> steps, <span class="at">color =</span> day_of_week)) <span class="sc">+</span></span>
-<span id="cb5-40"><a href="#cb5-40"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb5-41"><a href="#cb5-41"></a><span class="in">```</span></span>
+<span id="cb5-40"><a href="#cb5-40"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-41"><a href="#cb5-41"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Sunday"</span> <span class="ot">=</span> <span class="st">"red"</span>, </span>
+<span id="cb5-42"><a href="#cb5-42"></a>                              <span class="st">"Monday"</span> <span class="ot">=</span> <span class="st">"orange"</span>, </span>
+<span id="cb5-43"><a href="#cb5-43"></a>                              <span class="st">"Tuesday"</span> <span class="ot">=</span> <span class="st">"yellow"</span>,</span>
+<span id="cb5-44"><a href="#cb5-44"></a>                              <span class="st">"Wednesday"</span> <span class="ot">=</span> <span class="st">"green"</span>,</span>
+<span id="cb5-45"><a href="#cb5-45"></a>                              <span class="st">"Thursday"</span> <span class="ot">=</span> <span class="st">"blue"</span>,</span>
+<span id="cb5-46"><a href="#cb5-46"></a>                              <span class="st">"Friday"</span> <span class="ot">=</span> <span class="st">"purple"</span>,</span>
+<span id="cb5-47"><a href="#cb5-47"></a>                              <span class="st">"Saturday"</span> <span class="ot">=</span> <span class="st">"magenta"</span>))</span>
+<span id="cb5-48"><a href="#cb5-48"></a><span class="in">```</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
