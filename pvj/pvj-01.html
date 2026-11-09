@@ -516,7 +516,8 @@ cookieconsent.run({
 </div>
 <div class="cell">
 <details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> steps)) <span class="sc">+</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of Steps"</span>, <span class="at">x =</span> <span class="st">"Steps"</span>, <span class="at">y =</span> <span class="st">"Number of Steps"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="pvj-01_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
@@ -526,7 +527,10 @@ cookieconsent.run({
 </div>
 <div class="cell">
 <details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> day_of_week, <span class="at">y =</span> steps)) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Steps by Day of the Week"</span>, </span>
+<span id="cb3-4"><a href="#cb3-4"></a>       <span class="at">x =</span> <span class="st">"Day of Week"</span>, </span>
+<span id="cb3-5"><a href="#cb3-5"></a>       <span class="at">y =</span> <span class="st">"Steps"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="pvj-01_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
@@ -543,7 +547,11 @@ cookieconsent.run({
 <span id="cb4-6"><a href="#cb4-6"></a>                              <span class="st">"Wednesday"</span> <span class="ot">=</span> <span class="st">"green"</span>,</span>
 <span id="cb4-7"><a href="#cb4-7"></a>                              <span class="st">"Thursday"</span> <span class="ot">=</span> <span class="st">"blue"</span>,</span>
 <span id="cb4-8"><a href="#cb4-8"></a>                              <span class="st">"Friday"</span> <span class="ot">=</span> <span class="st">"purple"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9"></a>                              <span class="st">"Saturday"</span> <span class="ot">=</span> <span class="st">"magenta"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-9"><a href="#cb4-9"></a>                              <span class="st">"Saturday"</span> <span class="ot">=</span> <span class="st">"magenta"</span>)) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Steps Over Time"</span>, </span>
+<span id="cb4-11"><a href="#cb4-11"></a>       <span class="at">x =</span> <span class="st">"Date"</span>, </span>
+<span id="cb4-12"><a href="#cb4-12"></a>       <span class="at">y =</span> <span class="st">"Number of Steps"</span>, </span>
+<span id="cb4-13"><a href="#cb4-13"></a>       <span class="at">color =</span> <span class="st">"Day of Week"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="pvj-01_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
@@ -1056,25 +1064,33 @@ cookieconsent.run({
 <span id="cb5-21"><a href="#cb5-21"></a></span>
 <span id="cb5-24"><a href="#cb5-24"></a><span class="in">```{r}</span></span>
 <span id="cb5-25"><a href="#cb5-25"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> steps)) <span class="sc">+</span></span>
-<span id="cb5-26"><a href="#cb5-26"></a>  <span class="fu">geom_histogram</span>()</span>
-<span id="cb5-27"><a href="#cb5-27"></a><span class="in">```</span></span>
-<span id="cb5-28"><a href="#cb5-28"></a></span>
-<span id="cb5-31"><a href="#cb5-31"></a><span class="in">```{r}</span></span>
-<span id="cb5-32"><a href="#cb5-32"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> day_of_week, <span class="at">y =</span> steps)) <span class="sc">+</span></span>
-<span id="cb5-33"><a href="#cb5-33"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb5-34"><a href="#cb5-34"></a><span class="in">```</span></span>
-<span id="cb5-35"><a href="#cb5-35"></a></span>
-<span id="cb5-38"><a href="#cb5-38"></a><span class="in">```{r}</span></span>
-<span id="cb5-39"><a href="#cb5-39"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> steps, <span class="at">color =</span> day_of_week)) <span class="sc">+</span></span>
-<span id="cb5-40"><a href="#cb5-40"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-41"><a href="#cb5-41"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Sunday"</span> <span class="ot">=</span> <span class="st">"red"</span>, </span>
-<span id="cb5-42"><a href="#cb5-42"></a>                              <span class="st">"Monday"</span> <span class="ot">=</span> <span class="st">"orange"</span>, </span>
-<span id="cb5-43"><a href="#cb5-43"></a>                              <span class="st">"Tuesday"</span> <span class="ot">=</span> <span class="st">"yellow"</span>,</span>
-<span id="cb5-44"><a href="#cb5-44"></a>                              <span class="st">"Wednesday"</span> <span class="ot">=</span> <span class="st">"green"</span>,</span>
-<span id="cb5-45"><a href="#cb5-45"></a>                              <span class="st">"Thursday"</span> <span class="ot">=</span> <span class="st">"blue"</span>,</span>
-<span id="cb5-46"><a href="#cb5-46"></a>                              <span class="st">"Friday"</span> <span class="ot">=</span> <span class="st">"purple"</span>,</span>
-<span id="cb5-47"><a href="#cb5-47"></a>                              <span class="st">"Saturday"</span> <span class="ot">=</span> <span class="st">"magenta"</span>))</span>
-<span id="cb5-48"><a href="#cb5-48"></a><span class="in">```</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb5-27"><a href="#cb5-27"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of Steps"</span>, <span class="at">x =</span> <span class="st">"Steps"</span>, <span class="at">y =</span> <span class="st">"Number of Steps"</span>)</span>
+<span id="cb5-28"><a href="#cb5-28"></a><span class="in">```</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a></span>
+<span id="cb5-32"><a href="#cb5-32"></a><span class="in">```{r}</span></span>
+<span id="cb5-33"><a href="#cb5-33"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> day_of_week, <span class="at">y =</span> steps)) <span class="sc">+</span></span>
+<span id="cb5-34"><a href="#cb5-34"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb5-35"><a href="#cb5-35"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Steps by Day of the Week"</span>, </span>
+<span id="cb5-36"><a href="#cb5-36"></a>       <span class="at">x =</span> <span class="st">"Day of Week"</span>, </span>
+<span id="cb5-37"><a href="#cb5-37"></a>       <span class="at">y =</span> <span class="st">"Steps"</span>)</span>
+<span id="cb5-38"><a href="#cb5-38"></a><span class="in">```</span></span>
+<span id="cb5-39"><a href="#cb5-39"></a></span>
+<span id="cb5-42"><a href="#cb5-42"></a><span class="in">```{r}</span></span>
+<span id="cb5-43"><a href="#cb5-43"></a><span class="fu">ggplot</span>(step_count, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> steps, <span class="at">color =</span> day_of_week)) <span class="sc">+</span></span>
+<span id="cb5-44"><a href="#cb5-44"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-45"><a href="#cb5-45"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Sunday"</span> <span class="ot">=</span> <span class="st">"red"</span>, </span>
+<span id="cb5-46"><a href="#cb5-46"></a>                              <span class="st">"Monday"</span> <span class="ot">=</span> <span class="st">"orange"</span>, </span>
+<span id="cb5-47"><a href="#cb5-47"></a>                              <span class="st">"Tuesday"</span> <span class="ot">=</span> <span class="st">"yellow"</span>,</span>
+<span id="cb5-48"><a href="#cb5-48"></a>                              <span class="st">"Wednesday"</span> <span class="ot">=</span> <span class="st">"green"</span>,</span>
+<span id="cb5-49"><a href="#cb5-49"></a>                              <span class="st">"Thursday"</span> <span class="ot">=</span> <span class="st">"blue"</span>,</span>
+<span id="cb5-50"><a href="#cb5-50"></a>                              <span class="st">"Friday"</span> <span class="ot">=</span> <span class="st">"purple"</span>,</span>
+<span id="cb5-51"><a href="#cb5-51"></a>                              <span class="st">"Saturday"</span> <span class="ot">=</span> <span class="st">"magenta"</span>)) <span class="sc">+</span></span>
+<span id="cb5-52"><a href="#cb5-52"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Steps Over Time"</span>, </span>
+<span id="cb5-53"><a href="#cb5-53"></a>       <span class="at">x =</span> <span class="st">"Date"</span>, </span>
+<span id="cb5-54"><a href="#cb5-54"></a>       <span class="at">y =</span> <span class="st">"Number of Steps"</span>, </span>
+<span id="cb5-55"><a href="#cb5-55"></a>       <span class="at">color =</span> <span class="st">"Day of Week"</span>)</span>
+<span id="cb5-56"><a href="#cb5-56"></a><span class="in">```</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
