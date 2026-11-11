@@ -87,6 +87,8 @@ book:
       - ica/10-reshaping-data.qmd
       - ica/11-joining-data.qmd
       - ica/12-factors.qmd
+      - ica/13-strings.qmd
+      - ica/15-data-import.qmd
 
 
 
