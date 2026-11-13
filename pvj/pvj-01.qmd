@@ -20,7 +20,7 @@ step_count <- step_count |>
 ```{r}
 ggplot(step_count, aes(x = steps)) +
   geom_histogram(color = "white") +
-  labs(title = "Number of Steps", x = "Steps", y = "Number of Steps")
+  labs(title = "Number of Steps", x = "Steps", y = "Count")
 ```
 
 ```{r}
