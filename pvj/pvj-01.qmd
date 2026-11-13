@@ -2,7 +2,7 @@
 title: "Personal Visualization Journey"
 ---
 
-Add content here
+#### [How does my step count vary during the school year?]{.underline}
 
 ```{r}
 library(tidyverse)
@@ -46,3 +46,6 @@ ggplot(step_count, aes(x = date, y = steps, color = day_of_week)) +
        y = "Number of Steps", 
        color = "Day of Week")
 ```
+
+> From the last plot, I observed that in general I walked a lot less on Sundays than I did any other day.
+> I tended to walk more in August than I did in September and October, probably because August was still summer break and I had more free time than I do now in the school year.
