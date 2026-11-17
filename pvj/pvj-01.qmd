@@ -32,6 +32,7 @@ ggplot(step_count, aes(x = day_of_week, y = steps)) +
 ```
 
 ```{r}
+#| fig-cap: "Author: Lindsay Edmonson"
 ggplot(step_count, aes(x = date, y = steps, color = day_of_week)) +
   geom_point() +
   scale_color_manual(values = c("Sunday" = "red", 
@@ -41,10 +42,11 @@ ggplot(step_count, aes(x = date, y = steps, color = day_of_week)) +
                               "Thursday" = "blue",
                               "Friday" = "purple",
                               "Saturday" = "magenta")) +
-  labs(title = "Steps Over Time", 
+  labs(title = "How Does my Step Count Change Over Time?",
+       subtitle = "Daily step counts over time colored by day of the week (Aug 15, 2026 - Oct 27, 2026)",
        x = "Date", 
        y = "Number of Steps", 
-       color = "Day of Week")
+       color = "Day of Week") 
 ```
 
 > From the last plot, I observed that in general I walked a lot less on Sundays than I did any other day.
