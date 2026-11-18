@@ -14,7 +14,9 @@ step_count <- step_count |>
        steps = as.numeric(steps)) |>
   mutate(day_of_week = wday(date, label = TRUE, abbr = FALSE)) |>
   select(date, day_of_week, steps) |> 
-  filter(!is.na(steps))
+  filter(!is.na(steps)) |> 
+  mutate(day_type = if_else(day_of_week %in% c("Saturday", "Sunday"),
+                            "Weekend", "Weekday"))
 ```
 
 ```{r}
@@ -32,21 +34,19 @@ ggplot(step_count, aes(x = day_of_week, y = steps)) +
 ```
 
 ```{r}
-#| fig-cap: "Author: Lindsay Edmonson"
-ggplot(step_count, aes(x = date, y = steps, color = day_of_week)) +
+ggplot(step_count, aes(x = date, y = steps, color = day_type)) +
   geom_point() +
-  scale_color_manual(values = c("Sunday" = "red", 
-                              "Monday" = "orange", 
-                              "Tuesday" = "yellow",
-                              "Wednesday" = "green",
-                              "Thursday" = "blue",
-                              "Friday" = "purple",
-                              "Saturday" = "magenta")) +
-  labs(title = "How Does my Step Count Change Over Time?",
-       subtitle = "Daily step counts over time colored by day of the week (Aug 15, 2026 - Oct 27, 2026)",
-       x = "Date", 
-       y = "Number of Steps", 
-       color = "Day of Week") 
+  scale_color_manual(values = c("Weekend" = "blue", 
+                              "Weekday" = "orange")) +
+  labs(subtitle = "I walk less as the weather gets colder and am more likely to walk less on the weekends.",
+       title = "Daily Step Counts Over Time by Type of Day",
+       x = NULL, 
+       y = NULL, 
+       color = "Type of Day",
+       caption = "Author: Lindsay Edmonson | Date: November 18th, 2026 | Data Source: Personal Apple Health Export") +
+  scale_y_continuous(labels = scales::label_number(scale = 0.001, suffix = "k"))+
+  theme_classic()+
+  theme(plot.title = element_text(face = "bold"))
 ```
 
 > From the last plot, I observed that in general I walked a lot less on Sundays than I did any other day.
