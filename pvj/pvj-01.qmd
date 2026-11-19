@@ -42,10 +42,10 @@ ggplot(step_count, aes(x = date, y = steps, color = day_type)) +
        title = "Daily Step Counts Over Time by Type of Day",
        x = NULL, 
        y = NULL, 
-       color = "Type of Day",
+       color = NULL,
        caption = "Author: Lindsay Edmonson | Date: November 18th, 2026 | Data Source: Personal Apple Health Export") +
   scale_y_continuous(labels = scales::label_number(scale = 0.001, suffix = "k"))+
-  theme_classic()+
+  theme_minimal()+
   theme(plot.title = element_text(face = "bold"))
 ```
 
